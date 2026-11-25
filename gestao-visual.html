@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="light" name="color-scheme"/>
+<title>EducaDados — Gestão Visual BPMN V9 (teste) | Entregas semanais</title>
+<style>
+:root{--navy:#113e61;--blue:#187fb3;--teal:#177d88;--green:#208458;--amber:#bf8428;--red:#c44751;--ink:#183b53;--muted:#688395;--line:#c6dce9;--bg:#f1f7fa;--zoom:1}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:'Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--ink)}button,select,input,textarea{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid #e9b641;outline-offset:2px}.hidden{display:none!important}
+.app{height:100dvh;min-height:420px;display:flex;flex-direction:column;overflow:hidden}
+.topbar{background:white;border-bottom:2px solid #2183a1;display:flex;align-items:center;gap:12px;min-height:53px;max-height:53px;padding:4px 13px;flex:none}
+.logo{display:flex;align-items:center;gap:9px;flex:none}.logo-icon{width:39px;height:37px;flex:none}.logo-mark{font-size:10px;color:#1357b6;font-weight:900;letter-spacing:.7px;line-height:1;text-align:center}.logo-name{font-size:14px;color:#0d466c;font-weight:850;line-height:1.08}.logo-name small{display:block;font-size:9px;color:#497088;font-weight:550;margin-top:3px}.sep{height:30px;width:1px;background:#b4d2de}.topbar h1{font-size:clamp(15px,1.4vw,22px);font-weight:850;line-height:1.07;letter-spacing:-.3px;margin:0;flex:1;color:#123b5d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sync{background:#fff6e6;color:#93651e;font-size:9px;font-weight:800;padding:5px 7px;border:1px solid #ecd8b6;border-radius:5px;white-space:nowrap}
+.tools{height:42px;min-height:42px;background:#eaf5fa;border-bottom:1px solid #cbdfe9;padding:5px 9px;display:flex;align-items:center;gap:5px;overflow-x:auto;overflow-y:hidden;flex:none;scrollbar-width:thin}
+.tools input,.tools select,.tools button{height:29px;min-height:29px;background:#fff;border:1px solid #c5dbe6;border-radius:6px;padding:3px 8px;font-size:11px;color:#234e66;white-space:nowrap}.tools input{width:168px;flex:none}.tools select{max-width:160px}.tools button:hover{border-color:#72b2cd;background:#f4fbff}.tools button.primary{background:#1683a2;color:white;border-color:#1683a2;font-weight:800}.tools button.primary:hover{background:#08738f}.tools button.icon{padding:0 8px;font-size:16px;font-weight:bold}.tools .section-sep{height:23px;width:1px;background:#b8d2e0;margin:0 4px;flex:none}.tool-space{flex:1}.zoom-pct{font-weight:800;color:#52788b;font-size:11px;min-width:34px;text-align:center}.tools .hint-text{font-size:10px;color:#608392;white-space:nowrap}
+.shelf-row{height:43px;min-height:43px;display:flex;gap:6px;background:#f6fbfe;border-bottom:1px solid #cfe1eb;padding:4px 8px;flex:none}.shelf{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #c8dce7;border-radius:7px;padding:3px 7px;min-width:0;flex:1;position:relative;transition:border-color .15s,background .15s}.shelf[data-stage=ADEF]{flex:1.6}.shelf[data-stage=E00]{flex:1.1}.shelf[data-stage=E13]{flex:1}.shelf.drop-target{border:2px dashed #259b76;background:#e4f7ed}.shelf-label{color:#17496b;font-weight:850;font-size:11px;white-space:nowrap;display:flex;align-items:center;gap:4px}.shelf-label strong{font-size:13px;color:#175a7e}.shelf-items{display:flex;gap:4px;min-width:0;overflow-x:auto;align-items:center;scrollbar-width:thin;flex:1;height:30px}.shelf-empty{color:#8aa1af;font-size:10px;white-space:nowrap}.shelf[data-stage=E13] .shelf-label{color:#227652}
+.main{display:grid;grid-template-columns:124px minmax(0,1fr) 177px;gap:6px;padding:6px;min-height:0;flex:1;overflow:hidden}.main.hide-left{grid-template-columns:25px minmax(0,1fr) 177px}.main.hide-right{grid-template-columns:124px minmax(0,1fr) 25px}.main.hide-left.hide-right{grid-template-columns:25px minmax(0,1fr) 25px}
+.rail{border:1px solid #cbdee8;border-radius:9px;background:#fff;min-width:0;min-height:0;overflow:auto;position:relative;padding:9px 8px 8px;scrollbar-width:thin}.rail-close{position:absolute;top:4px;right:4px;width:18px;height:19px;border-radius:5px;border:1px solid #c8dce5;background:#edf6fa;color:#396980;font-size:15px;padding:0;line-height:1}.main.hide-left #left-rail,.main.hide-right #right-rail{padding:2px}.main.hide-left #left-rail .rail-body,.main.hide-right #right-rail .rail-body{display:none}.main.hide-left #left-rail .rail-close,.main.hide-right #right-rail .rail-close{left:2px;right:auto}.rail h2{font-size:12px;margin:2px 20px 9px 0;color:#15516e}.rail p,.rail small{font-size:10px;color:#718999;line-height:1.35}.rail-title{font-size:10px;letter-spacing:.4px;text-transform:uppercase;color:#6d8794;font-weight:900;margin:14px 0 7px}.legend-item{display:flex;align-items:center;gap:6px;margin:7px 0;font-size:10px;font-weight:750}.dot{width:13px;height:13px;flex:none;border-radius:4px;background:#1e82bc}.dot.green{background:#218a62}.dot.amber{background:#c98c2b}.dot.red{background:#c95359}.late-mark{display:inline-block;border-radius:6px;background:#fff0ee;border:1px solid #eabbbb;color:#b34444;font-weight:850;font-size:9px;padding:2px 4px}.rail .big-num{font-size:36px;font-weight:900;line-height:1;color:#133f62}.metric{border:1px solid #d4e3ee;border-radius:6px;padding:5px 7px;margin:5px 0;background:#f2f9fc;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:space-between;gap:3px}.metric b{font-size:17px}.metric.warning{background:#fff6e7;color:#91641e;border-color:#efddb7}.metric.danger{background:#fff0ed;color:#a7494c;border-color:#ecc7c2}.metric.success{background:#eaf7ef;color:#277b56;border-color:#c7e5d3}.metric.clickable{cursor:pointer}.metric.clickable:hover{filter:brightness(.96)}.metric.active{outline:2px solid #e2a334}.filter-stage{display:grid;grid-template-columns:1fr 1fr;gap:4px}.filter-stage button{font-size:10px;font-weight:800;color:#235c7b;border:1px solid #c7deec;border-radius:6px;background:#eaf5fb;padding:6px 3px}.filter-stage button strong{display:block;font-size:18px}.filter-stage button[data-macro=Painel]{color:#217c6c;background:#e7f6f1;border-color:#c3e4da}.filter-stage button.active{outline:2px solid #e2a334}
+.board-viewport{background:#eaf3f8;border:1px solid #b9d6e6;border-radius:9px;position:relative;overflow:auto;min-height:0;min-width:0;cursor:grab;overscroll-behavior:contain;scrollbar-color:#b5cfdd #eff7fb;touch-action:pan-x pan-y}.board-viewport.panning{cursor:grabbing;user-select:none}.board-viewport.drag-active{cursor:copy}.zoom-shell{position:relative;margin:0 auto}.artboard{position:absolute;top:0;left:0;width:2020px;height:1040px;transform-origin:top left;overflow:hidden;background:#fbfdfe}.board-svg{position:absolute;inset:0;pointer-events:none}.lane-text{font-family:'Segoe UI',Arial,sans-serif;font-size:17px;font-weight:800;fill:#315d70}.lane-cap{font-size:12px;fill:#6b91a3;font-weight:750}.step{position:absolute;width:225px;height:148px;background:linear-gradient(180deg,#f7fcff,#e8f5fb);border:2px solid #2887b4;border-radius:10px;box-shadow:0 3px 0 #c4e1ee,0 4px 11px #1c5c7417;z-index:3;display:flex;flex-direction:column;overflow:visible;cursor:default;transition:box-shadow .12s,border-color .12s,background .12s}.step:hover{box-shadow:0 4px 0 #c4e1ee,0 6px 17px #1c5c7430}.step.drop-target{background:#e6f9ed;border:3px dashed #1f9970;box-shadow:0 0 0 7px #33a56a20}.step.return{border-color:#c28b35;background:linear-gradient(180deg,#fffcf3,#fdf1d9)}.step.pending{border-color:#c28b35;background:linear-gradient(180deg,#fffcf3,#fdf1d9)}.step.publish{border-color:#2b9864;background:linear-gradient(180deg,#f7fff9,#e7f7ee)}.step.focus{outline:3px solid #edbb47;outline-offset:3px}.step.fade{opacity:.35}.step-head{height:62px;min-height:62px;text-align:center;border-bottom:1px solid #bad8e6;padding:3px 7px 2px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;pointer-events:none}.step-code{font-size:19px;font-weight:900;color:#16799c;line-height:1}.step.return .step-code,.step.pending .step-code{color:#a16b1b}.step.publish .step-code{color:#218353}.step-name{font-size:16px;font-weight:850;line-height:1.08;color:#20455e}.step-days{font-size:11px;color:#65899b;font-weight:650;pointer-events:none}.step-count{position:absolute;right:-9px;top:-9px;border-radius:20px;background:#155775;color:#fff;min-width:24px;height:24px;padding:0 5px;display:grid;place-items:center;font-size:12px;font-weight:800;border:2px solid white;z-index:4;pointer-events:none}.step-count.zero{background:#a1b4bf}.step-pieces{flex:1;min-height:0;padding:4px 7px;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:3px;overflow:hidden}.step-nope{margin:auto;color:#a4bac7;font-weight:600;font-size:11px;pointer-events:none}.chip{border:none;display:flex;align-items:center;gap:5px;padding:3px 5px;min-height:20px;max-height:24px;border-radius:5px;background:linear-gradient(#2f97cf,#1269ad);color:white;font-size:13px;font-weight:750;text-align:left;line-height:1.06;white-space:nowrap;cursor:grab;overflow:hidden;text-overflow:ellipsis;flex:none;box-shadow:0 1px 4px #1e567340;user-select:none}.chip[data-status="Concluído"]{background:linear-gradient(#32af85,#16825c)}.chip[data-status="Aguardando"]{background:linear-gradient(#e1ad4e,#b97b20)}.chip[data-status="Bloqueado"]{background:linear-gradient(#df7877,#b94b52)}.chip:hover{filter:brightness(1.08)}.chip:active{cursor:grabbing}.chip[draggable="true"]{touch-action:none}.chip .pill-code{font-size:11px;font-weight:900;background:#ffffff29;border-radius:3px;padding:2px 3px;flex:none}.chip .pill-name{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.chip.dragging{opacity:.3}.chip.selected{outline:3px solid #e6b842;outline-offset:-1px}.chip.late{box-shadow:0 0 0 2px #bc3538}.chip .late-icon{margin-left:auto;background:white;color:#b33b42;font-size:11px;font-weight:900;border-radius:6px;padding:0 3px}.chip.shelf-chip{min-width:95px;max-width:186px;min-height:24px;max-height:25px;font-size:11px}.chip.more{color:#245775;background:#d8e9f1;justify-content:center;cursor:pointer;box-shadow:none}.piece-empty{color:#99afba;font-size:10px;text-align:center;padding:5px}
+.decision-question{position:absolute;z-index:2;text-align:center;font-size:17px;line-height:1.13;font-weight:830;color:#4a6779;width:170px;pointer-events:none;transform:translateX(-50%)}.choice{position:absolute;font-size:16px;font-weight:900;pointer-events:none;z-index:2;background:#fbfdfeaa;padding:1px 4px;border-radius:4px}.choice.yes{color:#178755}.choice.no{color:#b2791b}.route-label{position:absolute;color:#5d8192;font-size:12px;font-weight:750;z-index:1;pointer-events:none}.board-zoom-hint{position:absolute;bottom:13px;right:16px;color:#7093a7;font-size:11px;z-index:1}.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.overlay{position:fixed;inset:0;z-index:40;background:#0b2e49a3;display:none;align-items:center;justify-content:center;padding:10px;backdrop-filter:blur(2px)}.overlay.show{display:flex}.dialog{background:#fff;border-radius:13px;border-top:4px solid #2387a3;box-shadow:0 17px 55px #082f4b66;width:min(555px,100%);max-height:calc(100dvh - 20px);overflow:auto}.dialog-head{display:flex;align-items:start;justify-content:space-between;gap:12px;padding:14px 19px 5px}.dialog h2{font-size:19px;margin:0;color:#124267}.dialog .subtitle{font-size:12px;margin:5px 0 0;color:#7891a1}.close{border:0;background:#eaf4f9;border-radius:6px;padding:3px 9px;font-size:21px;color:#2b6e86}.dialog-body{padding:11px 19px 17px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.field{margin:0 0 10px}.field label{display:block;font-size:11px;color:#335d75;font-weight:800;margin-bottom:4px}.field input,.field select,.field textarea{width:100%;min-height:35px;border:1px solid #c6dbe7;background:#fff;border-radius:7px;padding:6px 9px;color:#264b62;font-size:12px}.field textarea{resize:vertical;min-height:62px}.field input:disabled{background:#f2f7f9;color:#698899}.hintbox{font-size:11px;color:#496d7f;background:#edf7fb;border:1px solid #c9e4ee;border-radius:7px;padding:8px 10px;margin:4px 0 11px}.hintbox.warn{background:#fff7e8;border-color:#ead4ac;color:#986c25}.error{font-size:12px;color:#b93444;font-weight:800;min-height:16px}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:11px}.dialog-actions button,.action-btn{padding:8px 12px;border-radius:7px;border:1px solid #bfd6e5;background:#fff;color:#164766;font-weight:800;font-size:12px}.dialog-actions .primary,.action-btn.primary{background:#197e9c;border-color:#197e9c;color:#fff}.dialog-actions button:hover,.action-btn:hover{filter:brightness(.96)}
+.drawer{position:fixed;z-index:32;right:7px;top:105px;bottom:7px;width:min(360px,95vw);background:#fff;border:1px solid #c3dbe6;border-radius:11px;box-shadow:-6px 7px 27px #18415936;padding:18px;overflow:auto;display:none}.drawer.show{display:block}.drawer h2{font-size:19px;margin:4px 0 10px}.drawer .summary{background:#f0f8fb;border:1px solid #cfe3ec;padding:10px;border-radius:8px;line-height:1.65;font-size:12px}.drawer .stack{display:grid;gap:7px;margin-top:10px}.drawer .stack select,.drawer .stack button{width:100%;height:35px}.drawer .event{margin:7px 0;padding:8px;border-left:3px solid #a7d5e8;background:#f5fafd;font-size:11px;line-height:1.4}.drawer .event small{color:#6e899c}.drawer button{border:1px solid #c5ddeb;background:white;border-radius:7px;color:#185879;font-size:12px;font-weight:800;padding:7px}.drawer button.primary{background:#1b85a3;color:white}.toast{position:fixed;bottom:14px;right:18px;background:#16496d;color:white;border-radius:8px;padding:10px 14px;font-size:12px;z-index:80;display:none;max-width:420px;box-shadow:0 6px 25px #08253b60}.toast.show{display:block}
+.step-name{font-size:clamp(16px,calc(11px / var(--zoom)),18px)}.chip:not(.shelf-chip){font-size:clamp(13px,calc(11px / var(--zoom)),19px);min-height:24px;max-height:27px}.chip .pill-code{font-size:clamp(11px,calc(9px / var(--zoom)),15px)}
+@media(max-width:1300px){.main{grid-template-columns:98px minmax(0,1fr) 147px}.main.hide-left{grid-template-columns:25px minmax(0,1fr) 147px}.main.hide-right{grid-template-columns:98px minmax(0,1fr) 25px}.rail h2{font-size:11px}.rail p,.rail small{font-size:9px}.topbar h1{font-size:15px}.tools input{width:118px}.tools select{max-width:126px}.tools button{padding:3px 5px}}
+@media(max-width:950px){.main,.main.hide-left,.main.hide-right,.main.hide-left.hide-right{grid-template-columns:25px minmax(0,1fr) 25px}.main .rail{padding:2px}.main .rail .rail-body{display:none}.main .rail .rail-close{left:2px;right:auto}.topbar h1{white-space:normal;font-size:13px}.sync{display:none}.shelf-row{height:40px;min-height:40px}.logo-name{display:none}}
+@media(max-width:600px){.topbar{padding:4px 6px;min-height:46px;max-height:46px}.topbar h1{font-size:12px}.logo-icon{width:26px;height:27px}.logo-mark{font-size:7px}.sep{height:23px}.tools{height:39px;min-height:39px}.shelf-row{height:38px;min-height:38px;padding:3px}.shelf-label{font-size:9px}.shelf-chip{max-width:120px}.form-grid{grid-template-columns:1fr}.dialog-body{padding:8px 12px}.dialog-head{padding:12px 12px 5px}}
+
+/* V5: diagrama depurado, duas peças por etapa, datas brasileiras */
+.topbar{min-height:46px;max-height:46px;padding:3px 11px;gap:9px}
+.logo-icon{width:33px;height:31px}.logo-mark{font-size:8px}.logo-name{font-size:13px}.logo-name small{font-size:8px}
+.sep{height:26px}.topbar h1{font-size:clamp(15px,1.25vw,20px);font-weight:700}
+.tools{height:39px;min-height:39px;padding:3px 8px}.tools input,.tools select,.tools button{height:27px;min-height:27px}
+.shelf-row{height:39px;min-height:39px;padding:3px 7px}.shelf-items{height:28px}
+.main{padding:4px;gap:5px}.rail{padding:7px 6px}.rail h2{margin:2px 20px 6px 0}
+.board-viewport{overflow:hidden;cursor:grab;touch-action:none}
+.board-viewport.panning{cursor:grabbing!important}
+.zoom-shell{position:absolute;left:0;top:0;width:2020px;height:1120px;margin:0;transform-origin:top left;will-change:transform}
+.artboard{width:2020px;height:1120px;transform:none!important;overflow:hidden}
+.lane-text{font-size:16px;font-weight:400;fill:#48687b}
+.lane-cap{font-size:11px;font-weight:400}
+.step{width:225px;height:118px;border-width:1.5px;border-radius:8px;box-shadow:0 1px 4px #1c5c7417;background:#f4faff}
+.step.return,.step.pending{background:#fff9ee}.step.publish{background:#effaf4}
+.step-head{height:55px;min-height:55px;gap:1px;padding:2px 6px;border-bottom:1px solid #d8e7ef}
+.step-code{font-size:17px;font-weight:750}
+.step-name{font-size:15px!important;font-weight:750;line-height:1.07}
+.step-days{font-size:10px;font-weight:400}
+.step-pieces{padding:4px 7px;gap:4px}
+.step-count{right:-9px;top:-9px;min-width:24px;height:24px;font-size:11px;font-weight:650;pointer-events:auto;cursor:pointer;border-width:2px}
+.step-count:hover,.step-count:focus-visible{background:#0b8ea7;transform:scale(1.12)}
+.step-count.zero{cursor:pointer}
+.chip:not(.shelf-chip){font-size:13px!important;min-height:22px;max-height:24px;font-weight:600;letter-spacing:0;padding:2px 5px;box-shadow:0 1px 2px #1e567322}
+.chip .pill-code{font-size:10px!important;font-weight:700}
+.chip.shelf-chip{font-weight:600}
+.decision-question{width:160px;font-size:13px;line-height:1.1;font-weight:400;color:#476a7a}
+.choice{font-size:13px;font-weight:500;background:#fbfdfe;padding:0 4px}
+.route-label{font-size:13px;font-weight:400;color:#328462;background:#fbfdfe;padding:0 5px}
+.board-zoom-hint{bottom:12px;right:16px;font-size:11px;font-weight:400;color:#86a0b0;z-index:2;background:#fbfdfee9;padding:4px 7px;border-radius:5px}
+.rail-title{font-weight:600}.legend-item{font-weight:450}.metric{font-weight:500}.metric b{font-weight:650}
+.field input[type=text].date-br{letter-spacing:.25px;font-variant-numeric:tabular-nums}
+.board-note{position:absolute;left:195px;top:10px;font-size:12px;color:#64899d;font-weight:400}
+
+.chip:not(.shelf-chip){font-size:clamp(13px,calc(11px / var(--zoom)),18px)!important}
+.chip .pill-code{font-size:clamp(10px,calc(9px / var(--zoom)),14px)!important}
+.step-name{font-size:clamp(15px,calc(11px / var(--zoom)),18px)!important}
+.step-days{font-size:clamp(10px,calc(9px / var(--zoom)),14px)}
+.route-label{font-size:clamp(13px,calc(10px / var(--zoom)),17px)}
+
+/* V6 — área útil maior e controles de gestão integrados */
+:root{--head:50px}
+.app{height:100dvh}
+.topbar{min-height:var(--head);max-height:var(--head);height:var(--head);padding:3px 10px;gap:8px}
+.topbar h1{font-weight:850;font-size:clamp(14px,1.35vw,20px);white-space:nowrap;flex:1;min-width:90px}
+.logo-name small{display:none}.logo-icon{height:28px;width:30px}.logo-mark{font-size:8px}.logo-name{font-size:13px}.sync{font-size:8px;padding:4px}
+.tools{display:none!important}
+.header-commands{display:flex;align-items:center;gap:4px;flex:none}
+.header-commands button{height:27px;border:1px solid #c6d9e5;background:#f6fbfe;border-radius:5px;color:#21536f;padding:3px 7px;font-size:10px;font-weight:800;white-space:nowrap}
+.header-commands button:hover{background:#e3f2f9}.header-commands button.primary{background:#1783a2;color:white;border-color:#1783a2}
+.header-commands #zoom-pct{font-weight:800;color:#648497;font-size:10px;min-width:34px;text-align:center}
+.header-commands .header-search{width:115px;height:27px;border-radius:5px;border:1px solid #cadce6;padding:3px 6px;font-size:10px}
+.export-menu{position:relative}.export-menu>summary{list-style:none;cursor:pointer;font-size:10px;font-weight:800;color:#21536f;padding:6px 7px;background:#f6fbfe;border:1px solid #c6d9e5;border-radius:5px}.export-menu[open] .export-panel{display:grid}
+.export-panel{display:none;position:absolute;top:30px;right:0;z-index:80;min-width:190px;gap:3px;padding:6px;border-radius:7px;background:white;box-shadow:0 8px 22px #12394f35;border:1px solid #c6d9e5}.export-panel button{text-align:left}
+.header-divider{height:18px;width:1px;background:#c9dee8}
+.shelf-row{height:35px;min-height:35px;padding:2px 6px}.shelf-items{height:25px}.shelf-label{font-size:10px}.chip.shelf-chip{min-height:19px;height:20px;font-size:11px;padding:2px 5px}
+.main,.main.hide-left,.main.hide-right,.main.hide-left.hide-right{grid-template-columns:minmax(0,1fr) 207px;padding:4px;gap:5px}
+#left-rail{display:none!important}
+.main.hide-right,.main.hide-left.hide-right{grid-template-columns:minmax(0,1fr) 24px}
+.management-rail{padding:6px 7px;scrollbar-width:thin}
+.rail h2{font-size:12px;font-weight:850;margin:0}
+.manage-heading{display:flex;align-items:center;justify-content:space-between;margin:0 17px 5px 0}
+.manage-total{font-size:22px;color:#155b80;font-weight:900}
+.summary-all{width:100%;background:#eaf4fb;color:#174f72;padding:7px 8px;border:1px solid #b9d7e8;border-radius:6px;font-weight:800;font-size:11px;text-align:left}
+.rail-title{margin:9px 0 5px;font-size:10px;font-weight:850;color:#537489;letter-spacing:.25px}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.interactive-metric{min-width:0;min-height:40px;border:1px solid #d5e4ed;background:#f7fafc;border-radius:6px;display:flex;align-items:center;justify-content:space-between;text-align:left;gap:3px;padding:6px 5px;color:#20445c;cursor:pointer}
+.interactive-metric span{font-family:'Segoe UI',Arial,sans-serif;font-size:10px;line-height:1.15;font-weight:800}.interactive-metric b{font-size:15px;font-weight:900;color:#155779}
+.interactive-metric[data-key="Atrasado"] b,.interactive-metric[data-key="Bloqueado"] b{color:#b14c4b}
+.interactive-metric:hover,.interactive-metric.hovered{background:#e5f1f8;border-color:#65a4c4}
+.interactive-metric.selected,.summary-all.selected{background:#dfedf8;outline:2px solid #1b86ae;outline-offset:-2px}
+.dependency-summary{background:#fdf5e7;border:1px solid #e6d2a9;border-radius:6px;padding:7px;width:100%;text-align:left;display:flex;justify-content:space-between;font-weight:850;color:#8a6121;font-size:11px}.dependency-summary b{font-size:16px}.mini-note{font-size:10px;color:#8098a6;margin-top:8px;line-height:1.25}
+.lane-text{display:none}.lane-hit{position:absolute;left:0;width:185px;z-index:5;background:transparent;border:0;border-right:1px solid #bed4e0;text-align:left;padding:0 9px 0 14px;color:#315d70;font-family:'Segoe UI',Arial,sans-serif;font-weight:800;font-size:16px;line-height:1.25;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:7px}.lane-hit:hover{background:#d7ebf363}.lane-person-count{font-size:12px;font-weight:800;background:#e3f2fa;padding:4px 7px;border-radius:10px;color:#1a728c}
+.step{height:115px}.step-head{height:53px;min-height:53px}.step-code{font-weight:900}.step-name{font-weight:850}.step-days{font-weight:800}.chip:not(.shelf-chip){font-weight:800}.chip .pill-code{font-weight:900}
+.decision-question,.choice,.route-label{font-weight:800!important;color:#365f76}.choice.yes,.route-label{color:#28845f}.choice.no{color:#ad7528}.route-label{font-size:14px}
+.chip.out-of-focus{opacity:.16!important;filter:grayscale(.65)}.step.dimmed-stage{opacity:.57}.step.dimmed-stage .step-head{opacity:.65}.chip .dep-mini{font-size:9px;color:white;background:#c65a46;border-radius:4px;padding:1px 3px;margin-left:auto}
+.chip[data-status="Não iniciado"]{background:linear-gradient(#9eacb8,#7b8e9e)}.chip[data-status="Bloqueado"]{background:linear-gradient(#e17170,#b94b52)}
+.chip[data-status="Concluído"]{background:linear-gradient(#32af85,#16825c)}
+.step-pieces{padding:3px 6px;gap:3px}.chip:not(.shelf-chip){height:23px;min-height:23px;font-size:clamp(12px,calc(11px / var(--zoom)),17px)!important}
+.board-zoom-hint{font-size:10px;font-weight:750}
+.drawer .detail-title{font-weight:850;margin:16px 0 6px;font-size:13px}.drawer .mini-actions{display:flex;flex-wrap:wrap;gap:5px}.drawer .mini-actions button,.drawer .mini-actions a{padding:7px 8px;border-radius:5px;border:1px solid #ccdfe8;color:#195675;background:#f6fbff;text-decoration:none;font-weight:800;font-size:11px;cursor:pointer}
+.drawer .mini-actions a{background:#e8f5fb}.drawer .mini-actions a[href="#"]{pointer-events:none;opacity:.45}.drawer .tiny-item{border:1px solid #dfebef;border-radius:5px;padding:6px;margin-bottom:5px;font-size:11px}
+.form-chips{display:flex;flex-wrap:wrap;gap:6px}.form-chips label{font-size:12px;font-weight:700;background:#eaf6fb;border:1px solid #c8dce9;border-radius:5px;padding:6px 8px;display:flex;align-items:center;gap:4px}
+.dep-list{display:grid;gap:7px}.dep-row{border:1px solid #d7e5ed;border-radius:7px;background:#f8fbfd;padding:8px;display:grid;gap:5px}.dep-row .dep-meta{display:flex;flex-wrap:wrap;gap:5px;font-size:11px;color:#587487}.dep-row strong{font-size:12px}.dep-row button{border:1px solid #cadee9;color:#1d5c7b;background:white;border-radius:5px;padding:5px 8px;cursor:pointer}.dep-table{width:100%;border-collapse:collapse;font-size:11px}.dep-table td,.dep-table th{padding:7px;border-bottom:1px solid #dce6ec;text-align:left}.dep-table th{background:#eef6fa;font-weight:850}.dep-overflow{overflow:auto}.dep-stat{display:flex;gap:10px;margin-bottom:12px;font-size:11px;font-weight:800}
+@media(max-width:1070px){.logo-name{display:none}.sync{display:none}.topbar h1{font-size:14px}.header-commands .header-search{width:85px}.header-commands button{padding:4px 5px}.main{grid-template-columns:minmax(0,1fr) 183px}}
+@media(max-width:740px){.topbar{overflow-x:auto}.topbar h1{min-width:160px}.management-rail{display:none}.main,.main.hide-right{grid-template-columns:minmax(0,1fr)}}
+
+
+/* V7 — melhorias, reuniões e histórico de validações */
+.management-rail .rail-title{margin:10px 0 5px}
+.management-rail .summary-improvement{margin-bottom:5px}
+.management-rail .summary-improvement .interactive-metric{padding:5px 6px;min-height:38px}
+.management-rail .summary-improvement .interactive-metric span{font-size:10px}
+.management-rail .summary-improvement .interactive-metric b{font-size:16px}
+.header-commands button.v7-short{min-width:0}
+.v7-statbar{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 14px}
+.v7-stat{flex:1;min-width:97px;padding:9px 10px;border-radius:7px;background:#edf6fa;border:1px solid #d4e7ed}
+.v7-stat b{display:block;font-size:20px;color:#14587b}.v7-stat small{font-size:10px;color:#59798c;font-weight:650}
+.v7-card{padding:10px;border:1px solid #d0e2e9;border-radius:8px;background:#fbfdff;margin:7px 0}
+.v7-card-title{font-weight:800;color:#1c4b68;font-size:13px;margin-bottom:5px}
+.v7-card-meta{display:flex;gap:6px 12px;flex-wrap:wrap;color:#59778b;font-size:11px;line-height:1.5}
+.v7-card-foot{display:flex;gap:6px;align-items:center;margin-top:9px;flex-wrap:wrap}
+.v7-card-foot button{border:1px solid #bddae6;border-radius:6px;background:white;color:#1d6683;font-size:11px;font-weight:750;padding:6px 8px}
+.v7-card-foot button:hover{background:#eaf6fc}
+.v7-status{font-size:10px;font-weight:800;padding:3px 7px;border-radius:12px;background:#e3f4fc;color:#24628a;white-space:nowrap}
+.v7-status.late{background:#fceaea;color:#b53e4a}
+.v7-status.done{background:#e5f6eb;color:#1f7c55}
+.v7-empty{padding:14px;color:#698496;text-align:center;background:#f5fafd;border:1px dashed #c8dfe8;border-radius:7px;font-size:12px}
+.v7-intro{font-size:11px;color:#617e90;line-height:1.5;margin:7px 0}
+.v7-pill-row{display:flex;flex-wrap:wrap;gap:6px;margin:5px 0 9px}
+.v7-pill-row label{font-size:11px;padding:5px 7px;border-radius:6px;background:#eff7fa;border:1px solid #c9dde8;display:flex;gap:4px;align-items:center}
+.v7-pill-row label input{width:auto}
+.v7-quick{display:flex;gap:5px;flex-wrap:wrap;margin:6px 0 10px}
+.v7-quick button{font-size:11px;padding:7px 9px;border:1px solid #c5dce8;border-radius:6px;color:#225d7b;background:#fff;font-weight:750}
+.v7-quick button:hover{background:#edf8ff}
+.v7-two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.v7-multi{max-height:137px;overflow:auto;border:1px solid #dae7ee;border-radius:7px;padding:7px;display:flex;flex-wrap:wrap;gap:7px}
+.v7-multi label{display:flex;gap:5px;align-items:center;font-size:11px;padding:5px;background:#f0f7fc;border-radius:6px}
+.v7-multi input{width:auto}
+.v7-link{font-size:11px;color:#126894;text-decoration:underline}
+.v7-modal .dialog-body{overflow:auto}
+.v7-help{font-size:11px;color:#607b8b;margin-top:4px}
+.chip .imp-mini{margin-left:auto;flex:none;background:#184b75cc;color:#fff;font-size:10px;border-radius:4px;padding:1px 3px}
+.chip .dep-mini+.imp-mini{margin-left:0}
+#drawer .v7-panel-collections{margin-top:9px}
+#drawer .v7-panel-collections h3{font-size:13px;margin:12px 0 5px}
+#drawer .v7-panel-collections .mini-actions{gap:5px}
+@media(max-width:580px){.v7-two{grid-template-columns:1fr}.v7-stat{min-width:82px}}
+
+
+/* V8 — coluna de sprints, sem remover as raias do BPMN */
+#left-rail{display:block!important;background:#f8fbfd!important;border:1px solid #d2e4ec!important;border-radius:8px;min-width:0;overflow:auto;scrollbar-width:thin}
+.main,.main.hide-left,.main.hide-right,.main.hide-left.hide-right{grid-template-columns:225px minmax(0,1fr) 207px;gap:5px}
+.main.hide-left,.main.hide-left.hide-right{grid-template-columns:24px minmax(0,1fr) 207px}
+.main.hide-right{grid-template-columns:225px minmax(0,1fr) 24px}
+.main.hide-left.hide-right{grid-template-columns:24px minmax(0,1fr) 24px}
+.rail-body{padding:10px 8px}
+.weekly-desc{font-size:10px;color:#607e90;line-height:1.35;margin:4px 0 13px}
+.weekly-block{background:#fff;border:1px solid #d8e7ee;border-radius:8px;padding:9px 8px;margin:8px 0;box-shadow:0 1px 3px #123e5a0c}
+.weekly-head{display:flex;justify-content:space-between;align-items:center;gap:6px;color:#164d73;font-size:15px;margin-bottom:8px}
+.weekly-head span{font-size:11px;font-weight:650;color:#53778b}
+.weekly-pills{display:flex;flex-wrap:wrap;gap:5px}
+.weekly-code{border:1px solid #bedae9!important;background:#eaf5fa!important;color:#135e84!important;min-width:48px;border-radius:6px;font-size:12px!important;padding:6px 7px!important;font-weight:850;cursor:pointer}
+.weekly-code:hover,.weekly-code.selected{background:#146c96!important;color:#fff!important}
+.weekly-help{font-size:10px;color:#607b8e;margin-top:12px}.weekly-help summary{cursor:pointer;font-weight:800}.weekly-help p{line-height:1.45}
+#archived-shelf{background:#f4f4f7;border-color:#dcdde7}#archived-shelf .shelf-label{color:#5b6376}
+#archived-shelf .chip{background:#78818d}
+.chip[data-status="Arquivado"]{background:#777e8b!important}
+@media(max-width:1170px){.main,.main.hide-right{grid-template-columns:185px minmax(0,1fr) 185px}.main.hide-left{grid-template-columns:24px minmax(0,1fr) 185px}.main.hide-left.hide-right{grid-template-columns:24px minmax(0,1fr) 24px}}
+@media(max-width:760px){.main,.main.hide-right{grid-template-columns:135px minmax(0,1fr)}#right-rail{display:none}.main.hide-left{grid-template-columns:24px minmax(0,1fr)}.weekly-code{min-width:42px;padding:4px}}
+</style>
+</head>
+<body><div class="app">
+<header class="topbar">
+<div class="logo" title="Painéis EducaDados">
+<div><svg aria-label="Ícone Painéis" class="logo-icon" role="img" viewbox="0 0 48 48"><g fill="none" stroke="#1554b5" stroke-linecap="round" stroke-linejoin="round" stroke-width="5"><path d="M6 5 V40 H43"></path><path d="M16 31 V24 M26 31 V14 M36 31 V19"></path></g></svg><div class="logo-mark">PAINÉIS</div></div>
+<div class="logo-name">EducaDados<small>MEC · Painéis e Dados da Educação</small></div>
+</div><span class="sep"></span><h1>Gestão dos Painéis da EducaDados</h1><div class="header-commands" id="header-commands"><button class="primary" id="new-panel" title="Cadastrar painel">+ Painel</button><button id="top-dependencies">▤ Pendências</button><button class="v7-short" id="top-improvements">✎ Melhorias</button><button class="v7-short" id="top-meetings">▦ Reuniões</button><details class="export-menu"><summary>Exportar ▾</summary><div class="export-panel" id="export-options"><button id="export-csv" title="Exportar painel para Excel">Painéis (CSV)</button><button id="export-events" title="Exportar histórico">Histórico (CSV)</button><button id="export-json" title="Salvar backup JSON">Backup completo (JSON)</button><button id="export-people">Painel por pessoa (CSV)</button><button id="export-dependencies">Pendências de dados (CSV)</button><button id="export-improvements">Melhorias (CSV)</button><button id="export-meetings">Reuniões (CSV)</button></div></details><button id="import-btn" title="Importar CSV ou backup JSON">Importar</button><input aria-label="Buscar painel" class="header-search" id="search" placeholder="⌕ Buscar painel" title="Destacar painel pelo nome" type="search"/><span class="header-divider"></span><button class="icon" id="zoom-minus" title="Diminuir zoom">−</button><span class="zoom-pct" id="zoom-pct">59%</span><button class="icon" id="zoom-plus" title="Aumentar zoom">+</button><button id="zoom-fit" title="Ver diagrama completo">Ajustar</button><button id="zoom-read" title="Ampliar para leitura e mover segurando o fundo">Leitura</button></div><a href="index.html" data-hub-nav="operacional" rel="noopener" style="color:#176c96;font-size:11px;font-weight:700;text-decoration:none;border:1px solid #c5dbe6;background:#f5fbff;padding:7px;border-radius:6px;white-space:nowrap" target="_self" title="Abrir plataforma operacional">↗ Gestão Operacional</a><span class="sync" id="sync-mode">WEB · DADOS LOCAIS POR NAVEGADOR</span>
+<a href="panorama.html" rel="noopener" style="color:#145877;text-decoration:none;font-size:12px;font-weight:600" target="_self">Consulta segura</a></header>
+<nav aria-label="Filtros e ações" class="tools">
+<select id="status-filter" title="Filtrar situação"><option value="">Todas as situações</option><option>Em execução</option><option>Não iniciado</option><option>Bloqueado</option><option>Concluído</option></select>
+<select id="stage-filter" title="Filtrar etapa"><option value="">Todas as etapas</option><option value="E00">E00 — Backlog</option><option value="E01">E01 — Levantamento de Requisitos</option><option value="E02">E02 — Elaboração da Narrativa</option><option value="E03">E03 — Elaboração do Mockup</option><option value="E04">E04 — Homologação do Mockup</option><option value="E05">E05 — Implementação das melhorias do Mockup</option><option value="E06">E06 — Preparação dos Dados</option><option value="PEND">PEND — Acionar bases e registrar pendência</option><option value="E07">E07 — Construção no Power BI</option><option value="E08">E08 — Teste e Validação</option><option value="E09">E09 — Ajustar painel</option><option value="E10">E10 — Atualização e Completude de FQI</option><option value="E11">E11 — Elaboração da Nota Técnica</option><option value="E12">E12 — Aprovação Final</option><option value="E13">E13 — Publicação</option><option value="E14">E14 — Arquivamento</option></select>
+<select id="macro-filter" title="Filtrar estágio"><option value="">Mockup / Painel</option><option>Mockup</option><option>Painel</option></select>
+<select id="deadline-filter" title="Filtrar condição do prazo"><option value="">Todos os prazos</option><option value="Atrasado">Atrasados</option><option value="Dentro do prazo">Dentro do prazo</option><option value="Concluído com atraso">Concluídos com atraso</option><option value="Sem previsão">Sem previsão</option></select>
+<button id="clear-filters" title="Remover filtros">Limpar</button><span class="section-sep"></span>
+<input accept=".json,.csv,application/json,text/csv" class="sr-only" id="file-input" type="file"/>
+<span class="tool-space"></span><span class="hint-text" title="Segure e arraste o fundo para mover o diagrama">✋ Arraste o fundo</span>
+</nav>
+<div aria-label="Filas de entrada e saída" class="shelf-row">
+<section class="shelf" data-stage="E00" id="backlog-shelf"><div class="shelf-label">▤ Backlog <strong id="backlog-n">5</strong></div><div class="shelf-items" id="backlog-items"><button class="chip shelf-chip" data-id="P23" data-status="Não iniciado" draggable="true" title="P23 · Programa Mais Professores | Não iniciado | Sem previsão" type="button"><span class="pill-code">P23</span><span class="pill-name">Programa Mais Professores</span></button><button class="chip shelf-chip" data-id="P25" data-status="Não iniciado" draggable="true" title="P25 · PDDE - Visão Geral | Não iniciado | Sem previsão" type="button"><span class="pill-code">P25</span><span class="pill-name">PDDE - Visão Geral</span></button><button class="chip shelf-chip" data-id="P26" data-status="Não iniciado" draggable="true" title="P26 · PNLD | Não iniciado | Sem previsão" type="button"><span class="pill-code">P26</span><span class="pill-name">PNLD</span></button><button class="chip shelf-chip" data-id="P27" data-status="Não iniciado" draggable="true" title="P27 · PNAE | Não iniciado | Sem previsão" type="button"><span class="pill-code">P27</span><span class="pill-name">PNAE</span></button><button class="chip shelf-chip" data-id="P28" data-status="Não iniciado" draggable="true" title="P28 · PNATE | Não iniciado | Sem previsão" type="button"><span class="pill-code">P28</span><span class="pill-name">PNATE</span></button></div></section>
+<section class="shelf" data-publish="1" data-stage="E13" id="finished-shelf"><div class="shelf-label">✓ Publicados <strong id="finished-n">0</strong></div><div class="shelf-items" id="finished-items"><span class="shelf-empty">Nenhum painel publicado</span></div></section><section class="shelf" data-stage="E14" id="archived-shelf"><div class="shelf-label">▣ Arquivados <strong id="archived-n">0</strong></div><div class="shelf-items" id="archived-items"><span class="shelf-empty">Nenhum arquivado</span></div></section>
+</div>
+<div class="main" id="main">
+<aside class="rail" id="left-rail"><button aria-label="Recolher entregas semanais" class="rail-close" id="left-close" title="Recolher entregas semanais">‹</button><div class="rail-body"><h2>Entregas por semana</h2><p class="weekly-desc">Selecione o código para localizar o painel no BPMN.</p><div aria-label="Entregas da chefia por sprint" id="weekly-list"></div><details class="weekly-help"><summary>Legenda e navegação</summary><p>Arraste uma peça para movimentá-la; clique para abrir o painel. Segure o fundo para mover o diagrama.</p></details></div></aside>
+<div aria-label="Diagrama BPMN interativo. Arraste uma peça ou segure o fundo para deslocar." class="board-viewport" id="board-viewport" tabindex="0">
+<div class="zoom-shell" id="zoom-shell" style="transform: translate(9px, 69.8267px) scale(0.594059, 0.594059);"><div class="artboard" id="artboard" style="--zoom: 0.594059405940594;">
+<svg aria-hidden="true" class="board-svg" height="1120" viewbox="0 0 2020 1120" width="2020">
+<defs>
+<marker id="arrow-blue" markerheight="10" markerunits="userSpaceOnUse" markerwidth="10" orient="auto" refx="8.7" refy="5"><path d="M1 1 L9 5 L1 9 Z" fill="#4186a8"></path></marker>
+<marker id="arrow-green" markerheight="10" markerunits="userSpaceOnUse" markerwidth="10" orient="auto" refx="8.7" refy="5"><path d="M1 1 L9 5 L1 9 Z" fill="#3a9a78"></path></marker>
+<marker id="arrow-amber" markerheight="10" markerunits="userSpaceOnUse" markerwidth="10" orient="auto" refx="8.7" refy="5"><path d="M1 1 L9 5 L1 9 Z" fill="#c69750"></path></marker>
+</defs>
+<rect fill="#fcfeff" height="1120" width="2020"></rect>
+<rect fill="#f5fafd" height="40" width="2020"></rect>
+<text fill="#497e99" font-size="14" font-weight="800" x="17" y="26">METODOLOGIA DE DESENVOLVIMENTO · VISÃO INTEGRADA</text>
+<g stroke="#d8e5eb" stroke-width=".9">
+<rect fill="#f8fcfe" height="150" stroke="none" width="2020" x="0" y="40"></rect>
+<rect fill="#f3f8fb" height="155" stroke="none" width="2020" x="0" y="190"></rect>
+<rect fill="#f8fcfe" height="155" stroke="none" width="2020" x="0" y="345"></rect>
+<rect fill="#f3f8fb" height="150" stroke="none" width="2020" x="0" y="500"></rect>
+<rect fill="#f8fcfe" height="152" stroke="none" width="2020" x="0" y="650"></rect>
+<rect fill="#f3f8fb" height="164" stroke="none" width="2020" x="0" y="802"></rect>
+<rect fill="#f8fcfe" height="154" stroke="none" width="2020" x="0" y="966"></rect>
+<path d="M0 190 H2020 M0 345 H2020 M0 500 H2020 M0 650 H2020 M0 802 H2020 M0 966 H2020"></path>
+</g>
+<rect fill="#f6fafc" height="1080" stroke="#d7e7ee" stroke-width="1" width="185" x="0" y="40"></rect>
+<path d="M185 40 V1120" stroke="#b3cfdc" stroke-width="1"></path>
+<g fill="#80b9c8"><rect height="150" width="3" x="0" y="40"></rect><rect height="155" width="3" x="0" y="190"></rect><rect height="155" width="3" x="0" y="345"></rect><rect height="150" width="3" x="0" y="500"></rect><rect height="152" width="3" x="0" y="650"></rect><rect height="164" width="3" x="0" y="802"></rect><rect height="154" width="3" x="0" y="966"></rect></g>
+<g class="lane-text">
+<text x="15" y="103">Gestão / Especialista</text><text x="15" y="124">de Negócio</text>
+<text x="15" y="257">Produto</text><text x="15" y="278">(Analista BI)</text>
+<text x="15" y="410">Especialista +</text><text x="15" y="431">Gestor DMAPE</text>
+<text x="15" y="563">Desenvolvimento</text><text x="15" y="584">de Dados</text>
+<text x="15" y="718">Desenvolvimento BI</text>
+<text x="15" y="869">Validação / Área</text><text x="15" y="890">Finalística / Técnica</text>
+<text x="15" y="1022">Documentação /</text><text x="15" y="1043">Aprovação / Publicação</text>
+</g>
+<!-- Trilhas principais. Traços finos e elementos fora das caixas -->
+<g fill="none" marker-end="url(#arrow-blue)" stroke="#4186a8" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7">
+<path d="M216 117 H245"></path><path d="M470 117 H515"></path><path d="M740 117 H805"></path>
+<path d="M875 117 H1010 V259 H1050"></path>
+<path d="M1275 259 H1310 V416 H1340"></path>
+<path d="M1565 416 H1600"></path>
+<path d="M475 569 H530"></path>
+<path d="M600 569 H652 V497 H950 V724 H980"></path>
+<path d="M1205 724 H1217 V869 H1230"></path>
+<path d="M1455 869 H1515"></path>
+<path d="M475 1039 H540"></path><path d="M765 1039 H865"></path><path d="M1090 1039 H1125"></path>
+</g>
+<!-- Avanços confirmados. E08→E10 abaixo, separado do retorno E12→E09 -->
+<g fill="none" marker-end="url(#arrow-green)" stroke="#3a9a78" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7">
+<path d="M1670 416 H1985 V479 H214 V569 H250"></path>
+<path d="M1585 869 H1950 V955 H216 V1039 H250"></path>
+<path d="M1195 1039 H1450"></path>
+</g>
+<!-- Retornos: sem textos ou peças sobrepostos -->
+<g fill="none" marker-end="url(#arrow-amber)" stroke="#c69750" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7">
+<path d="M840 152 V188 H630 V176"></path>
+<path d="M1635 451 V467 H1818 V318"></path>
+<path d="M1818 200 V187 H1452 V357"></path>
+<path d="M565 604 V643 H812 V628"></path>
+<path d="M812 510 V491 H363 V510"></path>
+<path d="M1550 904 V926 H1680 V724 H1710"></path>
+<path d="M1818 665 V638 H1340 V810"></path>
+<path d="M1160 1074 V1110 H2004 V724 H1935"></path>
+</g>
+<circle cx="207" cy="117" fill="#eefaf3" r="10" stroke="#3a9a78" stroke-width="1.7"></circle>
+<circle cx="1703" cy="1039" fill="#eefaf3" r="10" stroke="#3a9a78" stroke-width="1.7"></circle><circle cx="1703" cy="1039" fill="#3a9a78" r="5"></circle>
+<g fill="#fff9ee" stroke="#c69750" stroke-width="2">
+<path d="M840 82 L875 117 L840 152 L805 117 Z"></path>
+<path d="M1635 381 L1670 416 L1635 451 L1600 416 Z"></path>
+<path d="M565 534 L600 569 L565 604 L530 569 Z"></path>
+<path d="M1550 834 L1585 869 L1550 904 L1515 869 Z"></path>
+<path d="M1160 1004 L1195 1039 L1160 1074 L1125 1039 Z"></path>
+</g>
+<g fill="#b78a49" font-size="17" font-weight="400" text-anchor="middle"><text x="840" y="122">×</text><text x="1635" y="421">×</text><text x="565" y="574">×</text><text x="1550" y="874">×</text><text x="1160" y="1044">×</text></g>
+</svg>
+<div class="decision-question" style="left:840px;top:48px">FQIs e fontes<br/>identificados?</div>
+<div class="decision-question" style="left:1635px;top:344px">Mockup<br/>homologado?</div>
+<div class="decision-question" style="left:565px;top:496px">Dados<br/>disponíveis?</div>
+<div class="decision-question" style="left:1550px;top:799px">Homologado<br/>tecnicamente?</div>
+<div class="decision-question" style="left:1160px;top:967px">Painel<br/>aprovado?</div>
+<span class="choice yes" style="left:896px;top:96px">Sim</span><span class="choice no" style="left:850px;top:169px">Não</span>
+<span class="choice yes" style="left:1680px;top:395px">Sim</span><span class="choice no" style="left:1648px;top:453px">Não</span>
+<span class="choice yes" style="left:910px;top:478px">Sim</span><span class="choice no" style="left:580px;top:618px">Não</span>
+<span class="choice yes" style="left:1611px;top:850px">Sim</span><span class="choice no" style="left:1570px;top:906px">Não</span>
+<span class="choice yes" style="left:1260px;top:1018px">Sim</span><span class="choice no" style="left:1180px;top:1088px">Não</span>
+<div class="route-label" style="left:1760px;top:392px">Mockup homologado</div>
+<div class="route-label" style="left:805px;top:934px">Painel homologado tecnicamente</div>
+<div id="stages"><section aria-label="E01 Levantamento de Requisitos; 0 painéis" class="step" data-stage="E01" style="left:245px;top:58px" tabindex="0" title="E01 — Levantamento de Requisitos | Gestão / Especialista de Negócio"><button class="step-count zero" data-more="E01" title="Ver todos os 0 painéis da etapa" type="button">0</button><div class="step-head"><span class="step-code">E01</span><span class="step-name">Requisitos</span><span class="step-days">1 dias úteis</span></div><div class="step-pieces"><span class="piece-empty">Solte uma peça aqui</span></div></section><section aria-label="E02 Elaboração da Narrativa; 1 painéis" class="step" data-stage="E02" style="left:515px;top:58px" tabindex="0" title="E02 — Elaboração da Narrativa | Especialista de Negócio"><button class="step-count" data-more="E02" title="Ver todos os 1 painéis da etapa" type="button">1</button><div class="step-head"><span class="step-code">E02</span><span class="step-name">Narrativa e FQIs</span><span class="step-days">5 dias úteis</span></div><div class="step-pieces"><button class="chip" data-id="P17" data-status="Em execução" draggable="true" title="P17 · Pós-Graduação | Em execução | Sem previsão" type="button"><span class="pill-code">P17</span><span class="pill-name">Pós-Graduação</span></button></div></section><section aria-label="E03 Elaboração do Mockup; 1 painéis" class="step" data-stage="E03" style="left:1050px;top:200px" tabindex="0" title="E03 — Elaboração do Mockup | Produto / Analista BI"><button class="step-count" data-more="E03" title="Ver todos os 1 painéis da etapa" type="button">1</button><div class="step-head"><span class="step-code">E03</span><span class="step-name">Elaborar mockup</span><span class="step-days">4 dias úteis</span></div><div class="step-pieces"><button class="chip" data-id="P15" data-status="Em execução" draggable="true" title="P15 · Educação Infantil | Em execução | Sem previsão" type="button"><span class="pill-code">P15</span><span class="pill-name">Educação Infantil</span></button></div></section><section aria-label="E04 Homologação do Mockup; 5 painéis" class="step" data-stage="E04" style="left:1340px;top:357px" tabindex="0" title="E04 — Homologação do Mockup | Especialista + Gestor DMAPE"><button class="step-count" data-more="E04" title="Ver todos os 5 painéis da etapa" type="button">5</button><div class="step-head"><span class="step-code">E04</span><span class="step-name">Homologar mockup</span><span class="step-days">5 dias úteis</span></div><div class="step-pieces"><button class="chip" data-id="P12" data-status="Em execução" draggable="true" title="P12 · EJA - Educação de Jovens e Adultos | Em execução | Sem previsão" type="button"><span class="pill-code">P12</span><span class="pill-name">EJA - Educação de Jovens e Adultos</span></button><button class="chip" data-id="P13" data-status="Em execução" draggable="true" title="P13 · Inclusão na Educação Básica | Em execução | Sem previsão" type="button"><span class="pill-code">P13</span><span class="pill-name">Inclusão na Educação Básica</span></button></div></section><section aria-label="E05 Implementação das melhorias do Mockup; 0 painéis" class="step return" data-stage="E05" style="left:1705px;top:200px" tabindex="0" title="E05 — Implementação das melhorias do Mockup | Produto / Analista BI"><button class="step-count zero" data-more="E05" title="Ver todos os 0 painéis da etapa" type="button">0</button><div class="step-head"><span class="step-code">E05</span><span class="step-name">Ajustar mockup</span><span class="step-days">2 dias úteis</span></div><div class="step-pieces"><span class="piece-empty">Solte uma peça aqui</span></div></section><section aria-label="E06 Preparação dos Dados; 0 painéis" class="step" data-stage="E06" style="left:250px;top:510px" tabindex="0" title="E06 — Preparação dos Dados | Desenvolvimento de Dados (2)"><button class="step-count zero" data-more="E06" title="Ver todos os 0 painéis da etapa" type="button">0</button><div class="step-head"><span class="step-code">E06</span><span class="step-name">Integrar dados</span><span class="step-days">3 dias úteis</span></div><div class="step-pieces"><span class="piece-empty">Solte uma peça aqui</span></div></section><section aria-label="PEND Acionar bases e registrar pendência; 0 painéis" class="step pending" data-stage="PEND" style="left:700px;top:510px" tabindex="0" title="PEND — Acionar bases e registrar pendência | Desenvolvimento de Dados"><button class="step-count zero" data-more="PEND" title="Ver todos os 0 painéis da etapa" type="button">0</button><div class="step-head"><span class="step-code">PEND</span><span class="step-name">Pendência de bases</span></div><div class="step-pieces"><span class="piece-empty">Solte uma peça aqui</span></div></section><section aria-label="E07 Construção no Power BI; 5 painéis" class="step" data-stage="E07" style="left:980px;top:665px" tabindex="0" title="E07 — Construção no Power BI | Desenvolvimento BI (5)"><button class="step-count" data-more="E07" title="Ver todos os 5 painéis da etapa" type="button">5</button><div class="step-head"><span class="step-code">E07</span><span class="step-name">Construir no BI</span><span class="step-days">5 dias úteis</span></div><div class="step-pieces"><button class="chip" data-id="P01" data-status="Em execução" draggable="true" title="P01 · Educação Básica | Em execução | Sem previsão" type="button"><span class="pill-code">P01</span><span class="pill-name">Educação Básica</span></button><button class="chip" data-id="P09" data-status="Em execução" draggable="true" title="P09 · Pé-de-Meia (PDM) | Em execução | Sem previsão" type="button"><span class="pill-code">P09</span><span class="pill-name">Pé-de-Meia (PDM)</span></button></div></section><section aria-label="E08 Teste e Validação; 2 painéis" class="step" data-stage="E08" style="left:1230px;top:810px" tabindex="0" title="E08 — Teste e Validação | Gestor DMAPE + Área Finalística"><button class="step-count" data-more="E08" title="Ver todos os 2 painéis da etapa" type="button">2</button><div class="step-head"><span class="step-code">E08</span><span class="step-name">Testar e homologar</span><span class="step-days">5 dias úteis</span></div><div class="step-pieces"><button class="chip" data-id="P10" data-status="Em execução" draggable="true" title="P10 · ENEC - Estratégia Nacional Escolas Conectadas | Em execução | Sem previsão" type="button"><span class="pill-code">P10</span><span class="pill-name">ENEC - Estratégia Nacional Escolas Conectadas</span></button><button class="chip" data-id="P20" data-status="Em execução" draggable="true" title="P20 · Orçamento da Educação Superior | Em execução | Sem previsão" type="button"><span class="pill-code">P20</span><span class="pill-name">Orçamento da Educação Superior</span></button></div></section><section aria-label="E09 Ajustar painel; 2 painéis" class="step return" data-stage="E09" style="left:1710px;top:665px" tabindex="0" title="E09 — Ajustar painel | Desenvolvimento BI"><button class="step-count" data-more="E09" title="Ver todos os 2 painéis da etapa" type="button">2</button><div class="step-head"><span class="step-code">E09</span><span class="step-name">Ajustar painel</span></div><div class="step-pieces"><button class="chip" data-id="P06" data-status="Em execução" draggable="true" title="P06 · Acesso ao Ensino Superior | Em execução | Sem previsão" type="button"><span class="pill-code">P06</span><span class="pill-name">Acesso ao Ensino Superior</span></button><button class="chip" data-id="P07" data-status="Em execução" draggable="true" title="P07 · Trajetória da Educação Básica para o Ensino Superior | Em execução | Sem previsão" type="button"><span class="pill-code">P07</span><span class="pill-name">Trajetória da Educação Básica para o Ensino Superior</span></button></div></section><section aria-label="E10 Atualização e Completude de FQI; 0 painéis" class="step" data-stage="E10" style="left:250px;top:980px" tabindex="0" title="E10 — Atualização e Completude de FQI | Especialista + Analista de Dados"><button class="step-count zero" data-more="E10" title="Ver todos os 0 painéis da etapa" type="button">0</button><div class="step-head"><span class="step-code">E10</span><span class="step-name">Atualizar FQIs</span><span class="step-days">3 dias úteis</span></div><div class="step-pieces"><span class="piece-empty">Solte uma peça aqui</span></div></section><section aria-label="E11 Elaboração da Nota Técnica; 0 painéis" class="step" data-stage="E11" style="left:540px;top:980px" tabindex="0" title="E11 — Elaboração da Nota Técnica | Documentação técnica — a confirmar"><button class="step-count zero" data-more="E11" title="Ver todos os 0 painéis da etapa" type="button">0</button><div class="step-head"><span class="step-code">E11</span><span class="step-name">Nota Técnica</span><span class="step-days">3 dias úteis</span></div><div class="step-pieces"><span class="piece-empty">Solte uma peça aqui</span></div></section><section aria-label="E12 Aprovação Final; 0 painéis" class="step" data-stage="E12" style="left:865px;top:980px" tabindex="0" title="E12 — Aprovação Final | Área Finalística do MEC"><button class="step-count zero" data-more="E12" title="Ver todos os 0 painéis da etapa" type="button">0</button><div class="step-head"><span class="step-code">E12</span><span class="step-name">Aprovação MEC</span><span class="step-days">2 dias úteis</span></div><div class="step-pieces"><span class="piece-empty">Solte uma peça aqui</span></div></section><section aria-label="E13 Publicação; 5 painéis" class="step publish" data-stage="E13" style="left:1450px;top:980px" tabindex="0" title="E13 — Publicação | Desenvolvimento / Sustentação"><button class="step-count" data-more="E13" title="Ver todos os 5 painéis da etapa" type="button">5</button><div class="step-head"><span class="step-code">E13</span><span class="step-name">Publicar</span><span class="step-days">1 dias úteis</span></div><div class="step-pieces"><button class="chip" data-id="P02" data-status="Em execução" draggable="true" title="P02 · EPT | Em execução | Sem previsão" type="button"><span class="pill-code">P02</span><span class="pill-name">EPT</span></button><button class="chip" data-id="P03" data-status="Em execução" draggable="true" title="P03 · Educação Superior | Em execução | Sem previsão" type="button"><span class="pill-code">P03</span><span class="pill-name">Educação Superior</span></button></div></section></div>
+<div class="board-zoom-hint">Arraste uma área vazia para navegar · clique no contador para ver todos</div>
+<button class="lane-hit" data-lane="gestao" style="top: 40px; height: 150px;" title="Clique para cadastrar a equipe disponível" type="button"><span>Gestão / Especialista de Negócio</span><span class="lane-person-count">♙ 0 pessoas</span></button><button class="lane-hit" data-lane="produto" style="top: 190px; height: 155px;" title="Clique para cadastrar a equipe disponível" type="button"><span>Produto (Analista BI)</span><span class="lane-person-count">♙ 0 pessoas</span></button><button class="lane-hit" data-lane="homologacao" style="top: 345px; height: 155px;" title="Clique para cadastrar a equipe disponível" type="button"><span>Especialista + Gestor DMAPE</span><span class="lane-person-count">♙ 0 pessoas</span></button><button class="lane-hit" data-lane="dados" style="top: 500px; height: 150px;" title="Clique para cadastrar a equipe disponível" type="button"><span>Desenvolvimento de Dados</span><span class="lane-person-count">♙ 0 pessoas</span></button><button class="lane-hit" data-lane="bi" style="top: 650px; height: 152px;" title="Clique para cadastrar a equipe disponível" type="button"><span>Desenvolvimento BI</span><span class="lane-person-count">♙ 0 pessoas</span></button><button class="lane-hit" data-lane="validacao" style="top: 802px; height: 164px;" title="Clique para cadastrar a equipe disponível" type="button"><span>Validação / Área Finalística / Técnica</span><span class="lane-person-count">♙ 0 pessoas</span></button><button class="lane-hit" data-lane="publicacao" style="top: 966px; height: 154px;" title="Clique para cadastrar a equipe disponível" type="button"><span>Documentação / Aprovação / Publicação</span><span class="lane-person-count">♙ 0 pessoas</span></button></div></div>
+</div>
+<aside class="rail management-rail" id="right-rail"><button aria-label="Recolher indicadores" class="rail-close" id="right-close" title="Recolher indicadores">›</button><div class="rail-body">
+<div class="manage-heading"><h2>Resumo da gestão</h2><span class="manage-total" id="total-n">28</span></div>
+<button class="summary-all selected" data-group="all" data-key="all" id="all-panels">▦ Todos os painéis</button>
+<div class="rail-title">Estágio</div>
+<div class="summary-grid"><button class="interactive-metric" data-group="macro" data-key="Mockup"><span>Mockup</span><b id="mockup-n">12</b></button><button class="interactive-metric" data-group="macro" data-key="Painel"><span>Painel</span><b id="panel-n">14</b></button></div>
+<div class="rail-title">Situação</div>
+<div class="summary-grid"><button class="interactive-metric" data-group="status" data-key="Em execução"><span>Em execução</span><b id="run-n">21</b></button><button class="interactive-metric" data-group="status" data-key="Concluído"><span>Concluído</span><b id="done-n">0</b></button><button class="interactive-metric" data-group="status" data-key="Bloqueado"><span>Bloqueado</span><b id="block-n">0</b></button><button class="interactive-metric" data-group="status" data-key="Não iniciado"><span>Não iniciado</span><b id="notstart-n">5</b></button></div>
+<div class="rail-title">Prazos</div>
+<div class="summary-grid"><button class="interactive-metric" data-group="deadline" data-key="Dentro do prazo"><span>Dentro do prazo</span><b id="ontime-n">0</b></button><button class="interactive-metric" data-group="deadline" data-key="Atrasado"><span>Atrasados</span><b id="late-n">0</b></button><button class="interactive-metric" data-group="deadline" data-key="Concluído com atraso"><span>Concl. atraso</span><b id="latecompleted-n">0</b></button><button class="interactive-metric" data-group="deadline" data-key="Sem previsão"><span>Sem previsão</span><b id="undated-n">28</b></button></div>
+<button hidden="" id="late-metric"></button><div class="rail-title">Dependências</div><button class="dependency-summary" id="dependencies-summary"><span>Dados em aberto</span><b id="deps-n">0</b></button>
+<div class="rail-title">Melhorias e ajustes</div><div class="summary-grid summary-improvement"><button class="interactive-metric" data-group="improvement" data-key="Registradas"><span>Registradas</span><b id="impr-total-n">0</b></button><button class="interactive-metric" data-group="improvement" data-key="Em ajuste"><span>Em ajuste</span><b id="impr-active-n">0</b></button><button class="interactive-metric" data-group="improvement" data-key="Implementadas"><span>Implementadas</span><b id="impr-done-n">0</b></button><button class="interactive-metric" data-group="improvement" data-key="Atrasadas"><span>Atrasadas</span><b id="impr-late-n">0</b></button></div><button class="dependency-summary" id="meetings-summary"><span>Reuniões registradas</span><b id="meet-n">0</b></button>
+<div class="mini-note">Passe o mouse para destacar. Clique para manter a seleção.</div>
+</div></aside>
+</div>
+</div>
+<aside aria-label="Detalhes do painel" class="drawer" id="drawer"></aside>
+<div class="overlay" id="overlay"><div aria-labelledby="dialog-title" aria-modal="true" class="dialog" id="dialog" role="dialog"></div></div>
+<div aria-live="polite" class="toast" id="toast" role="status"></div>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),W=2020,H=1120,VSTRETCH=1,KEY='educadados-demo-publica-v1-operacional',OLDKEY='educadados-demo-publica-v1-legado';
+const STAGES=[
+
+{id:'E00',name:'Backlog',short:'Backlog',q:'Qual a prioridade do painel?',days:null,owner:'Gestão / Especialista de Negócio',next:['E01']},
+{id:'E01',name:'Levantamento de Requisitos',short:'Requisitos',q:'Requisitos definidos?',days:1,owner:'Gestão / Especialista de Negócio',x:245,y:58,next:['E02']},
+{id:'E02',name:'Elaboração da Narrativa',short:'Narrativa e FQIs',q:'Narrativa, indicadores e fontes verificados?',days:5,owner:'Especialista de Negócio',x:515,y:58,next:['E03','E01']},
+{id:'E03',name:'Elaboração do Mockup',short:'Elaborar mockup',q:'Mockup concluído?',days:4,owner:'Produto / Analista BI',x:1050,y:200,next:['E04']},
+{id:'E04',name:'Homologação do Mockup',short:'Homologar mockup',q:'Mockup homologado?',days:5,owner:'Especialista + Gestor DMAPE',x:1340,y:357,next:['E06','E05']},
+{id:'E05',name:'Implementação das melhorias do Mockup',short:'Ajustar mockup',q:'Ajustes concluídos?',days:2,owner:'Produto / Analista BI',x:1705,y:200,next:['E04']},
+{id:'E06',name:'Preparação dos Dados',short:'Integrar dados',q:'Dados disponíveis e integrados?',days:3,owner:'Desenvolvimento de Dados (2)',x:250,y:510,next:['E07','PEND']},
+{id:'PEND',name:'Acionar bases e registrar pendência',short:'Pendência de bases',q:'Qual é a pendência da base?',days:null,owner:'Desenvolvimento de Dados',x:700,y:510,next:['E06']},
+{id:'E07',name:'Construção no Power BI',short:'Construir no BI',q:'Construção concluída?',days:5,owner:'Desenvolvimento BI (5)',x:980,y:665,next:['E08']},
+{id:'E08',name:'Teste e Validação',short:'Testar e homologar',q:'Painel homologado tecnicamente?',days:5,owner:'Gestor DMAPE + Área Finalística',x:1230,y:810,next:['E10','E09']},
+{id:'E09',name:'Ajustar painel',short:'Ajustar painel',q:'Ajustes concluídos?',days:null,owner:'Desenvolvimento BI',x:1710,y:665,next:['E08']},
+{id:'E10',name:'Atualização e Completude de FQI',short:'Atualizar FQIs',q:'FQIs atualizadas?',days:3,owner:'Especialista + Analista de Dados',x:250,y:980,next:['E11']},
+{id:'E11',name:'Elaboração da Nota Técnica',short:'Nota Técnica',q:'Nota Técnica concluída?',days:3,owner:'Documentação técnica — a confirmar',x:540,y:980,next:['E12']},
+{id:'E12',name:'Aprovação Final',short:'Aprovação MEC',q:'Painel aprovado?',days:2,owner:'Área Finalística do MEC',x:865,y:980,next:['E13','E09']},
+{id:'E13',name:'Publicação',short:'Publicar',q:'Painel publicado?',days:1,owner:'Desenvolvimento / Sustentação',x:1450,y:980,next:[]},
+{id:'E14',name:'Arquivamento',short:'Arquivados',q:'Justificativa do arquivamento',days:null,owner:'Gestão do Projeto',next:[]}
+];
+const MAP=Object.fromEntries(STAGES.map(s=>[s.id,s]));
+const names=['Educação Infantil','EF/EM','ETI','Alfabetização','Formação Docente','Gestão Democrática','Educação Básica','ES Graduação','Acesso ES','Trajetória Concluintes','EPT Qualidade','Programas de Acesso','ES Trajetória','Pé-de-Meia','CPOP','EJA','Inclusão','Equidade','PROUNI','FIES','SISU','Novo PAC SESu','RFEPCT','Valorização Docente'];
+const demoStages=['E00','E01','E01','E01','E02','E02','E03','E03','E05','E05','E06','E06','E07','E07','E00','E00','E08','E08','E09','E10','E11','PEND','PEND','E12'];
+const demoStatuses=['Aguardando','Em execução','Em execução','Concluído','Em execução','Em execução','Em execução','Em execução','Aguardando','Aguardando','Em execução','Em execução','Em execução','Em execução','Aguardando','Aguardando','Em execução','Em execução','Bloqueado','Em execução','Em execução','Bloqueado','Bloqueado','Aguardando'];
+const ISO=(dt)=>`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
+const today=()=>ISO(new Date());
+function isoDate(v){const s=String(v||'').trim();if(/^\d{4}-\d{2}-\d{2}$/.test(s))return dateObj(s)?s:'';const m=s.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);if(!m)return '';const iso=`${m[3]}-${m[2]}-${m[1]}`;return dateObj(iso)?iso:''}
+function brDate(v){const s=isoDate(v);return s?`${s.slice(8,10)}/${s.slice(5,7)}/${s.slice(0,4)}`:''}
+function brTime(v){if(!v)return '—';const d=new Date(v);return Number.isNaN(d.getTime())?brDate(v):d.toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'})}
+function bindDateMask(){document.querySelectorAll('.date-br').forEach(el=>{el.addEventListener('input',()=>{let a=el.value.replace(/\D/g,'').slice(0,8);if(a.length>4)a=a.slice(0,2)+'/'+a.slice(2,4)+'/'+a.slice(4);else if(a.length>2)a=a.slice(0,2)+'/'+a.slice(2);el.value=a})})}
+function dateObj(s){if(!/^\d{4}-\d{2}-\d{2}$/.test(s||''))return null;const [y,m,d]=s.split('-').map(Number),dt=new Date(y,m-1,d,12);return dt.getFullYear()===y&&dt.getMonth()===m-1&&dt.getDate()===d?dt:null}
+function easter(year){const a=year%19,b=Math.floor(year/100),c=year%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k+7)%7,m=Math.floor((a+11*h+22*l)/451),month=Math.floor((h+l-7*m+114)/31),day=(h+l-7*m+114)%31+1;return new Date(year,month-1,day,12)}
+function holiday(d){const key=String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');const fixed=new Set(['01-01','04-21','05-01','09-07','10-12','11-02','11-15','11-20','12-25']);if(fixed.has(key))return true;const gf=easter(d.getFullYear());gf.setDate(gf.getDate()-2);return ISO(gf)===ISO(d)}
+function addBusiness(start,n){const d=dateObj(start);if(!d||!Number.isInteger(n)||n<0)return '';let count=0,guard=0;while(count<n&&guard++<370){d.setDate(d.getDate()+1);if(d.getDay()!==0&&d.getDay()!==6&&!holiday(d))count++}return ISO(d)}
+function finished(p){return p.stage==='E13'&&!!p.publishedAt}
+function macro(id){if(id==='ADEF')return 'A classificar';return ['E00','E01','E02','E03','E04','E05'].includes(id)?'Mockup':'Painel'}
+function deadline(p){if(p.stage==='E14')return 'Arquivado';if(!p.dueDate)return 'Sem previsão';if(p.status==='Concluído'){if(!p.completedDate)return 'Concluído sem data';return p.completedDate>p.dueDate?'Concluído com atraso':'Concluído no prazo'}return p.dueDate<today()?'Atrasado':'Dentro do prazo'}
+function normalize(p,i){const id=String(p.id||p.codigo||p.Codigo||p.Código||`P${String(i+1).padStart(2,'0')}`).trim().toUpperCase();const name=String(p.name||p.painel||p.Painel||p.nome||'').trim();const raw=String(p.stage||p.etapa||p.Etapa||'E00').trim().toUpperCase();const stage=MAP[raw]?raw:'E00';if(!name||!/^[A-Z0-9_-]{1,20}$/.test(id))return null;const status0=p.status||p.situacao||p.Situacao||'A definir',status=['A definir','Não iniciado','Em execução','Aguardando','Bloqueado','Concluído'].includes(status0)?status0:'A definir';const entry=isoDate(p.entryDate||p.dataEntrada||p.DataEntrada||p.date||p.data||p.Data||'');const due=isoDate(p.dueDate||p.previsaoSaida||p.PrevisaoSaida||'')||(MAP[stage].days&&entry?addBusiness(entry,MAP[stage].days):'');return {id,name,stage,status,owner:String(p.owner||p.responsavel||p.Responsavel||''),priority:String(p.priority||p.prioridade||'Normal'),response:String(p.response||p.resultado||p.Resultado||'Pendente'),entryDate:String(entry),dueDate:String(due),completedDate:isoDate(p.completedDate||p.dataConclusao||p.DataConclusao||(status==='Concluído'?entry:'')),note:String(p.note||p.observacoes||p.Observacoes||''),updated:String(p.updated||''),date:String(p.date||p.data||'')}}
+function base(){return {version:10,demo:false,panels:[],events:[],teams:{},dependencies:[],improvements:[],meetings:[],schedule:[],scheduleOverview:[]}}
+const RESGATE_V4_BACKUP_12_11={"version":12,"demo":true,"panels":[{"id":"P01","panelCode":"P01","name":"Painel Demonstrativo — Educação Básica","version":"V1","stage":"E04","status":"Em execução","owner":"Equipe demonstrativa","priority":"Normal","response":"Pendente","entryDate":"2026-11-10","dueDate":"2026-12-04","completedDate":"","mockupUrl":"","powerbiUrl":"","assignees":["Equipe demonstrativa"],"note":"EXEMPLO FICTÍCIO — não corresponde a um painel real","nature":"Demonstração","theme":"Demonstração"},{"id":"P02","panelCode":"P02","name":"Painel Demonstrativo — EJA","version":"V1","stage":"E07","status":"Em execução","owner":"Equipe demonstrativa","priority":"Normal","response":"Pendente","entryDate":"2026-11-10","dueDate":"2026-12-04","completedDate":"","mockupUrl":"","powerbiUrl":"","assignees":["Equipe demonstrativa"],"note":"EXEMPLO FICTÍCIO — não corresponde a um painel real","nature":"Demonstração","theme":"Demonstração"},{"id":"P03","panelCode":"P03","name":"Painel Demonstrativo — Educação Superior","version":"V1","stage":"E08","status":"Em execução","owner":"Equipe demonstrativa","priority":"Normal","response":"Pendente","entryDate":"2026-11-10","dueDate":"2026-12-04","completedDate":"","mockupUrl":"","powerbiUrl":"","assignees":["Equipe demonstrativa"],"note":"EXEMPLO FICTÍCIO — não corresponde a um painel real","nature":"Demonstração","theme":"Demonstração"},{"id":"P04","panelCode":"P04","name":"Painel Demonstrativo — Financiamento","version":"V1","stage":"E02","status":"Em execução","owner":"Equipe demonstrativa","priority":"Normal","response":"Pendente","entryDate":"2026-11-10","dueDate":"2026-12-04","completedDate":"","mockupUrl":"","powerbiUrl":"","assignees":["Equipe demonstrativa"],"note":"EXEMPLO FICTÍCIO — não corresponde a um painel real","nature":"Demonstração","theme":"Demonstração"}],"improvements":[{"id":"DEMO-001","panelId":"P02","panel":"P02","panelVersion":"V1","type":"Ajustar formatação e terminologia","nature":"Melhoria","description":"Ajustar rótulo do indicador (solicitação fictícia para demonstração).","assunto":"Ajustar rótulo do indicador","subject":"Ajustar rótulo do indicador","screen":"Tela 1 — Indicadores gerais","page":"Tela 1 — Indicadores gerais","originStage":"E04","stage":"E04","status":"Recebida","requestDate":"2026-11-12","date":"2026-11-12","owner":"Equipe demonstrativa","note":"Exemplo fictício."},{"id":"DEMO-002","panelId":"P02","panel":"P02","panelVersion":"V1","type":"Ajustar filtro","nature":"Melhoria","description":"Revisar filtro por modalidade (solicitação fictícia para demonstração).","assunto":"Revisar filtro por modalidade","subject":"Revisar filtro por modalidade","screen":"Tela 2 — Indicadores gerais","page":"Tela 2 — Indicadores gerais","originStage":"E04","stage":"E04","status":"Em andamento","requestDate":"2026-11-12","date":"2026-11-12","owner":"Equipe demonstrativa","note":"Exemplo fictício."},{"id":"DEMO-003","panelId":"P01","panel":"P01","panelVersion":"V1","type":"Alterar visual/UX","nature":"Melhoria","description":"Revisar apresentação da série histórica (solicitação fictícia para demonstração).","assunto":"Revisar apresentação da série histórica","subject":"Revisar apresentação da série histórica","screen":"Tela 1 — Evolução","page":"Tela 1 — Evolução","originStage":"E04","stage":"E04","status":"Concluída","requestDate":"2026-11-12","date":"2026-11-12","owner":"Equipe demonstrativa","note":"Exemplo fictício."},{"id":"DEMO-004","panelId":"P03","panel":"P03","panelVersion":"V1","type":"Corrigir dados","nature":"Melhoria","description":"Verificar fonte de dados do indicador (solicitação fictícia para demonstração).","assunto":"Verificar fonte de dados do indicador","subject":"Verificar fonte de dados do indicador","screen":"Tela 2 — Indicadores","page":"Tela 2 — Indicadores","originStage":"E08","stage":"E08","status":"Recebida","requestDate":"2026-11-12","date":"2026-11-12","owner":"Equipe demonstrativa","note":"Exemplo fictício."},{"id":"DEMO-005","panelId":"P04","panel":"P04","panelVersion":"V1","type":"Ajustar formatação e terminologia","nature":"Melhoria","description":"Acrescentar nota metodológica (solicitação fictícia para demonstração).","assunto":"Acrescentar nota metodológica","subject":"Acrescentar nota metodológica","screen":"Tela 1 — Visão geral","page":"Tela 1 — Visão geral","originStage":"E08","stage":"E08","status":"Pendente","requestDate":"2026-11-12","date":"2026-11-12","owner":"Equipe demonstrativa","note":"Exemplo fictício."}],"solicitacoesUnificadas":[],"dependencies":[],"meetings":[],"teams":{"gestao":["Equipe demonstrativa"],"produto":["Equipe demonstrativa"],"dados":["Equipe demonstrativa"]},"events":[],"schedule":[],"scheduleOverview":[]};
+function load(){
+ try{
+  const x=JSON.parse(localStorage.getItem(KEY));
+  if(x&&Array.isArray(x.panels)&&Array.isArray(x.improvements)&&
+    (x.panels.length>0||x.improvements.length>0||(x.dependencies||[]).length>0||(x.meetings||[]).length>0||Object.keys(x.teams||{}).length>0))return {...base(),...x,demo:false};
+  const recovered={...base(),...RESGATE_V4_BACKUP_12_11,demo:false};
+  localStorage.setItem(KEY,JSON.stringify(recovered));
+  return recovered;
+ }catch(e){return {...base(),...RESGATE_V4_BACKUP_12_11,demo:false}}
+}
+
+const APPROVED_CRONOGRAMA_V6={"schema":"educadados-cronograma-v1","version":"demonstracao","sourceFile":"dados-ficticios","records":[],"overview":[]};
+const ANTES_DO_CRONOGRAMA_V6={};
+
+function instalarCronogramaAprovadoV6(obj, storageKey){
+  if(!obj || !Array.isArray(obj.panels) || obj.panels.length===0)return obj;
+  const hasSchedule=Array.isArray(obj.schedule) && obj.schedule.length>0;
+  if(hasSchedule){
+    // A partial import can be complemented without touching saved edits.
+    const existing = new Map(obj.schedule.map(x=>[String(x.panelId)+'|'+String(x.stageId), x]));
+    let additions=0;
+    for(const x of APPROVED_CRONOGRAMA_V6.records){const key=x.panelId+'|'+x.stageId;
+      if(!existing.has(key)){existing.set(key,{...x});additions++}
+      else {const old=existing.get(key);
+        if(!old.adoptedEnd && !old.lastEditedAt){old.adoptedEnd=x.adoptedEnd;old.adoptedEndSource=x.adoptedEndSource}
+      }
+    }
+    if(additions){obj.schedule=Array.from(existing.values()).sort((a,b)=>a.panelId.localeCompare(b.panelId,'pt-BR')||a.order-b.order)}
+    if(!obj.scheduleOverview?.length)obj.scheduleOverview=APPROVED_CRONOGRAMA_V6.overview.map(x=>({...x}));
+    if(additions || !obj.cronogramaImportMeta){
+      obj.cronogramaImportMeta={release:'2026-11-13-v6',count:obj.schedule.length,source:APPROVED_CRONOGRAMA_V6.sourceFile,updatedAt:new Date().toISOString(),mode:hasSchedule?'complementado':'inicial'};
+      try{localStorage.setItem(storageKey,JSON.stringify(obj))}catch(err){console.warn('Persistência local indisponível',err)}
+    }
+    return obj;
+  }
+  // Preserve the complete original snapshot so it can be recovered if needed.
+  try{const raw=localStorage.getItem(storageKey);if(raw && !localStorage.getItem(storageKey+'-antes-cronograma-v6'))localStorage.setItem(storageKey+'-antes-cronograma-v6',raw)}catch(err){}
+  const alreadyRegistered=new Set(obj.panels.map(p=>p.id));
+  obj.schedule=APPROVED_CRONOGRAMA_V6.records.filter(x=>alreadyRegistered.has(x.panelId)).map(x=>({...x}));
+  obj.scheduleOverview=APPROVED_CRONOGRAMA_V6.overview.filter(x=>alreadyRegistered.has(x.panelId)).map(x=>({...x}));
+  let moved=0, preserved=0;
+  for(const p of obj.panels){
+    const ov=APPROVED_CRONOGRAMA_V6.overview.find(x=>x.panelId===p.id);
+    if(!ov)continue;
+    // Do not erase a more recent manual movement: apply snapshot only when panel still has the previous backup position.
+    if(ov.indicatedStage && p.stage===ANTES_DO_CRONOGRAMA_V6[p.id]){
+      if(p.stage!==ov.indicatedStage){p.stage=ov.indicatedStage;moved++}
+      if(ov.indicatedStatus==='Em andamento' && ['Em execução','A definir','Não iniciado'].includes(p.status))p.status='Em execução';
+      else if(ov.indicatedStage==='E00')p.status='Não iniciado';
+    }else if(ov.indicatedStage && p.stage!==ov.indicatedStage)preserved++;
+    if(!p.owner && ov.indicatedOwner)p.owner=ov.indicatedOwner;
+  }
+  obj.version=10;
+  obj.cronogramaImportMeta={release:'2026-11-13-v6',count:obj.schedule.length,panels:alreadyRegistered.size,alignedStages:moved,preservedRecentStages:preserved,source:APPROVED_CRONOGRAMA_V6.sourceFile,updatedAt:new Date().toISOString(),mode:'automatico'};
+  try{localStorage.setItem(storageKey,JSON.stringify(obj))}catch(err){console.warn('Persistência local indisponível',err)}
+  return obj;
+}
+
+
+/* V8 — entregas semanais e arquivamento */
+const V8_BASE_DELIVERIES=[{"id":"ENT001","panelId":"P01","version":"V2","kind":"Painel","dueDate":"2026-11-23","stageId":"E07","area":"CGIEE","sprint":"S7","status":"Prevista"},{"id":"ENT002","panelId":"P18","version":"V2","kind":"Painel","dueDate":"2026-11-23","stageId":"E07","area":"CGIEE","sprint":"S7","status":"Prevista"},{"id":"ENT003","panelId":"P11","version":"V2","kind":"Painel","dueDate":"2026-11-23","stageId":"E07","area":"CGIEE","sprint":"S7","status":"Prevista"},{"id":"ENT004","panelId":"P22","version":"V2","kind":"Painel","dueDate":"2026-11-23","stageId":"E07","area":"CGIEE","sprint":"S7","status":"Prevista"},{"id":"ENT005","panelId":"P06","version":"V1","kind":"Painel","dueDate":"2026-11-23","stageId":"E09","area":"CGIEE","sprint":"S7","status":"Prevista"},{"id":"ENT006","panelId":"P13","version":"V1","kind":"Mockup","dueDate":"2026-11-27","stageId":"E04","area":"CGIEE","sprint":"S8","status":"Prevista"},{"id":"ENT007","panelId":"P14","version":"V2","kind":"Mockup","dueDate":"2026-11-27","stageId":"E04","area":"CGIEE","sprint":"S8","status":"Prevista"},{"id":"ENT008","panelId":"P12","version":"V2","kind":"Mockup","dueDate":"2026-11-27","stageId":"E04","area":"CGIEE","sprint":"S8","status":"Prevista"},{"id":"ENT009","panelId":"P20","version":"V1","kind":"Painel","dueDate":"2026-11-27","stageId":"E08","area":"CGMO","sprint":"S8","status":"Prevista"},{"id":"ENT010","panelId":"P10","version":"V1","kind":"Painel","dueDate":"2026-11-27","stageId":"E08","area":"CGIEE","sprint":"S8","status":"Prevista"},{"id":"ENT011","panelId":"P15","version":"V2","kind":"Mockup","dueDate":"2026-12-04","stageId":"E04","area":"CGIEE","sprint":"S9","status":"Prevista"}];
+const DEFAULT_SPRINTS=[{"name": "S7", "start": "2026-11-23", "end": "2026-11-27"}, {"name": "S8", "start": "2026-11-30", "end": "2026-12-04"}, {"name": "S9", "start": "2026-12-07", "end": "2026-12-11"}, {"name": "S10", "start": "2026-12-14", "end": "2026-12-18"}, {"name": "S11", "start": "2026-12-21", "end": "2026-12-25"}];
+function sprintCalendar(obj){if(!Array.isArray(obj.sprints))obj.sprints=DEFAULT_SPRINTS.map(w=>({...w}));return obj.sprints;}
+function sprintFor(obj,date){return sprintCalendar(obj).find(w=>date&&date>=w.start&&date<=w.end)?.name||'';}
+function syncSprints(obj){sprintCalendar(obj);for(const d of obj.deliveries||[]){if(!('originalDueDate' in d))d.originalDueDate=d.dueDate||'';d.sprint=sprintFor(obj,d.dueDate);}return obj;}
+function prepararVisualV8(obj){
+ try{const previous=localStorage.getItem(KEY);if(previous&&!localStorage.getItem(KEY+'-antes-v8'))localStorage.setItem(KEY+'-antes-v8',previous)}catch(e){}
+ if(!Array.isArray(obj.people))obj.people=[];
+ if(!Array.isArray(obj.deliveries))obj.deliveries=V8_BASE_DELIVERIES.map(x=>({...x}));
+ obj.version=Math.max(12,Number(obj.version)||0);
+ for(const d of obj.deliveries){
+  const p=obj.panels.find(p=>p.id===d.panelId),s=(obj.schedule||[]).find(s=>s.panelId===d.panelId&&s.stageId===d.stageId);
+  // Entregas pactuadas são independentes das previsões de etapas.
+  
+ }
+ try{localStorage.setItem(KEY,JSON.stringify(obj))}catch(e){}
+ return obj;
+}
+function renderWeekly(){
+ const el=$('weekly-list');if(!el)return;
+ syncSprints(state);
+ const agreements=(state.deliveries||[]).filter(x=>x.status!=='Cancelada').map(d=>({...d,category:'chefia'}));
+ const forecasts=(state.panels||[]).filter(p=>p.dueDate&&p.stage!=='E00'&&p.stage!=='E14'&&p.status!=='Arquivado').map(p=>({panelId:p.id,stageId:p.stage,dueDate:p.dueDate,sprint:sprintFor(state,p.dueDate),kind:'Previsão da etapa',category:'etapa'}));
+ const all=[...agreements,...forecasts];
+ const weeks=[...new Set(all.map(d=>d.sprint||'Sem sprint'))].sort((a,b)=>a.localeCompare(b,undefined,{numeric:true}));
+ const choice=window.__weeklyChoice||'todos';
+ el.innerHTML=`<label class="mini-note" for="weekly-category">Exibir:</label><select id="weekly-category" style="width:100%;margin:5px 0 12px;padding:7px;border:1px solid #cbdce9;border-radius:6px"><option value="todos" ${choice==='todos'?'selected':''}>Entregas e previsões de etapas</option><option value="chefia" ${choice==='chefia'?'selected':''}>Entregas pactuadas com a chefia</option><option value="etapa" ${choice==='etapa'?'selected':''}>Previsões das etapas</option></select>`+weeks.map(w=>{
+ const entries=all.filter(d=>(d.sprint||'Sem sprint')===w&&(choice==='todos'||d.category===choice)).sort((a,b)=>a.panelId.localeCompare(b.panelId));
+ if(!entries.length)return '';
+ const period=sprintCalendar(state).find(x=>x.name===w);
+ return `<section class="weekly-block"><div class="weekly-head"><b>${esc(w)}</b><span>${period?brDate(period.start)+' a '+brDate(period.end):''}</span></div><div class="weekly-pills">${entries.map(d=>{
+ const p=state.panels.find(p=>p.id===d.panelId);const tipo=d.category==='chefia'?'Chefia':'Etapa';
+ return `<button type="button" class="weekly-code ${selected===d.panelId?'selected':''}" data-week-id="${esc(d.panelId)}" title="${esc((p?.name||d.panelId)+' · '+tipo+' · '+d.kind+' · '+brDate(d.dueDate)+' · '+d.stageId)}">${esc(p?.panelCode||d.panelId)}<small style="display:block;font-size:9px">${tipo}</small></button>`;
+ }).join('')}</div></section>`;
+ }).join('')||'<div class="mini-note">Sem entregas ou previsões para este filtro</div>';
+ const selector=$('weekly-category');if(selector)selector.onchange=()=>{window.__weeklyChoice=selector.value;renderWeekly()};
+ el.querySelectorAll('[data-week-id]').forEach(b=>b.onclick=()=>{
+  const id=b.dataset.weekId,p=getP(id);if(!p)return;
+  selected=id;render();openDrawer(id);
+  const chipNode=[...document.querySelectorAll('#stages .chip[data-id],.shelf .chip[data-id]')].find(x=>x.dataset.id===id);
+  if(chipNode)chipNode.scrollIntoView({behavior:'smooth',block:'nearest',inline:'nearest'});
+ });
+}
+
+function migrarSemEtapa(obj){for(const p of obj.panels||[]){if(p.stage==='ADEF'){p.stage='E00';p.status='Não iniciado';if(!String(p.note||'').includes('Classificação anterior: etapa a definir'))p.note=[p.note,'Classificação anterior: etapa a definir; revisar no cadastro.'].filter(Boolean).join(' | ');}}return obj}
+let state=migrarSemEtapa(prepararVisualV8(instalarCronogramaAprovadoV6(load(),KEY))),zoom=1,selected=null,modal=null,dragging=null,dragTarget=null,filter={term:'',status:'',stage:'',macro:'',deadline:''},pan=null,renderLock=false;
+function save(){syncSprints(state);try{localStorage.setItem(KEY,JSON.stringify({...state,version:10,demo:false}))}catch(e){window.alert('Não foi possível salvar os dados neste navegador. Use o backup JSON.')}if(window.parent!==window)window.parent.postMessage({app:'educadados',type:'save',source:'visual',payload:state},'*');}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function toast(t){const el=$('toast');el.textContent=t;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),3100)}
+function getP(id){return state.panels.find(p=>p.id===id)}
+function count(stage){return state.panels.filter(p=>p.stage===stage).length}
+function matches(p){return (!filter.term||`${p.id} ${p.name}`.toLocaleLowerCase('pt-BR').includes(filter.term))&&(!filter.status||p.status===filter.status)&&(!filter.stage||p.stage===filter.stage)&&(!filter.macro||macro(p.stage)===filter.macro)&&(!filter.deadline||deadline(p)===filter.deadline)}
+function chip(p,shelf=false){const late=deadline(p)==='Atrasado';return `<button type="button" class="chip ${shelf?'shelf-chip':''} ${selected===p.id?'selected':''} ${late?'late':''}" draggable="true" data-id="${esc(p.id)}" data-status="${esc(p.status)}" title="${esc(p.id+' · '+p.name+' | '+p.status+' | '+deadline(p))}"><span class="pill-code">${esc(p.id)}</span><span class="pill-name">${esc(p.name)}</span>${late?'<span class="late-icon" title="Atrasado">!</span>':''}</button>`}
+function renderStages(){const h=STAGES.filter(s=>s.x!==undefined).map(s=>{const all=state.panels.filter(p=>p.stage===s.id&&!finished(p)),shown=all.filter(matches),head=shown.slice(0,2),rest=shown.length-2;return `<section class="step ${['E05','E09'].includes(s.id)?'return':''} ${s.id==='PEND'?'pending':''} ${s.id==='E13'?'publish':''} ${filter.stage===s.id?'focus':''} ${filter.macro&&macro(s.id)!==filter.macro?'fade':''}" data-stage="${s.id}" style="left:${s.x}px;top:${s.y}px" title="${esc(s.id+' — '+s.name+' | '+s.owner)}" tabindex="0" aria-label="${esc(s.id+' '+s.name+'; '+all.length+' painéis')}"><button class="step-count ${all.length===0?'zero':''}" type="button" data-more="${s.id}" title="Ver todos os ${all.length} painéis da etapa" aria-label="Ver ${all.length} painéis em ${s.id}">${all.length}</button><div class="step-head"><span class="step-code">${s.id}</span><span class="step-name">${esc(s.short)}</span>${s.days?`<span class="step-days">${s.days} dias úteis</span>`:''}</div><div class="step-pieces">${head.map(p=>chip(p)).join('')}${head.length===0?'<span class="piece-empty">Solte uma peça aqui</span>':''}</div></section>`}).join('');$('stages').innerHTML=h}
+function renderShelves(){
+ const backlog=state.panels.filter(p=>p.stage==='E00'),done=state.panels.filter(finished),archived=state.panels.filter(p=>p.stage==='E14');
+ $('backlog-n').textContent=backlog.length;$('backlog-items').innerHTML=backlog.filter(matches).map(p=>chip(p,true)).join('')||'<span class="shelf-empty">Nenhum</span>';
+ $('finished-n').textContent=done.length;$('finished-items').innerHTML=done.filter(matches).map(p=>chip(p,true)).join('')||'<span class="shelf-empty">Nenhum publicado</span>';
+ $('archived-n').textContent=archived.length;$('archived-items').innerHTML=archived.filter(matches).map(p=>chip(p,true)).join('')||'<span class="shelf-empty">Nenhum arquivado</span>';
+}
+
+function renderStats(){$('total-n').textContent=state.panels.length;$('run-n').textContent=state.panels.filter(p=>p.status==='Em execução').length;$('wait-n').textContent=state.panels.filter(p=>p.status==='Aguardando').length;$('block-n').textContent=state.panels.filter(p=>p.status==='Bloqueado').length;$('finish-n').textContent=state.panels.filter(finished).length;$('late-n').textContent=state.panels.filter(p=>deadline(p)==='Atrasado').length;$('undated-n').textContent=state.panels.filter(p=>deadline(p)==='Sem previsão'&&p.stage!=='E00'&&p.stage!=='ADEF'&&!finished(p)).length;$('mockup-n').textContent=state.panels.filter(p=>macro(p.stage)==='Mockup').length;$('panel-n').textContent=state.panels.filter(p=>macro(p.stage)==='Painel').length;$('sync-mode').textContent='V9.3 TESTE · DADOS LOCAIS NESTE NAVEGADOR';document.querySelectorAll('.filter-stage [data-macro]').forEach(el=>el.classList.toggle('active',filter.macro===el.dataset.macro));$('late-metric').classList.toggle('active',filter.deadline==='Atrasado')}
+function render(){renderStages();renderShelves();renderStats();renderWeekly();if(selected&&$('drawer').classList.contains('show'))paintDrawer()}
+function openDialog(title,subtitle,contents){$('dialog').innerHTML=`<div class="dialog-head"><div><h2 id="dialog-title">${esc(title)}</h2><p class="subtitle">${esc(subtitle)}</p></div><button class="close" id="dialog-close" aria-label="Fechar">×</button></div><div class="dialog-body">${contents}</div>`;$('overlay').classList.add('show');$('dialog-close').onclick=closeDialog}
+function closeDialog(){$('overlay').classList.remove('show');modal=null}
+function options(items,sel){return items.map(v=>`<option value="${esc(v)}" ${v===sel?'selected':''}>${esc(v)}</option>`).join('')}
+function stageOptions(sel){return STAGES.map(s=>`<option value="${s.id}" ${s.id===sel?'selected':''}>${s.id} — ${esc(s.name)}</option>`).join('')}
+function question(stage,p){if(stage==='ADEF')return '';if(stage==='E00')return `<div class="field"><label for="answer">Prioridade</label><select id="answer">${options(['Normal','Alta','Baixa'],p.priority||'Normal')}</select></div>`;if(stage==='E14')return `<div class="field"><label for="answer">Motivo do arquivamento *</label><input id="answer" maxlength="400" value="${esc(p.archiveReason||'')}" placeholder="Informe a decisão da gestão"></div>`;if(stage==='PEND')return `<div class="field"><label for="answer">Descrição da pendência *</label><input id="answer" maxlength="190" value="${esc(p.stage===stage&&p.response!=='Pendente'?p.response:'')}" placeholder="Base ou tabela indisponível"></div>`;const val=p.stage===stage?p.response:'Pendente';return `<div class="field"><label for="answer">${esc(MAP[stage].q)}</label><select id="answer">${options(['Pendente','Sim','Não'],['Pendente','Sim','Não'].includes(val)?val:'Pendente')}</select></div>`}
+function openMove(id,to,opts={}){const p=getP(id),s=MAP[to];if(!p||!s)return;closeDrawer();const from=p.stage,offpath=(from!==to)&&!MAP[from].next.includes(to);modal={type:'move',id,from,to,publish:!!opts.publish};const entry=from===to?(p.entryDate||today()):today(),due=from===to?(p.dueDate||(s.days?addBusiness(entry,s.days):'')):(s.days?addBusiness(entry,s.days):''),done=(from===to?p.completedDate:'');const defaultAnswer=opts.publish&&to==='E13'?'Sim':(from===to?p.response:'Pendente');const status=opts.publish&&to==='E13'?'Concluído':from===to?p.status:to==='E14'?'Arquivado':to==='E00'?'Não iniciado':to==='ADEF'?'A definir':'Em execução';
+ const transitioning=from!==to;const previousEnd=transitioning?today():'';
+ const content=`${opts.publish?'<div class="hintbox">Publicação efetiva: confirme a data de publicação no campo de conclusão da etapa.</div>':''}${offpath?'<div class="hintbox warn">Movimentação fora da sequência usual: permitida, com registro no histórico.</div>':''}
+ <div class="form-grid"><div class="field"><label>Origem</label><input disabled value="${esc(from+' — '+MAP[from].name)}"></div><div class="field"><label for="dest">Destino</label><select id="dest">${stageOptions(to)}</select></div></div>
+ <div class="form-grid"><div class="field"><label for="status">Situação</label><select id="status">${options(['Em execução','Aguardando','Bloqueado','Concluído','Arquivado'],status)}</select></div><div class="field"><label for="owner">Responsável</label><input id="owner" maxlength="120" value="${esc(p.owner)}" placeholder="${esc(s.owner)}"></div></div>
+ <div class="form-grid"><div class="field"><label for="entry-date">Entrada na etapa</label><input id="entry-date" type="text" class="date-br" inputmode="numeric" maxlength="10" placeholder="DD/MM/AAAA" value="${esc(brDate(entry))}"></div><div class="field"><label for="due-date">Previsão de saída</label><input id="due-date" type="text" class="date-br" inputmode="numeric" maxlength="10" placeholder="DD/MM/AAAA" value="${esc(brDate(due))}"></div></div>
+ ${transitioning?`<div class="form-grid"><div class="field"><label for="previous-end-date">Conclusão efetiva da etapa ${esc(from)}</label><input id="previous-end-date" type="date" value="${previousEnd}"></div><div class="field"><label>Nova etapa</label><input disabled value="${esc(to)} · Em execução"></div></div>`:''}
+ <div class="form-grid"><div class="field"><label for="end-date">Conclusão efetiva da etapa de destino</label><input id="end-date" type="text" class="date-br" inputmode="numeric" maxlength="10" placeholder="DD/MM/AAAA" value="${esc(brDate(opts.publish?today():done))}"></div><div class="field"><label>Prazo metodológico</label><input id="method-days" disabled value="${s.days?s.days+' dias úteis':'A definir'}"></div></div>
+ <div id="question-block">${question(to,p)}</div>
+ <div class="field"><label for="note">Observação / encaminhamento (se necessário)</label><textarea id="note" rows="2" maxlength="850" placeholder="Descreva apenas se houver pendência, bloqueio ou ajuste">${esc(from===to?p.note:'')}</textarea></div>
+ <div class="hintbox" id="deadline-help">${s.days?'Previsão calculada automaticamente em dias úteis, considerando feriados nacionais. Editável.':'Esta etapa não tem duração definida na metodologia. Informe a previsão quando houver.'}</div><div id="form-error" class="error" role="alert"></div>
+ <div class="dialog-actions"><button id="cancel-move">Cancelar</button><button class="primary" id="save-move">Salvar movimentação</button></div>`;
+ openDialog(`${p.panelCode||p.id} · ${p.name}`,`${s.id} — ${s.name}`,content);$('cancel-move').onclick=closeDialog;$('save-move').onclick=saveMove;
+ $('dest').onchange=()=>{modal.to=$('dest').value;const previousDateField=$('previous-end-date');if(previousDateField)previousDateField.closest('.form-grid').style.display=modal.to===from?'none':'';const dest=MAP[modal.to];$('question-block').innerHTML=question(modal.to,p);$('method-days').value=dest.days?dest.days+' dias úteis':'A definir';$('due-date').value=dest.days?brDate(addBusiness(isoDate($('entry-date').value),dest.days)):'';$('deadline-help').textContent=dest.days?'Previsão calculada em dias úteis e feriados nacionais; editável.':'Prazo não definido na metodologia: preencha manualmente quando disponível.';if(modal.to!==from)$('end-date').value='';bindAnswer()};
+ $('entry-date').onchange=()=>{const stage=MAP[$('dest').value];if(stage.days)$('due-date').value=brDate(addBusiness(isoDate($('entry-date').value),stage.days))};
+ $('status').onchange=()=>{if($('status').value==='Concluído'&&!$('end-date').value)$('end-date').value=brDate(today());if($('status').value!=='Concluído')$('end-date').value=''};
+ bindAnswer();bindDateMask();if(opts.publish&&to==='E13'){$('answer').value='Sim'}
+}
+function bindAnswer(){const a=$('answer');if(a)a.onchange=()=>{if(a.value==='Não'||modal.to==='PEND')$('note').placeholder='Informe o motivo ou o encaminhamento (obrigatório)';else $('note').placeholder='Descreva apenas se houver pendência, bloqueio ou ajuste'}}
+function saveMove(){if(!modal||modal.type!=='move')return;const p=getP(modal.id),dest=$('dest').value,previousEndInput=$('previous-end-date'),previousEnd=previousEndInput?isoDate(previousEndInput.value):'',entry=isoDate($('entry-date').value),due=isoDate($('due-date').value),end=isoDate($('end-date').value),status=$('status').value,answer=$('answer').value,owner=$('owner').value.trim(),note=$('note').value.trim(),error=$('form-error');
+ if(!MAP[dest]){error.textContent='Etapa não reconhecida.';return}
+ if(dest!==p.stage&&previousEndInput&&(!previousEnd||!dateObj(previousEnd))){error.textContent='Informe a conclusão efetiva da etapa anterior.';return}
+ if(dest!==p.stage&&previousEndInput&&entry&&entry<previousEnd){error.textContent='A entrada na nova etapa não pode ser anterior à conclusão da etapa anterior.';return}
+ if(($('entry-date').value&&!entry)||($('due-date').value&&!due)||($('end-date').value&&!end)){error.textContent='Informe datas válidas no formato DD/MM/AAAA.';return}
+ if(dest!=='E00'&&!dateObj(entry)){error.textContent='Informe uma data válida de entrada na etapa.';return}
+ if(due&&!dateObj(due)){error.textContent='A previsão de saída não é válida.';return}
+ if(end&&!dateObj(end)){error.textContent='A data de conclusão não é válida.';return}
+ if(due&&entry&&due<entry){error.textContent='A previsão de saída deve ser igual ou posterior à entrada.';return}
+ if(status==='Concluído'&&!end&&dest!=='E00'){error.textContent='Informe a data de conclusão efetiva.';return}
+ if(status!=='Concluído'&&end){error.textContent='A data de conclusão deve ser preenchida somente para situação concluída.';return}
+ if(dest==='PEND'&&!answer.trim()){error.textContent='Informe a pendência de dados.';return}
+ if((answer==='Não'||status==='Bloqueado')&&!note){error.textContent='Informe o motivo do bloqueio ou ajuste.';return}
+ 
+ const previous={stage:p.stage,status:p.status,dueDate:p.dueDate,entryDate:p.entryDate,completedDate:p.completedDate};if(dest==='E14'&&!($('answer')?.value||'').trim()){toast('Informe o motivo do arquivamento.');return;}if(dest==='E14'){p.archiveReason=$('answer').value.trim();p.archivedAt=today();}else if(p.stage==='E14'){p.archivedAt='';}
+ p.stage=dest;p.status=status;if(modal.publish&&dest==='E13'){p.publishedAt=end||today();p.status='Concluído';}else if(dest!=='E13'){p.publishedAt='';}p.owner=owner;p.response=answer;p.entryDate=dest==='E00'?'':entry;p.dueDate=dest==='E00'?'':due;p.completedDate=status==='Concluído'?end:'';p.note=note;p.date=entry;p.updated=new Date().toISOString();if(dest==='E00')p.priority=answer;
+ if(dest!==previous.stage&&previousEndInput){state.events.push({panelId:p.id,panelName:p.name,from:previous.stage,to:previous.stage,status:'Concluído',priorStatus:previous.status,owner,entryDate:previous.entryDate,dueDate:previous.dueDate,completedDate:previousEnd,answer:'',note:'Conclusão da etapa anterior registrada na movimentação para '+dest,date:previousEnd,at:p.updated,priorDueDate:previous.dueDate,kind:'stage-completion'});const oldRow=(state.schedule||[]).find(x=>x.panelId===p.id&&x.stageId===previous.stage);if(oldRow){oldRow.sourceStatus='Concluída';oldRow.actualEnd=previousEnd;oldRow.adoptedEnd=previousEnd;oldRow.adoptedEndSource='Conclusão efetiva informada na movimentação BPMN';oldRow.statusOrigin='Gestão Visual BPMN';}}
+ state.events.push({panelId:p.id,panelName:p.name,from:previous.stage,to:dest,status,priorStatus:previous.status,owner,entryDate:p.entryDate,dueDate:p.dueDate,completedDate:p.completedDate,answer,note,date:entry,at:p.updated,priorDueDate:previous.dueDate});state.demo=false;atualizarCronogramaMovimento(p);save();closeDialog();render();toast(`${p.panelCode||p.id} atualizado: ${dest} · ${status}`)}
+function openDrawer(id){const p=getP(id);if(!p)return;selected=id;$('drawer').classList.add('show');paintDrawer();renderStages();renderShelves()}
+function closeDrawer(){selected=null;$('drawer').classList.remove('show');renderStages();renderShelves()}
+function paintDrawer(){const p=getP(selected);if(!p)return;const ev=state.events.filter(e=>e.panelId===p.id).slice().reverse();const sc=(state.schedule||[]).find(x=>x.panelId===p.id&&x.stageId===p.stage);$('drawer').innerHTML=`<button class="close" style="float:right" id="drawer-close" aria-label="Fechar painel">×</button><small>${esc(p.id)}</small><h2>${esc(p.name)}</h2><div class="summary"><b>Etapa:</b> ${esc(p.stage+' — '+(MAP[p.stage]?.name||'A definir'))}<br><b>Situação:</b> ${esc(p.status)}<br><b>Condição do prazo:</b> ${esc(deadline(p))}<br><b>Entrada:</b> ${esc(brDate(p.entryDate)||'Sem registro')}<br><b>Saída prevista:</b> ${esc(brDate(p.dueDate)||'Não definida')}<br><b>Conclusão:</b> ${esc(brDate(p.completedDate)||'—')}<br><b>Responsável:</b> ${esc(p.owner||'A definir')}<br><b>Resultado:</b> ${esc(p.response||'Pendente')}${sc?`<br><b>Cronograma:</b> ${esc(sc.sourceStatus)}<br><b>Responsável da etapa:</b> ${esc(sc.designatedOwner||sc.defaultOwner||"A definir")}<br><b>Conclusão adotada:</b> ${esc(brDate(sc.adoptedEnd)||"—")}<br><small>${esc(sc.adoptedEndSource||"—")}</small>`:""}${p.note?'<br><b>Observação:</b> '+esc(p.note):''}</div><div class="stack"><button class="primary" id="drawer-update">Atualizar nesta etapa</button><select id="drawer-dest">${stageOptions(p.stage)}</select><button id="drawer-move">Mover para etapa selecionada</button><button id="drawer-edit">Editar nome/prioridade</button><button id="drawer-schedule">Ver 14 etapas do cronograma</button></div><h3 style="font-size:13px;margin-top:20px">Histórico (${ev.length})</h3>${ev.length?ev.map(e=>`<div class="event"><b>${esc(e.from===e.to?'Atualização em '+e.to:e.from+' → '+e.to)}</b><br><small>${esc(brTime(e.at)||brDate(e.date)||'')} · ${esc(e.status||'')}</small><div>Entrada: ${esc(brDate(e.entryDate||e.date)||'—')} · Previsão: ${esc(brDate(e.dueDate)||'—')}</div>${e.note?`<div>${esc(e.note)}</div>`:''}</div>`).join(''):'<p style="font-size:12px;color:#7990a0">Nenhuma movimentação registrada.</p>'}`;
+ $('drawer-close').onclick=closeDrawer;$('drawer-update').onclick=()=>openMove(p.id,p.stage);$('drawer-move').onclick=()=>openMove(p.id,$('drawer-dest').value);$('drawer-edit').onclick=()=>openEdit(p.id);$('drawer-schedule').onclick=()=>openPanelChrono(p.id)}
+
+function openPanelChrono(pid){
+ const p=getP(pid),arr=(state.schedule||[]).filter(x=>x.panelId===pid).sort((a,b)=>a.order-b.order);if(!p)return;
+ const html=`<div class="dep-overflow"><table class="dep-table"><thead><tr><th>Etapa</th><th>Situação</th><th>Responsável</th><th>Conclusão adotada</th></tr></thead><tbody>${arr.map(x=>`<tr><td><b>${esc(x.stageId)}</b><div>${esc(x.stageName)}</div></td><td>${esc(x.sourceStatus)}</td><td>${esc(x.designatedOwner||x.defaultOwner||'A definir')}</td><td>${esc(brDate(x.adoptedEnd)||'—')}<div class="tiny">${esc(x.adoptedEndSource||'—')}</div></td></tr>`).join('')}</tbody></table></div><div class="dialog-actions"><button id="chrono-close">Fechar</button></div>`;
+ openDialog('Etapas e cronograma',p.id+' · '+p.name,html);$('chrono-close').onclick=closeDialog;
+}
+function atualizarCronogramaMovimento(p){
+ const rows=(state.schedule||[]).filter(x=>x.panelId===p.id);if(!rows.length)return;
+ const index=Number(String(p.stage).slice(1));if(!Number.isInteger(index)||!/^E(?:0[0-9]|1[0-3])$/.test(p.stage))return;
+ for(const x of rows){
+   const n=Number(x.stageId.slice(1));
+   let next;
+   if(p.stage==='E00')next='Não iniciada';
+   else if(n<index)next='Concluída';
+   else if(n>index)next='Não iniciada';
+   else if(p.stage==='E13'&&p.status==='Concluído'&&p.response==='Sim')next='Concluída';
+   else next='Em andamento';
+   if(x.sourceStatus!==next){x.sourceStatus=next;x.statusOrigin='Fotografia atualizada pela Gestão Visual BPMN'}
+   if(n===index){
+     if(p.owner)x.designatedOwner=p.owner;
+     if(p.entryDate)x.actualStart=p.entryDate;
+     if(p.dueDate)x.plannedEnd=p.dueDate;
+     if(p.status==='Concluído'&&p.completedDate){x.actualEnd=p.completedDate;x.adoptedEnd=p.completedDate;x.adoptedEndSource='Real registrada na Gestão Visual BPMN'}
+   }
+ }
+ const ov=(state.scheduleOverview||[]).find(x=>x.panelId===p.id);
+ if(ov){ov.indicatedStage=p.stage;ov.indicatedStatus=p.status==='Concluído'?'Concluída':'Em andamento';ov.indicatedOwner=p.owner;ov.source='Gestão Visual BPMN'}
+}
+
+function openStageList(stage){const arr=state.panels.filter(p=>p.stage===stage&&!finished(p));openDialog(stage+' — '+MAP[stage].name,`${arr.length} painéis nesta etapa`,`<div style="display:grid;gap:6px">${arr.map(p=>`<button type="button" class="action-btn" data-open="${esc(p.id)}" style="text-align:left">${esc(p.id+' · '+p.name)} — ${esc(p.status)}</button>`).join('')||'<p>Nenhum painel registrado nesta etapa.</p>'}</div><div class="dialog-actions"><button id="stage-list-close">Fechar</button></div>`);$('stage-list-close').onclick=closeDialog;$('dialog').querySelectorAll('[data-open]').forEach(el=>el.onclick=()=>{const id=el.dataset.open;closeDialog();openDrawer(id)})}
+function openEdit(id){const p=getP(id);if(!p)return;openDialog('Editar painel',p.id,`<div class="field"><label for="edit-name">Nome do painel</label><input id="edit-name" maxlength="120" value="${esc(p.name)}"></div><div class="field"><label for="edit-priority">Prioridade</label><select id="edit-priority">${options(['Normal','Alta','Baixa'],p.priority)}</select></div><div class="error" id="edit-error"></div><div class="dialog-actions"><button id="edit-cancel">Cancelar</button><button id="edit-save" class="primary">Salvar</button></div>`);$('edit-cancel').onclick=closeDialog;$('edit-save').onclick=()=>{const v=$('edit-name').value.trim();if(!v){$('edit-error').textContent='Informe um nome.';return}p.name=v;p.priority=$('edit-priority').value;state.demo=false;save();closeDialog();render();toast('Painel atualizado')}}
+function nextId(){let i=1;while(getP('P'+String(i).padStart(2,'0')))i++;return 'P'+String(i).padStart(2,'0')}
+$('new-panel').onclick=()=>{openDialog('Cadastrar painel','A peça será colocada na fila Backlog.',`<div class="field"><label for="new-name">Nome do painel *</label><input id="new-name" maxlength="120" placeholder="Nome do painel"></div><div class="form-grid"><div class="field"><label for="new-code">Código *</label><input id="new-code" value="${nextId()}" maxlength="20"></div><div class="field"><label for="new-priority">Prioridade</label><select id="new-priority">${options(['Normal','Alta','Baixa'],'Normal')}</select></div></div><div class="error" id="new-error"></div><div class="dialog-actions"><button id="new-cancel">Cancelar</button><button id="new-save" class="primary">Cadastrar no backlog</button></div>`);$('new-cancel').onclick=closeDialog;$('new-save').onclick=()=>{const id=$('new-code').value.trim().toUpperCase(),name=$('new-name').value.trim();if(!name||!/^[A-Z0-9_-]{1,20}$/.test(id)||getP(id)){$('new-error').textContent='Informe nome e código único.';return}state.panels.push(normalize({id,name,stage:'E00',status:'Aguardando',priority:$('new-priority').value}));state.demo=false;save();closeDialog();render();toast('Painel cadastrado no backlog')}};
+function csvCell(v){let s=String(v??'');if(/^\s*[=+@\-]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'}
+function csvOf(rows){return '\ufeff'+rows.map(r=>r.map(csvCell).join(';')).join('\r\n')}
+function download(filename,content,type){const u=URL.createObjectURL(new Blob([content],{type})),a=document.createElement('a');a.href=u;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1200)}
+$('export-csv').onclick=()=>{const rows=[['Codigo','Painel','Etapa','Estagio','Situacao','CondicaoPrazo','Responsavel','Prioridade','Resultado','DataEntrada','PrevisaoSaida','DataConclusao','Observacoes'],...state.panels.map(p=>[p.id,p.name,p.stage,macro(p.stage),p.status,deadline(p),p.owner,p.priority,p.response,brDate(p.entryDate),brDate(p.dueDate),brDate(p.completedDate),p.note])];download('EducaDados_Gestao_Paineis_V5_'+today()+'.csv',csvOf(rows),'text/csv;charset=utf-8');toast('CSV dos painéis exportado.')};
+$('export-events').onclick=()=>{const rows=[['Painel_ID','Painel','Origem','Destino','Situacao','Responsavel','Entrada','SaidaPrevista','Conclusao','Resultado','Observacoes','RegistroEm'],...state.events.map(e=>[e.panelId,e.panelName,e.from,e.to,e.status,e.owner,brDate(e.entryDate||e.date),brDate(e.dueDate),brDate(e.completedDate),e.answer,e.note,brTime(e.at)])];download('EducaDados_Historico_V5_'+today()+'.csv',csvOf(rows),'text/csv;charset=utf-8');toast('Histórico exportado.')};
+$('export-json').onclick=()=>{download('EducaDados_Backup_V5_'+today()+'.json',JSON.stringify(state,null,2),'application/json');toast('Backup JSON gerado.')};
+$('import-btn').onclick=()=>$('file-input').click();
+function parseCSV(s){s=s.replace(/^\ufeff/,'');const delim=(s.split(/\r?\n/)[0]||'').includes(';')?';':',';const rows=[];let row=[],cell='',q=false;for(let i=0;i<s.length;i++){const c=s[i];if(c==='"'){if(q&&s[i+1]==='"'){cell+='"';i++}else q=!q}else if(c===delim&&!q){row.push(cell);cell=''}else if((c==='\n'||c==='\r')&&!q){if(c==='\r'&&s[i+1]==='\n')i++;row.push(cell);if(row.some(x=>x.trim()))rows.push(row);row=[];cell=''}else cell+=c}row.push(cell);if(row.some(x=>x.trim()))rows.push(row);return rows}
+$('file-input').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const t=await f.text();let arr=[],events=[];if(f.name.toLowerCase().endsWith('.json')){const obj=JSON.parse(t);if(!Array.isArray(obj.panels))throw Error('Backup sem lista de painéis.');arr=obj.panels.map(normalize).filter(Boolean);events=Array.isArray(obj.events)?obj.events:[]}else{const rows=parseCSV(t);if(rows.length<2)throw Error('CSV sem registros.');const heads=rows[0].map(x=>x.trim().toLocaleLowerCase('pt-BR'));arr=rows.slice(1).map((r,i)=>{const p=Object.fromEntries(heads.map((h,j)=>[h,r[j]||'']));return normalize({id:p.codigo||p.id,name:p.painel||p.nome,stage:p.etapa||p.stage,status:p.situacao||p.status,owner:p.responsavel||p.owner,priority:p.prioridade||p.priority,response:p.resultado||p.response,entryDate:p.dataentrada||p.entrydate,dueDate:p.previsaosaida||p.duedate,completedDate:p.dataconclusao||p.completeddate,note:p.observacoes||p.note},i)}).filter(Boolean)}if(!arr.length)throw Error('Nenhum painel válido.');if(new Set(arr.map(x=>x.id)).size!==arr.length)throw Error('Códigos duplicados.');if(!window.confirm(`Importar ${arr.length} painéis e substituir os dados locais? Antes, considere salvar um backup.`))return;state={version:5,demo:false,panels:arr,events};save();closeDrawer();render();toast(`${arr.length} painéis importados.`)}catch(ex){window.alert('A importação não foi realizada: '+ex.message)}finally{e.target.value=''}};
+$('search').oninput=e=>{filter.term=e.target.value.trim().toLocaleLowerCase('pt-BR');render()};
+$('status-filter').onchange=e=>{filter.status=e.target.value;render()};
+$('stage-filter').onchange=e=>{filter.stage=e.target.value;render()};
+$('macro-filter').onchange=e=>{filter.macro=e.target.value;render()};
+$('deadline-filter').onchange=e=>{filter.deadline=e.target.value;render()};
+$('clear-filters').onclick=()=>{filter={term:'',status:'',stage:'',macro:'',deadline:''};['search','status-filter','stage-filter','macro-filter','deadline-filter'].forEach(id=>$(id).value='');render()};
+$('stage-filter').innerHTML='<option value="">Todas as etapas</option>'+STAGES.map(s=>`<option value="${s.id}">${s.id} — ${esc(s.name)}</option>`).join('');
+$('late-metric').onclick=()=>{filter.deadline=filter.deadline==='Atrasado'?'':'Atrasado';$('deadline-filter').value=filter.deadline;render()};
+document.querySelectorAll('.filter-stage [data-macro]').forEach(b=>b.onclick=()=>{filter.macro=filter.macro===b.dataset.macro?'':b.dataset.macro;$('macro-filter').value=filter.macro;render()});
+$('left-close').onclick=()=>{const main=$('main');main.classList.toggle('hide-left');$('left-close').textContent=main.classList.contains('hide-left')?'›':'‹';$('left-close').title=main.classList.contains('hide-left')?'Expandir legenda':'Recolher legenda';requestAnimationFrame(fitZoom)};
+$('right-close').onclick=()=>{const main=$('main');main.classList.toggle('hide-right');$('right-close').textContent=main.classList.contains('hide-right')?'‹':'›';$('right-close').title=main.classList.contains('hide-right')?'Expandir indicadores':'Recolher indicadores';requestAnimationFrame(fitZoom)};
+const board=$('board-viewport');let offsetX=0,offsetY=0;
+function paintView(){$('zoom-shell').style.transform=`translate(${offsetX}px,${offsetY}px) scale(${zoom},${zoom*VSTRETCH})`;$('zoom-pct').textContent=Math.round(zoom*100)+'%';$('artboard').style.setProperty('--zoom',zoom)}
+function setZoom(next,anchorX=board.clientWidth/2,anchorY=board.clientHeight/2){const old=zoom;const lx=(anchorX-offsetX)/old,ly=(anchorY-offsetY)/(old*VSTRETCH);zoom=Math.max(.33,Math.min(2.3,next));offsetX=anchorX-lx*zoom;offsetY=anchorY-ly*zoom*VSTRETCH;paintView()}
+function fitZoom(){zoom=Math.min((board.clientWidth-18)/W,(board.clientHeight-18)/(H*VSTRETCH),1.3);offsetX=(board.clientWidth-W*zoom)/2;offsetY=(board.clientHeight-H*zoom*VSTRETCH)/2;paintView()}
+function zoomForReading(){zoom=Math.min(.92,Math.max(.65,board.clientHeight/(H*.9)));offsetX=Math.min(10,(board.clientWidth-W*zoom)/2);offsetY=10;paintView()}
+$('zoom-minus').onclick=()=>setZoom(zoom-.12);$('zoom-plus').onclick=()=>setZoom(zoom+.12);$('zoom-fit').onclick=fitZoom;$('zoom-read').onclick=zoomForReading;
+board.addEventListener('pointerdown',e=>{if(e.button!==0||dragging||e.target.closest('.chip,button,input,.shelf'))return;pan={x:e.clientX,y:e.clientY,left:offsetX,top:offsetY,moved:false};board.classList.add('panning');try{board.setPointerCapture(e.pointerId)}catch(err){}});
+board.addEventListener('pointermove',e=>{if(!pan)return;const dx=e.clientX-pan.x,dy=e.clientY-pan.y;if(Math.abs(dx)+Math.abs(dy)>5)pan.moved=true;offsetX=pan.left+dx;offsetY=pan.top+dy;paintView()});
+let suppressClick=false;
+function stopPan(e){if(!pan)return;suppressClick=pan.moved;pan=null;board.classList.remove('panning');try{if(board.hasPointerCapture(e.pointerId))board.releasePointerCapture(e.pointerId)}catch(err){};if(suppressClick)setTimeout(()=>suppressClick=false,0)}
+board.addEventListener('pointerup',stopPan);board.addEventListener('pointercancel',stopPan);board.addEventListener('lostpointercapture',()=>{pan=null;board.classList.remove('panning')});
+board.addEventListener('wheel',e=>{if(!e.ctrlKey)return;e.preventDefault();const r=board.getBoundingClientRect();setZoom(zoom+(e.deltaY<0?.09:-.09),e.clientX-r.left,e.clientY-r.top)},{passive:false});
+function clearDrop(){document.querySelectorAll('.drop-target').forEach(el=>el.classList.remove('drop-target'));dragTarget=null}
+function targetStage(el){return el.closest('.step[data-stage],.shelf[data-stage]')}
+document.addEventListener('dragstart',e=>{const chip=e.target.closest('.chip[draggable]');if(!chip)return;dragging=chip.dataset.id;e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',dragging);requestAnimationFrame(()=>chip.classList.add('dragging'));board.classList.add('drag-active')});
+document.addEventListener('dragend',()=>{dragging=null;clearDrop();board.classList.remove('drag-active');document.querySelectorAll('.chip.dragging').forEach(el=>el.classList.remove('dragging'))});
+document.addEventListener('dragover',e=>{if(!dragging)return;const target=targetStage(e.target);if(target){e.preventDefault();e.dataTransfer.dropEffect='move';if(dragTarget!==target){clearDrop();dragTarget=target;target.classList.add('drop-target')}}else if(e.target.closest('#board-viewport')){e.preventDefault();clearDrop()}});
+document.addEventListener('drop',e=>{if(!dragging)return;const target=targetStage(e.target),id=dragging;dragging=null;board.classList.remove('drag-active');clearDrop();if(target){e.preventDefault();openMove(id,target.dataset.stage,{publish:target.dataset.publish==='1'})}else if(e.target.closest('#board-viewport')){e.preventDefault();toast('Solte a peça diretamente sobre uma etapa.') }});
+// Uma seleção por clique não interfere na movimentação por arrastar.
+document.addEventListener('click',e=>{if(suppressClick)return;const chip=e.target.closest('.chip[data-id]');if(chip){if(!dragging)openDrawer(chip.dataset.id);return}const more=e.target.closest('[data-more]');if(more){openStageList(more.dataset.more);return}const step=e.target.closest('.step[data-stage]');if(step){openStageList(step.dataset.stage)}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if($('overlay').classList.contains('show'))closeDialog();else closeDrawer()}if((e.key==='Enter'||e.key===' ')&&e.target.matches('.step[data-stage]')){e.preventDefault();openStageList(e.target.dataset.stage)}});
+$('overlay').addEventListener('click',e=>{if(e.target===$('overlay'))closeDialog()});
+// A aplicação depende de um só arquivo; nenhum servidor ou conexão é necessária.
+/* V6 — interação direta no resumo, equipes por raia, links e dependências de bases */
+const legacyNormalize=normalize;
+normalize=function(raw,i){const p=legacyNormalize(raw,i);if(!p)return null;const oldStatus=String(raw.status||raw.situacao||'');p.status=oldStatus==='Aguardando'?(p.stage==='E00'?'Não iniciado':'Bloqueado'):(oldStatus==='Não iniciado'?'Não iniciado':p.status);p.mockupUrl=String(raw.mockupUrl||raw.urlMockup||raw.URL_Mockup||'');p.powerbiUrl=String(raw.powerbiUrl||raw.urlPainel||raw.URL_Painel_PowerBI||'');p.assignees=Array.isArray(raw.assignees)?raw.assignees.filter(v=>typeof v==='string'):[];return {...raw,...p,status:oldStatus==='Arquivado'?'Arquivado':p.status}};
+state.panels=state.panels.map((p,i)=>normalize(p,i)).filter(Boolean);
+state.teams=(state.teams&&typeof state.teams==='object'&&!Array.isArray(state.teams))?state.teams:{};
+state.dependencies=Array.isArray(state.dependencies)?state.dependencies:[];
+state.version=10;
+const LANES=[
+{id:'gestao',title:'Gestão / Especialista de Negócio',top:40,height:150},
+{id:'produto',title:'Produto (Analista BI)',top:190,height:155},
+{id:'homologacao',title:'Especialista + Gestor DMAPE',top:345,height:155},
+{id:'dados',title:'Desenvolvimento de Dados',top:500,height:150},
+{id:'bi',title:'Desenvolvimento BI',top:650,height:152},
+{id:'validacao',title:'Validação / Área Finalística / Técnica',top:802,height:164},
+{id:'publicacao',title:'Documentação / Aprovação / Publicação',top:966,height:154}
+];
+function laneForStage(stage){return {E00:'gestao',E01:'gestao',E02:'gestao',E03:'produto',E04:'homologacao',E05:'produto',E06:'dados',PEND:'dados',E07:'bi',E08:'validacao',E09:'bi',E10:'publicacao',E11:'publicacao',E12:'publicacao',E13:'publicacao'}[stage]||'gestao'}
+function teamNames(lane){const list=(state.people||[]).filter(p=>(p.roles||[]).includes(lane)).map(p=>p.name);return list.length?list:(Array.isArray(state.teams[lane])?state.teams[lane]:[])}
+function renderLanes(){document.querySelectorAll('.lane-hit').forEach(x=>x.remove());const area=$('artboard');LANES.forEach(l=>{const b=document.createElement('button');b.className='lane-hit';b.type='button';b.dataset.lane=l.id;b.style.top=l.top+'px';b.style.height=l.height+'px';b.innerHTML=`<span>${esc(l.title)}</span><span class="lane-person-count">♙ ${teamNames(l.id).length} pessoas</span>`;b.title='Clique para cadastrar a equipe disponível';b.onclick=()=>openTeam(l.id);area.appendChild(b)})}
+function openTeam(lane){
+ const l=LANES.find(x=>x.id===lane);if(!l)return;
+ const names=teamNames(lane);
+ openDialog('Profissionais disponíveis',l.title,`<div class="hintbox">O cadastro de profissionais é único e deve ser atualizado na Gestão Operacional. Uma pessoa pode exercer várias funções.</div><div class="v7-card">${names.length?names.map(n=>`<div style="padding:7px;border-bottom:1px solid #dce9ee">${esc(n)}</div>`).join(''):'<p class="v7-intro">Nenhum profissional cadastrado para esta função.</p>'}</div><div class="dialog-actions"><a href="index.html" data-hub-nav="operacional" target="_self" rel="noopener" class="primary" style="padding:9px 14px;border-radius:6px;text-decoration:none;color:white;background:#157b9d">Abrir Gestão Operacional</a><button id="team-done">Fechar</button></div>`);
+ $('team-done').onclick=closeDialog;
+}
+const header=$('header-commands');
+const newBtn=$('new-panel'),impBtn=$('import-btn'),searchInput=$('search');
+searchInput.className='header-search';searchInput.placeholder='⌕ Buscar painel';searchInput.title='Destacar painel pelo nome';
+const depTop=$('top-dependencies');depTop.onclick=()=>openDependenciesOverview();
+const expMenu=header.querySelector('.export-menu');
+header.append(newBtn,depTop,$('top-improvements'),$('top-meetings'),expMenu,impBtn,searchInput);
+const expPanel=expMenu.querySelector('.export-panel');
+[['export-csv','Painéis (CSV)'],['export-events','Histórico (CSV)'],['export-json','Backup completo (JSON)']].forEach(([id,text])=>{const b=$(id);b.textContent=text;expPanel.append(b)});
+const eResources=$('export-people');expPanel.append(eResources);
+const eDeps=$('export-dependencies');expPanel.append(eDeps);
+const div=document.createElement('span');div.className='header-divider';header.append(div);
+['zoom-minus','zoom-pct','zoom-plus','zoom-fit','zoom-read'].forEach(id=>header.append($(id)));
+$('zoom-read').textContent='Leitura';$('zoom-fit').textContent='Ajustar';
+const stickyRule={selected:null,hover:null};
+function rule(){return stickyRule.hover||stickyRule.selected}
+function matchesRule(p,r=rule()){if(!r)return true;if(r.group==='macro')return macro(p.stage)===r.key;if(r.group==='status')return p.status===r.key;if(r.group==='deadline')return deadline(p)===r.key;if(r.group==='search')return `${p.id} ${p.name}`.toLocaleLowerCase('pt-BR').includes(r.key);return true}
+function selectRule(group,key){stickyRule.selected=group==='all'?null:(stickyRule.selected?.group===group&&stickyRule.selected?.key===key?null:{group,key});stickyRule.hover=null;render();}
+function updateRuleButtons(){document.querySelectorAll('.interactive-metric').forEach(b=>{const sel=stickyRule.selected;const hov=stickyRule.hover;b.classList.toggle('selected',sel?.group===b.dataset.group&&sel?.key===b.dataset.key);b.classList.toggle('hovered',hov?.group===b.dataset.group&&hov?.key===b.dataset.key)});$('all-panels').classList.toggle('selected',!stickyRule.selected)}
+document.querySelectorAll('.interactive-metric').forEach(b=>{b.addEventListener('mouseenter',()=>{stickyRule.hover={group:b.dataset.group,key:b.dataset.key};render()});b.addEventListener('mouseleave',()=>{stickyRule.hover=null;render()});b.addEventListener('click',()=>selectRule(b.dataset.group,b.dataset.key))});
+$('all-panels').onclick=()=>{stickyRule.hover=null;stickyRule.selected=null;searchInput.value='';filter.term='';render()};
+$('dependencies-summary').onclick=()=>openDependenciesOverview();
+searchInput.addEventListener('input',()=>{stickyRule.hover=null;stickyRule.selected=searchInput.value.trim()?{group:'search',key:searchInput.value.trim().toLocaleLowerCase('pt-BR')}:null;render()});
+function openLink(url){if(!/^https?:\/\/[^\s]+$/i.test(String(url||''))){toast('Cadastre um endereço http(s) válido.');return}window.open(url,'_blank','noopener,noreferrer')}
+const beforeChip=chip;
+chip=function(p,shelf=false){let h=beforeChip(p,shelf);if(!matchesRule(p))h=h.replace('class="chip ','class="chip out-of-focus ');const n=state.dependencies.filter(x=>x.panelId===p.id&&x.status!=='Resolvida').length;if(n)h=h.replace('</button>',`<span class="dep-mini" title="${n} pendência(s) de dados">▤${n}</span></button>`);return h.replace('data-status="Aguardando"','data-status="Bloqueado"')};
+renderStages=function(){const r=rule();$('stages').innerHTML=STAGES.filter(s=>s.x!==undefined).map(s=>{const all=state.panels.filter(p=>p.stage===s.id&&!finished(p));const sorted=r?[...all].sort((a,b)=>Number(matchesRule(b))-Number(matchesRule(a))):all;const head=sorted.slice(0,2);const dim=Boolean(r)&&all.length>0&&!all.some(x=>matchesRule(x));return `<section class="step ${['E05','E09'].includes(s.id)?'return':''} ${s.id==='PEND'?'pending':''} ${s.id==='E13'?'publish':''} ${dim?'dimmed-stage':''}" data-stage="${s.id}" style="left:${s.x}px;top:${s.y}px" title="${esc(s.id+' — '+s.name+' | '+s.owner)}" tabindex="0" aria-label="${esc(s.id+' '+s.name+'; '+all.length+' painéis')}"><button class="step-count ${all.length===0?'zero':''}" type="button" data-more="${s.id}" title="Ver todos os ${all.length} painéis da etapa">${all.length}</button><div class="step-head"><span class="step-code">${s.id}</span><span class="step-name">${esc(s.short)}</span>${s.days?`<span class="step-days">${s.days} dias úteis</span>`:''}</div><div class="step-pieces">${head.map(p=>chip(p)).join('')}${head.length===0?'<span class="piece-empty">Solte uma peça aqui</span>':''}</div></section>`}).join('')};
+matches=function(){return true};
+renderStats=function(){const sum=(fn)=>state.panels.filter(fn).length;const put=(id,n)=>{const el=$(id);if(el)el.textContent=n};put('total-n',state.panels.length);put('run-n',sum(p=>p.status==='Em execução'));put('done-n',sum(p=>p.status==='Concluído'));put('block-n',sum(p=>p.status==='Bloqueado'));put('notstart-n',sum(p=>p.status==='Não iniciado'));put('mockup-n',sum(p=>macro(p.stage)==='Mockup'));put('panel-n',sum(p=>macro(p.stage)==='Painel'));put('late-n',sum(p=>deadline(p)==='Atrasado'));put('ontime-n',sum(p=>deadline(p)==='Dentro do prazo'));put('latecompleted-n',sum(p=>deadline(p)==='Concluído com atraso'));put('undated-n',sum(p=>deadline(p)==='Sem previsão'));put('deps-n',state.dependencies.filter(x=>x.status!=='Resolvida').length);$('sync-mode').textContent=state.demo?'EXEMPLO · DADOS LOCAIS':'WEB · DADOS LOCAIS POR NAVEGADOR';updateRuleButtons()};
+const oldRender=render;render=function(){oldRender();renderLanes()};
+const oldOpenMove=openMove;
+function participantsForStage(stage,p,same){const people=teamNames(laneForStage(stage));const prior=same?p.assignees:[];const combined=[...new Set([...people,...prior])];return `<div class="field" id="team-field"><label>Profissionais desta etapa (${LANES.find(x=>x.id===laneForStage(stage))?.title||''})</label><div class="form-chips">${combined.map(n=>`<label><input type="checkbox" class="staff-select" value="${esc(n)}" ${prior.includes(n)?'checked':''}>${esc(n)}</label>`).join('')||'<small>Equipe ainda não cadastrada na raia.</small>'}</div><input id="staff-manual" maxlength="230" placeholder="Ou informe nomes separados por ponto e vírgula" style="margin-top:6px"></div>`}
+openMove=function(id,to,opts={}){const p=getP(id);oldOpenMove(id,to,opts);if(!$('dialog').querySelector('#status'))return;const select=$('status');const desired=opts.publish?'Concluído':(p.stage===to?p.status:to==='E14'?'Arquivado':to==='E00'?'Não iniciado':'Em execução');select.innerHTML=options(['Em execução','Concluído','Bloqueado','Não iniciado','Arquivado'],desired);const teamBox=document.createElement('div');teamBox.id='team-area';teamBox.innerHTML=participantsForStage(to,p,p.stage===to);$('note').closest('.field').before(teamBox);$('dest').addEventListener('change',()=>{teamBox.innerHTML=participantsForStage($('dest').value,p,p.stage===$('dest').value)});};
+const oldSaveMove=saveMove;
+saveMove=function(){const people=Array.from($('dialog').querySelectorAll('.staff-select:checked')).map(x=>x.value);const manual=($('staff-manual')?.value||'').split(';').map(x=>x.trim()).filter(Boolean);const participants=[...new Set([...people,...manual])];if(!$('owner').value.trim()&&participants.length)$('owner').value=participants[0];const before=state.events.length;const panel=modal?.id;const dest=$('dest')?.value;oldSaveMove();if(state.events.length>before){const p=getP(panel);p.assignees=participants;state.events[state.events.length-1].assignees=participants;save();render();if(dest==='PEND'&&!state.dependencies.some(x=>x.panelId===panel&&x.status!=='Resolvida'))openDependencyEditor(null,panel)}};
+const oldPaint=paintDrawer;
+paintDrawer=function(){const p=getP(selected);if(!p)return;oldPaint();const container=$('drawer');const team=(p.assignees||[]).join(', ')||'Ainda não designados';const deps=state.dependencies.filter(x=>x.panelId===p.id),open=deps.filter(x=>x.status!=='Resolvida');const formatted=(s)=>brDate(s)||'—';const section=document.createElement('section');section.innerHTML=`<h3 class="detail-title">Profissionais da etapa atual</h3><div class="tiny-item">${esc(team)}</div><h3 class="detail-title">Visualização do produto</h3><div class="mini-actions">${p.mockupUrl?`<a target="_self" rel="noopener noreferrer" href="${esc(p.mockupUrl)}">↗ Abrir mockup</a>`:''}${p.powerbiUrl?`<a target="_self" rel="noopener noreferrer" href="${esc(p.powerbiUrl)}">↗ Abrir painel Power BI</a>`:''}<button id="links-edit">✎ Editar links</button></div><h3 class="detail-title">Dependências de dados (${open.length} em aberto)</h3>${open.slice(0,3).map(d=>`<div class="tiny-item"><b>${esc(d.description)}</b><br>Responsável: ${esc(d.owner||d.area||'A definir')} · ${esc(d.status)} · Prev. ${formatted(d.dueDate)}</div>`).join('')||'<p style="font-size:11px;color:#778f9e">Nenhuma pendência em aberto.</p>'}<div class="mini-actions"><button id="panel-deps">▤ Ver / cadastrar pendências</button></div>`;
+const historyHeading=Array.from(container.querySelectorAll('h3')).find(x=>x.textContent.startsWith('Histórico'));if(historyHeading)historyHeading.before(section);else container.append(section);
+$('links-edit').onclick=()=>openLinks(p.id);$('panel-deps').onclick=()=>openPanelDependencies(p.id)};
+function openLinks(id){const p=getP(id);if(!p)return;openDialog('Links de visualização',p.id+' · '+p.name,`<div class="field"><label for="url-mockup">Link do mockup</label><input id="url-mockup" type="url" value="${esc(p.mockupUrl)}" placeholder="https://..." /></div><div class="field"><label for="url-bi">Link do painel Power BI</label><input id="url-bi" type="url" value="${esc(p.powerbiUrl)}" placeholder="https://..." /></div><div class="hintbox">Os links ficam vinculados ao painel, independentemente da etapa. O acesso respeita as permissões da plataforma de origem.</div><div class="error" id="link-error"></div><div class="dialog-actions"><button id="link-cancel">Cancelar</button><button class="primary" id="link-save">Salvar links</button></div>`);$('link-cancel').onclick=closeDialog;$('link-save').onclick=()=>{const m=$('url-mockup').value.trim(),b=$('url-bi').value.trim();if([m,b].some(u=>u&&!/^https?:\/\/\S+$/i.test(u))){$('link-error').textContent='Informe URLs http(s) válidas.';return}p.mockupUrl=m;p.powerbiUrl=b;state.demo=false;save();closeDialog();paintDrawer();render();toast('Links de visualização salvos.')};}
+const oldStageList=openStageList;
+openStageList=function(stage){if(stage==='PEND')return openDependenciesOverview();oldStageList(stage)};
+function depOpen(d){return d.status!=='Resolvida'}
+function getDep(id){return state.dependencies.find(x=>x.id===id)}
+function depStatus(s){return ['Aberta','Em tratamento','Resolvida'].includes(s)?s:'Aberta'}
+function depItemHtml(d){return `<div class="dep-row"><strong>${esc(getP(d.panelId)?.name||d.panelId)} · ${esc(d.description)}</strong><div class="dep-meta"><span>${esc(d.type||'Tabela')}</span><span>Responsável: ${esc(d.owner||d.area||'A definir')}</span><span>Solic. ${esc(brDate(d.requestDate)||'—')}</span><span>Prev. ${esc(brDate(d.dueDate)||'—')}</span><span>Resol. ${esc(brDate(d.resolvedDate)||'—')}</span><span>${esc(d.status)}</span></div><div><button data-dep-edit="${esc(d.id)}">Editar pendência</button></div></div>`}
+function bindDepActions(){document.querySelectorAll('[data-dep-edit]').forEach(b=>b.onclick=()=>openDependencyEditor(b.dataset.depEdit));}
+function openPanelDependencies(pid){const p=getP(pid);if(!p)return;const arr=state.dependencies.filter(d=>d.panelId===pid);openDialog('Dependências de dados',p.id+' · '+p.name,`<div class="dep-stat"><span>${arr.filter(depOpen).length} em aberto</span><span>${arr.filter(d=>depOpen(d)&&d.dueDate&&d.dueDate<today()).length} atrasada(s)</span></div><div class="dep-list">${arr.map(depItemHtml).join('')||'<p>Nenhuma pendência registrada.</p>'}</div><div class="dialog-actions"><button id="deps-close">Fechar</button><button id="deps-add" class="primary">+ Nova pendência</button></div>`);$('deps-close').onclick=closeDialog;$('deps-add').onclick=()=>openDependencyEditor(null,pid);bindDepActions()}
+function openDependenciesOverview(){const a=state.dependencies,opened=a.filter(depOpen),late=opened.filter(d=>d.dueDate&&d.dueDate<today());openDialog('Dependências de Dados','Consulta consolidada de bases, tabelas e indicadores pendentes',`<div class="dep-stat"><span>${opened.length} pendências abertas</span><span>${new Set(opened.map(d=>d.panelId)).size} painéis afetados</span><span>${late.length} atrasadas</span></div><div class="dep-overflow"><table class="dep-table"><thead><tr><th>Painel</th><th>Base / tabela</th><th>Responsável</th><th>Solicitação</th><th>Previsão</th><th>Resolução</th><th>Situação</th><th></th></tr></thead><tbody>${a.map(d=>`<tr><td>${esc(getP(d.panelId)?.name||d.panelId)}</td><td>${esc(d.description)}</td><td>${esc(d.owner||d.area||'—')}</td><td>${esc(brDate(d.requestDate)||'—')}</td><td>${esc(brDate(d.dueDate)||'—')}</td><td>${esc(brDate(d.resolvedDate)||'—')}</td><td>${esc(d.status)}</td><td><button data-dep-edit="${esc(d.id)}">Editar</button></td></tr>`).join('')||'<tr><td colspan="8">Nenhuma pendência cadastrada.</td></tr>'}</tbody></table></div><div class="dialog-actions"><button id="deps-close">Fechar</button><button id="deps-add" class="primary">+ Nova pendência</button></div>`);$('deps-close').onclick=closeDialog;$('deps-add').onclick=()=>openDependencyEditor(null,'');bindDepActions()}
+function openDependencyEditor(id,pid=''){const d=id?getDep(id):null;const selectedPanel=d?.panelId||pid||state.panels[0]?.id||'';const status=depStatus(d?.status);openDialog(d?'Editar pendência':'Cadastrar pendência','Disponibilidade de bases, tabelas e indicadores',`<div class="form-grid"><div class="field"><label for="dep-panel">Painel *</label><select id="dep-panel">${state.panels.map(p=>`<option value="${esc(p.id)}" ${p.id===selectedPanel?'selected':''}>${esc(p.id+' — '+p.name)}</option>`).join('')}</select></div><div class="field"><label for="dep-type">Tipo</label><select id="dep-type">${options(['Base de dados','Tabela','Indicador / FQI'],d?.type||'Tabela')}</select></div></div><div class="field"><label for="dep-description">Base, tabela ou indicador e pendência *</label><input id="dep-description" maxlength="210" value="${esc(d?.description||'')}" placeholder="O que precisa ser disponibilizado?"/></div><div class="form-grid"><div class="field"><label for="dep-owner">Responsável pela resolução</label><input id="dep-owner" maxlength="120" value="${esc(d?.owner||'')}" placeholder="Nome do profissional" /></div><div class="field"><label for="dep-area">Área responsável</label><input id="dep-area" maxlength="120" value="${esc(d?.area||'')}" placeholder="Quando ainda não houver nome" /></div></div><div class="form-grid"><div class="field"><label for="dep-request">Data da solicitação</label><input class="date-br" id="dep-request" inputmode="numeric" maxlength="10" value="${esc(brDate(d?.requestDate||today()))}" placeholder="DD/MM/AAAA"></div><div class="field"><label for="dep-due">Previsão de atendimento</label><input class="date-br" id="dep-due" inputmode="numeric" maxlength="10" value="${esc(brDate(d?.dueDate||''))}" placeholder="DD/MM/AAAA"></div></div><div class="form-grid"><div class="field"><label for="dep-status">Situação</label><select id="dep-status">${options(['Aberta','Em tratamento','Resolvida'],status)}</select></div><div class="field"><label for="dep-resolved">Data da resolução</label><input class="date-br" id="dep-resolved" inputmode="numeric" maxlength="10" value="${esc(brDate(d?.resolvedDate||''))}" placeholder="DD/MM/AAAA" /></div></div><div class="error" id="dep-error"></div><div class="dialog-actions"><button id="dep-cancel">Cancelar</button><button id="dep-save" class="primary">Salvar pendência</button></div>`);
+$('dep-cancel').onclick=closeDialog;$('dep-status').onchange=()=>{if($('dep-status').value==='Resolvida'&&!$('dep-resolved').value)$('dep-resolved').value=brDate(today());if($('dep-status').value!=='Resolvida')$('dep-resolved').value=''};
+$('dep-save').onclick=()=>{const request=isoDate($('dep-request').value),due=isoDate($('dep-due').value),resolved=isoDate($('dep-resolved').value),stat=$('dep-status').value,description=$('dep-description').value.trim(),owner=$('dep-owner').value.trim(),area=$('dep-area').value.trim();if(!description||(!owner&&!area)){$('dep-error').textContent='Informe a pendência e o responsável ou a área responsável.';return}if(!request||($('dep-due').value&&!due)||($('dep-resolved').value&&!resolved)){$('dep-error').textContent='Informe datas válidas no formato DD/MM/AAAA.';return}if(due&&due<request){$('dep-error').textContent='A previsão deve ser posterior ou igual à solicitação.';return}if(stat==='Resolvida'&&!resolved){$('dep-error').textContent='Informe a data de resolução.';return}const item={id:d?.id||'D'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,6),panelId:$('dep-panel').value,type:$('dep-type').value,description,owner,area,requestDate:request,dueDate:due,resolvedDate:stat==='Resolvida'?resolved:'',status:stat,updated:new Date().toISOString()};if(d)Object.assign(d,item);else state.dependencies.push(item);state.demo=false;save();render();closeDialog();toast('Pendência de dados salva.')};bindDateMask();}
+$('export-people').onclick=()=>{const rows=[['Profissional','CodigoPainel','Painel','Etapa','Situacao','DataEntrada','PrevisaoSaida','Conclusao','TipoRegistro']];state.events.forEach(e=>(e.assignees||[]).forEach(person=>rows.push([person,e.panelId,e.panelName,e.to,e.status,brDate(e.entryDate),brDate(e.dueDate),brDate(e.completedDate),'Histórico'])));state.panels.forEach(p=>(p.assignees||[]).forEach(person=>rows.push([person,p.id,p.name,p.stage,p.status,brDate(p.entryDate),brDate(p.dueDate),brDate(p.completedDate),'Atual'])));download('EducaDados_Painel_por_Pessoa_V6_'+today()+'.csv',csvOf(rows),'text/csv;charset=utf-8');toast('Relatório por pessoa exportado.')};
+$('export-dependencies').onclick=()=>{const rows=[['Painel_ID','Painel','Tipo','Pendencia','Responsavel','Area','Solicitacao','Previsao','Resolucao','Situacao'],...state.dependencies.map(d=>[d.panelId,getP(d.panelId)?.name||d.panelId,d.type,d.description,d.owner,d.area,brDate(d.requestDate),brDate(d.dueDate),brDate(d.resolvedDate),d.status])];download('EducaDados_Pendencias_V6_'+today()+'.csv',csvOf(rows),'text/csv;charset=utf-8');toast('Pendências exportadas.')};
+$('export-json').onclick=()=>{download('EducaDados_Backup_Completo_V6_'+today()+'.json',JSON.stringify(state,null,2),'application/json');toast('Backup completo V6 gerado.')};
+$('export-csv').onclick=()=>{const rows=[['Codigo','Painel','Etapa','Estagio','Situacao','CondicaoPrazo','ResponsavelPrincipal','Profissionais','Prioridade','Resultado','DataEntrada','PrevisaoSaida','DataConclusao','URL_Mockup','URL_Painel_PowerBI','Observacoes'],...state.panels.map(p=>[p.id,p.name,p.stage,macro(p.stage),p.status,deadline(p),p.owner,(p.assignees||[]).join('; '),p.priority,p.response,brDate(p.entryDate),brDate(p.dueDate),brDate(p.completedDate),p.mockupUrl,p.powerbiUrl,p.note])];download('EducaDados_Gestao_Paineis_V6_'+today()+'.csv',csvOf(rows),'text/csv;charset=utf-8');toast('Painéis exportados.')};
+$('file-input').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{const txt=await f.text();let arr=[],events=[],teams={},dependencies=[];if(f.name.toLowerCase().endsWith('.json')){const o=JSON.parse(txt);if(!Array.isArray(o.panels))throw Error('Arquivo sem painéis.');arr=o.panels.map(normalize).filter(Boolean);events=Array.isArray(o.events)?o.events:[];teams=o.teams||{};dependencies=Array.isArray(o.dependencies)?o.dependencies:[]}else{const rows=parseCSV(txt);if(rows.length<2)throw Error('CSV sem painéis.');const h=rows[0].map(x=>x.trim().toLocaleLowerCase('pt-BR'));arr=rows.slice(1).map((r,i)=>{const q=Object.fromEntries(h.map((k,j)=>[k,r[j]||'']));return normalize({id:q.codigo||q.id,name:q.painel||q.nome,stage:q.etapa||q.stage,status:q.situacao||q.status,owner:q.responsavelprincipal||q.responsavel||q.owner,priority:q.prioridade||'Normal',response:q.resultado||'Pendente',entryDate:q.dataentrada,dueDate:q.previsaosaida,completedDate:q.dataconclusao,mockupUrl:q.url_mockup||'',powerbiUrl:q.url_painel_powerbi||'',assignees:q.profissionais?q.profissionais.split(';').map(x=>x.trim()).filter(Boolean):[],note:q.observacoes||''},i)}).filter(Boolean)}if(!arr.length)throw Error('Nenhum painel válido.');if(new Set(arr.map(p=>p.id)).size!==arr.length)throw Error('Códigos de painel duplicados.');if(!window.confirm(`Importar ${arr.length} painéis e substituir os dados locais atuais? Considere fazer backup antes.`))return;state={version:6,demo:false,panels:arr,events,teams,dependencies};save();closeDrawer();render();toast(`Importados ${arr.length} painéis.`)}catch(err){window.alert('Falha na importação: '+err.message)}finally{e.target.value=''}};
+// O cadastro de novos painéis sempre inicia com a situação Não iniciado.
+const oldNewClick=$('new-panel').onclick;
+$('new-panel').onclick=()=>{oldNewClick();const saveNew=$('new-save');if(saveNew){const oldHandler=saveNew.onclick;saveNew.onclick=()=>{const before=state.panels.length;oldHandler();if(state.panels.length>before){const p=state.panels[state.panels.length-1];p.status='Não iniciado';p.assignees=[];p.mockupUrl='';p.powerbiUrl='';save();render()}}}};
+/* V7 — Reuniões e validações, melhorias individualizadas e exportação */
+state.improvements=Array.isArray(state.improvements)?state.improvements.filter(x=>x&&typeof x==='object'):[];
+state.meetings=Array.isArray(state.meetings)?state.meetings.filter(x=>x&&typeof x==='object'):[];
+state.version=10;
+const MEETING_STAGES=['E04','E08','E11','E12'];
+const IMP_STAGES=['E04','E08','E11','E12'];
+const IMP_STATUSES=['Aberta','Em ajuste','Implementada'];
+const MEETING_OUTCOMES=['Pendente','Homologado / Aprovado','Ajustes solicitados','Não homologado / Não aprovado'];
+const byId=(id)=>document.getElementById(id);
+const v7DialogOriginal=openDialog;
+openDialog=function(...args){expMenu.open=false;v7DialogOriginal(...args)};
+const uid=(prefix)=>prefix+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);
+const unique=(arr)=>[...new Set(arr.filter(Boolean))];
+function improvementsFor(pid){return state.improvements.filter(m=>m.panelId===pid)}
+function improvementsForMeeting(mid){return state.improvements.filter(m=>m.meetingId===mid)}
+function meetingsFor(pid){return state.meetings.filter(m=>(m.panelIds||[]).includes(pid))}
+function impLate(m){return m.status!=='Implementada'&&!!m.dueDate&&m.dueDate<today()}
+function impDoneLate(m){return m.status==='Implementada'&&!!m.dueDate&&!!m.completedDate&&m.completedDate>m.dueDate}
+function impFilter(m,key){return key==='Registradas'||key==='Todas'||(key==='Em ajuste'&&m.status==='Em ajuste')||(key==='Implementadas'&&m.status==='Implementada')||(key==='Atrasadas'&&impLate(m));}
+function peopleForSuggestions(){return unique(Object.values(state.teams).flatMap(a=>Array.isArray(a)?a:[])).sort((a,b)=>a.localeCompare(b,'pt-BR'))}
+const fmt=(d)=>brDate(d)||'—';
+function fieldDate(id,name,date,placeholder='DD/MM/AAAA'){return `<div class="field"><label for="${id}">${esc(name)}</label><input id="${id}" class="date-br" inputmode="numeric" maxlength="10" placeholder="${placeholder}" value="${esc(brDate(date||''))}"></div>`}
+function meetingName(m){return `${brDate(m.meetingDate)||'Sem data'} · ${m.stage||'—'} · ${m.area||'Área não informada'}`}
+// Ferramentas compactas no cabeçalho (sem criar uma nova faixa horizontal).
+const v7MeetBtn=$('top-meetings');v7MeetBtn.className='v7-short';
+const v7ImpBtn=$('top-improvements');v7ImpBtn.className='v7-short';
+header.insertBefore(v7ImpBtn,expMenu);header.insertBefore(v7MeetBtn,expMenu);
+v7MeetBtn.onclick=()=>openMeetingList();v7ImpBtn.onclick=()=>openImprovementList();
+const v7ImpExport=$('export-improvements');expPanel.append(v7ImpExport);
+const v7MeetingExport=$('export-meetings');expPanel.append(v7MeetingExport);
+const statsBeforeV7=renderStats;
+renderStats=function(){statsBeforeV7();const ims=state.improvements;const put=(id,num)=>{const el=byId(id);if(el)el.textContent=num};put('impr-total-n',ims.length);put('impr-active-n',ims.filter(m=>m.status==='Em ajuste').length);put('impr-done-n',ims.filter(m=>m.status==='Implementada').length);put('impr-late-n',ims.filter(impLate).length);put('meet-n',state.meetings.length)};
+const ruleBeforeV7=matchesRule;
+matchesRule=function(p,r=rule()){if(r?.group==='improvement')return improvementsFor(p.id).some(m=>impFilter(m,r.key));return ruleBeforeV7(p,r)};
+const chipBeforeV7=chip;
+chip=function(p,shelf=false){let html=chipBeforeV7(p,shelf);const remaining=improvementsFor(p.id).filter(m=>m.status!=='Implementada');if(remaining.length){html=html.replace('</button>',`<span class="imp-mini" title="${remaining.length} melhoria(s) pendente(s)">✎${remaining.length}</span></button>`)}return html};
+// Os filtros por melhoria usam os mesmos controles interativos de estágio/situação/prazo.
+document.querySelectorAll('.interactive-metric[data-group="improvement"]').forEach(b=>{
+  b.addEventListener('mouseenter',()=>{stickyRule.hover={group:'improvement',key:b.dataset.key};render()});
+  b.addEventListener('mouseleave',()=>{stickyRule.hover=null;render()});
+  b.addEventListener('click',()=>selectRule('improvement',b.dataset.key));
+});
+byId('meetings-summary').onclick=()=>openMeetingList();
+function alertV7(id,text){const node=byId(id);if(node)node.textContent=text}
+function errorDates(inputs){for(const [id,label] of inputs){const el=byId(id);if(el?.value&&!isoDate(el.value))return `Data inválida em ${label}. Use DD/MM/AAAA.`}return ''}
+function v7TinyTitle(t,sub=''){return `<div class="v7-card-title">${esc(t)}</div>${sub?`<div class="v7-card-meta">${esc(sub)}</div>`:''}`}
+function openImprovementList(pid='',meetingId='',only=''){
+ const list=state.improvements.filter(m=>(!pid||m.panelId===pid)&&(!meetingId||m.meetingId===meetingId)&&(!only||impFilter(m,only))).slice().sort((a,b)=>(b.registeredDate||'').localeCompare(a.registeredDate||''));
+ const all=state.improvements.filter(m=>(!pid||m.panelId===pid)&&(!meetingId||m.meetingId===meetingId));
+ const panel=pid?getP(pid):null;
+ const cards=list.map(m=>{
+   const stage=m.originStage||'E08';const extra=m.meetingId?state.meetings.find(x=>x.id===m.meetingId):null;
+   return `<article class="v7-card"><div class="v7-card-title">${esc(getP(m.panelId)?.name||m.panelId)} · ${esc(m.description||'Sem descrição')}</div>
+    <div class="v7-card-meta"><span>Origem: ${esc(stage)}</span><span>Responsável: ${esc(m.owner||'A definir')}</span><span>Registro: ${fmt(m.registeredDate)}</span><span>Previsão: ${fmt(m.dueDate)}</span><span>Implementação: ${fmt(m.completedDate)}</span>${extra?`<span>Reunião: ${fmt(extra.meetingDate)}</span>`:''}</div>
+    <div class="v7-card-foot"><span class="v7-status ${m.status==='Implementada'?'done':''}">${esc(m.status)}</span>${impLate(m)?'<span class="v7-status late">Atrasada</span>':''}${impDoneLate(m)?'<span class="v7-status late">Implementada com atraso</span>':''}<button data-v7-imp-edit="${esc(m.id)}">Editar melhoria</button>${extra?`<button data-v7-meet-details="${esc(extra.id)}">Ver reunião</button>`:''}</div></article>`
+ }).join('')||'<div class="v7-empty">Nenhuma melhoria cadastrada para esta seleção.</div>';
+ const stats=`<div class="v7-statbar"><div class="v7-stat"><b>${all.length}</b><small>Registradas</small></div><div class="v7-stat"><b>${all.filter(m=>m.status==='Aberta').length}</b><small>Abertas</small></div><div class="v7-stat"><b>${all.filter(m=>m.status==='Em ajuste').length}</b><small>Em ajuste</small></div><div class="v7-stat"><b>${all.filter(m=>m.status==='Implementada').length}</b><small>Implementadas</small></div><div class="v7-stat"><b>${all.filter(impLate).length}</b><small>Atrasadas</small></div></div>`;
+ openDialog('Melhorias e Ajustes',panel?`${panel.id} · ${panel.name}`:meetingId?'Melhorias vinculadas à reunião':'Visão consolidada do projeto',`${stats}${cards}<div class="dialog-actions"><button id="v7-close">Fechar</button><button id="v7-create-imp" class="primary">+ Registrar melhoria</button></div>`);
+ byId('v7-close').onclick=closeDialog;byId('v7-create-imp').onclick=()=>openImprovementEditor(null,pid,meetingId);
+ document.querySelectorAll('[data-v7-imp-edit]').forEach(el=>el.onclick=()=>openImprovementEditor(el.dataset.v7ImpEdit));
+ document.querySelectorAll('[data-v7-meet-details]').forEach(el=>el.onclick=()=>openMeetingDetails(el.dataset.v7MeetDetails));
+}
+function meetingSelect(selected,pid){const possible=state.meetings.filter(m=>!pid||(m.panelIds||[]).includes(pid));return `<option value="">Sem reunião vinculada</option>`+possible.map(m=>`<option value="${esc(m.id)}" ${m.id===selected?'selected':''}>${esc(meetingName(m))}</option>`).join('')}
+function openImprovementEditor(id,pid='',meetingId='',stage=''){
+ const m=id?state.improvements.find(x=>x.id===id):null;const meeting=meetingId?state.meetings.find(x=>x.id===meetingId):null;
+ const initialPanel=m?.panelId||pid||meeting?.panelIds?.[0]||state.panels[0]?.id||'';
+ const initialStage=m?.originStage||stage||(meeting&&IMP_STAGES.includes(meeting.stage)?meeting.stage:'E08');
+ const selectedMeeting=m?.meetingId||meetingId||'';
+ const people=peopleForSuggestions();const form=`<div class="form-grid"><div class="field"><label for="v7-imp-panel">Painel *</label><select id="v7-imp-panel">${state.panels.map(p=>`<option value="${esc(p.id)}" ${p.id===initialPanel?'selected':''}>${esc(p.id+' · '+p.name)}</option>`).join('')}</select></div><div class="field"><label for="v7-imp-origin">Etapa de origem *</label><select id="v7-imp-origin">${IMP_STAGES.map(v=>`<option ${initialStage===v?'selected':''}>${v}</option>`).join('')}</select></div></div>
+ <div class="field"><label for="v7-imp-desc">Melhoria solicitada *</label><textarea id="v7-imp-desc" rows="2" maxlength="800" placeholder="Descreva o ajuste solicitado">${esc(m?.description||'')}</textarea></div>
+ <div class="form-grid"><div class="field"><label for="v7-imp-owner">Responsável pela execução</label><input id="v7-imp-owner" maxlength="120" list="v7-person-suggest" value="${esc(m?.owner||'')}" placeholder="Nome do profissional"><datalist id="v7-person-suggest">${people.map(x=>`<option value="${esc(x)}"></option>`).join('')}</datalist></div><div class="field"><label for="v7-imp-status">Situação</label><select id="v7-imp-status">${options(IMP_STATUSES,m?.status||'Aberta')}</select></div></div>
+ <div class="form-grid">${fieldDate('v7-imp-request','Data do registro',m?.registeredDate||today())}${fieldDate('v7-imp-due','Previsão de implementação',m?.dueDate||'')}</div>
+ <div class="form-grid">${fieldDate('v7-imp-complete','Data da implementação',m?.completedDate||'')}<div class="field"><label for="v7-imp-meeting">Reunião de origem</label><select id="v7-imp-meeting">${meetingSelect(selectedMeeting,initialPanel)}</select></div></div>
+ <div class="v7-help">O atraso é calculado automaticamente. Uma melhoria pode permanecer aberta mesmo após o painel mudar de etapa.</div>
+ <div class="error" id="v7-imp-error" role="alert"></div><div class="dialog-actions"><button id="v7-imp-cancel">Cancelar</button><button id="v7-imp-save" class="primary">Salvar melhoria</button></div>`;
+ openDialog(m?'Editar melhoria':'Registrar melhoria','Solicitação vinculada ao painel e à etapa de origem',form);
+ byId('v7-imp-cancel').onclick=closeDialog;
+ byId('v7-imp-panel').onchange=()=>{const selected=byId('v7-imp-panel').value;byId('v7-imp-meeting').innerHTML=meetingSelect('',selected)};
+ byId('v7-imp-status').onchange=()=>{if(byId('v7-imp-status').value==='Implementada'&&!byId('v7-imp-complete').value)byId('v7-imp-complete').value=brDate(today());if(byId('v7-imp-status').value!=='Implementada')byId('v7-imp-complete').value=''};
+ byId('v7-imp-save').onclick=()=>{
+  const panelId=byId('v7-imp-panel').value,originStage=byId('v7-imp-origin').value,description=byId('v7-imp-desc').value.trim(),owner=byId('v7-imp-owner').value.trim(),status=byId('v7-imp-status').value;
+  const registeredDate=isoDate(byId('v7-imp-request').value),dueDate=isoDate(byId('v7-imp-due').value),completedDate=isoDate(byId('v7-imp-complete').value),selectedMeeting=byId('v7-imp-meeting').value;
+  const err=errorDates([['v7-imp-request','registro'],['v7-imp-due','previsão'],['v7-imp-complete','implementação']]);
+  if(err){alertV7('v7-imp-error',err);return}if(!description||!registeredDate){alertV7('v7-imp-error','Informe a melhoria solicitada e a data de registro.');return}
+  if(dueDate&&dueDate<registeredDate){alertV7('v7-imp-error','A previsão não pode ser anterior ao registro.');return}
+  if(status==='Implementada'&&!completedDate){alertV7('v7-imp-error','Informe a data de implementação.');return}
+  if(status!=='Implementada'&&completedDate){alertV7('v7-imp-error','Para registrar implementação, selecione a situação Implementada.');return}
+  if(completedDate&&completedDate<registeredDate){alertV7('v7-imp-error','A implementação não pode ser anterior ao registro.');return}
+  const meet=selectedMeeting?state.meetings.find(x=>x.id===selectedMeeting):null;
+  if(selectedMeeting&&(!meet||!(meet.panelIds||[]).includes(panelId))){alertV7('v7-imp-error','A reunião selecionada não inclui o painel.');return}
+  const item={id:m?.id||uid('M'),panelId,meetingId:selectedMeeting,originStage,description,owner,registeredDate,dueDate,completedDate:status==='Implementada'?completedDate:'',status,updatedAt:new Date().toISOString()};
+  if(m)Object.assign(m,item);else state.improvements.push(item);state.demo=false;save();closeDialog();render();if(selected===panelId)paintDrawer();toast('Melhoria registrada.');
+ };
+ bindDateMask();
+}
+function openMeetingList(pid='',stage=''){
+ const arr=state.meetings.filter(m=>(!pid||(m.panelIds||[]).includes(pid))&&(!stage||m.stage===stage)).slice().sort((a,b)=>(b.meetingDate||'').localeCompare(a.meetingDate||''));
+ const panel=pid?getP(pid):null;
+ const html=arr.map(m=>{
+  const related=improvementsForMeeting(m.id);const participants=(m.participants||[]).join(', ');
+  return `<article class="v7-card"><div class="v7-card-title">${esc(meetingName(m))}</div><div class="v7-card-meta"><span>Painéis: ${(m.panelIds||[]).map(id=>esc(getP(id)?.name||id)).join('; ')}</span><span>Participantes: ${esc(participants||'Não informados')}</span><span>Resultado: ${esc(m.outcome||'Pendente')}</span><span>${related.length} melhoria(s) · ${related.filter(x=>x.status==='Implementada').length} implementada(s)</span></div><div class="v7-card-foot"><button data-v7-meet-details="${esc(m.id)}">Detalhes</button><button data-v7-meet-edit="${esc(m.id)}">Editar</button><button data-v7-meet-ims="${esc(m.id)}">Melhorias (${related.length})</button></div></article>`
+ }).join('')||'<div class="v7-empty">Nenhuma reunião registrada para esta seleção.</div>';
+ openDialog('Reuniões e Validações',panel?`${panel.id} · ${panel.name}`:stage?`Etapa ${stage}`:'Reuniões vinculadas aos painéis',`<div class="v7-statbar"><div class="v7-stat"><b>${arr.length}</b><small>Reuniões</small></div><div class="v7-stat"><b>${arr.reduce((n,m)=>n+improvementsForMeeting(m.id).length,0)}</b><small>Melhorias solicitadas</small></div></div>${html}<div class="dialog-actions"><button id="v7-meet-close">Fechar</button><button id="v7-meet-add" class="primary">+ Registrar reunião</button></div>`);
+ byId('v7-meet-close').onclick=closeDialog;byId('v7-meet-add').onclick=()=>openMeetingEditor(null,pid,stage);
+ document.querySelectorAll('[data-v7-meet-details]').forEach(b=>b.onclick=()=>openMeetingDetails(b.dataset.v7MeetDetails));
+ document.querySelectorAll('[data-v7-meet-edit]').forEach(b=>b.onclick=()=>openMeetingEditor(b.dataset.v7MeetEdit));
+ document.querySelectorAll('[data-v7-meet-ims]').forEach(b=>b.onclick=()=>openImprovementList('',b.dataset.v7MeetIms));
+}
+function openMeetingDetails(id){const m=state.meetings.find(x=>x.id===id);if(!m)return;
+ const ims=improvementsForMeeting(id),panels=(m.panelIds||[]).map(pid=>`${getP(pid)?.name||pid}`).join(', ');
+ openDialog('Detalhes da reunião',meetingName(m),`<div class="v7-card"><div class="v7-card-title">${esc(m.area||'Área não informada')}</div><div class="v7-card-meta"><span>Data: ${fmt(m.meetingDate)}</span><span>Etapa: ${esc(m.stage)}</span><span>Painéis: ${esc(panels)}</span><span>Participantes: ${esc((m.participants||[]).join(', ')||'—')}</span><span>Resultado: ${esc(m.outcome||'Pendente')}</span></div>${m.notes?`<p style="font-size:12px">${esc(m.notes)}</p>`:''}${m.url?`<div class="v7-card-foot"><a class="v7-link" target="_self" rel="noopener noreferrer" href="${esc(m.url)}">Abrir ata/registro</a></div>`:''}</div><div class="v7-statbar"><div class="v7-stat"><b>${ims.length}</b><small>Melhorias vinculadas</small></div><div class="v7-stat"><b>${ims.filter(x=>x.status==='Implementada').length}</b><small>Implementadas</small></div><div class="v7-stat"><b>${ims.filter(impLate).length}</b><small>Atrasadas</small></div></div><div class="v7-card-foot"><button id="v7-detail-edit">Editar reunião</button><button id="v7-detail-imps">Consultar melhorias</button><button id="v7-detail-add">+ Melhoria desta reunião</button></div><div class="dialog-actions"><button id="v7-detail-close">Fechar</button></div>`);
+ byId('v7-detail-close').onclick=closeDialog;byId('v7-detail-edit').onclick=()=>openMeetingEditor(id);byId('v7-detail-imps').onclick=()=>openImprovementList('',id);byId('v7-detail-add').onclick=()=>openImprovementEditor(null,m.panelIds[0]||'',id,IMP_STAGES.includes(m.stage)?m.stage:'E08');
+}
+function openMeetingEditor(id,pid='',stage=''){
+ const m=id?state.meetings.find(x=>x.id===id):null;
+ const currentPanels=m?.panelIds||[pid||state.panels[0]?.id].filter(Boolean);
+ const currentStage=m?.stage||stage||'E08';const currentOutcome=m?.outcome||'Pendente';
+ const panels=state.panels.map(p=>`<label><input type="checkbox" class="v7-meeting-panel" value="${esc(p.id)}" ${currentPanels.includes(p.id)?'checked':''}>${esc(p.id+' · '+p.name)}</label>`).join('');
+ const meetingForm=`<div class="v7-two">${fieldDate('v7-meet-date','Data da reunião *',m?.meetingDate||today())}<div class="field"><label for="v7-meet-stage">Etapa *</label><select id="v7-meet-stage">${MEETING_STAGES.map(k=>`<option value="${k}" ${currentStage===k?'selected':''}>${k} · ${esc(MAP[k].name)}</option>`).join('')}</select></div></div>
+ <div class="field"><label>Painéis envolvidos *</label><div class="v7-multi" id="v7-meet-panels">${panels}</div></div>
+ <div class="field"><label for="v7-meet-area">Área(s) do MEC participantes *</label><input id="v7-meet-area" maxlength="230" value="${esc(m?.area||'')}" placeholder="Ex.: SESu; SEB; SETEC"></div>
+ <div class="field"><label for="v7-meet-participants">Participantes *</label><textarea id="v7-meet-participants" rows="2" maxlength="1200" placeholder="Um nome por linha ou separado por ponto e vírgula">${esc((m?.participants||[]).join('\n'))}</textarea></div>
+ <div class="v7-two"><div class="field"><label for="v7-meet-outcome">Resultado da reunião</label><select id="v7-meet-outcome">${options(MEETING_OUTCOMES,currentOutcome)}</select></div><div class="field"><label for="v7-meet-url">Link da ata ou registro (opcional)</label><input id="v7-meet-url" maxlength="600" value="${esc(m?.url||'')}" placeholder="https://..."></div></div>
+ <div class="field"><label for="v7-meet-notes">Encaminhamentos / observações (opcional)</label><textarea id="v7-meet-notes" rows="2" maxlength="1400" placeholder="Decisões ou observações relevantes">${esc(m?.notes||'')}</textarea></div>
+ <div class="field"><label for="v7-meet-new-imp">Novas melhorias solicitadas (opcional, uma por linha)</label><textarea id="v7-meet-new-imp" rows="3" maxlength="1800" placeholder="Ajustar filtros de seleção&#10;Revisar indicador de matrículas"></textarea></div>
+ <div class="field"><label for="v7-meet-im-panel">Associar essas novas melhorias ao painel</label><select id="v7-meet-im-panel">${state.panels.filter(p=>currentPanels.includes(p.id)).map(p=>`<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('')}</select></div>
+ <p class="v7-help">Caso a reunião envolva vários painéis, salve melhorias adicionais individualmente após registrar a reunião. Cada pedido terá responsável, situação e prazo próprios.</p>
+ <div class="error" id="v7-meet-error" role="alert"></div><div class="dialog-actions"><button id="v7-meet-cancel">Cancelar</button><button id="v7-meet-save" class="primary">Salvar reunião</button></div>`;
+ openDialog(m?'Editar reunião':'Registrar reunião','Validação, documentação ou aprovação com área do MEC',meetingForm);
+ byId('v7-meet-cancel').onclick=closeDialog;
+ const refreshMeetingPanels=()=>{const sel=Array.from(document.querySelectorAll('.v7-meeting-panel:checked')).map(x=>x.value);const prior=byId('v7-meet-im-panel').value;byId('v7-meet-im-panel').innerHTML=state.panels.filter(p=>sel.includes(p.id)).map(p=>`<option value="${esc(p.id)}" ${p.id===prior?'selected':''}>${esc(p.name)}</option>`).join('')};
+ document.querySelectorAll('.v7-meeting-panel').forEach(ch=>ch.onchange=refreshMeetingPanels);
+ byId('v7-meet-save').onclick=()=>{
+  const panelIds=Array.from(document.querySelectorAll('.v7-meeting-panel:checked')).map(x=>x.value),meetingDate=isoDate(byId('v7-meet-date').value),stage=byId('v7-meet-stage').value,area=byId('v7-meet-area').value.trim(),participants=unique(byId('v7-meet-participants').value.split(/\n|;/).map(x=>x.trim())),outcome=byId('v7-meet-outcome').value,url=byId('v7-meet-url').value.trim(),notes=byId('v7-meet-notes').value.trim(),requests=byId('v7-meet-new-imp').value.split('\n').map(x=>x.trim()).filter(Boolean),target=byId('v7-meet-im-panel').value;
+  const dates=errorDates([['v7-meet-date','reunião']]);if(dates){alertV7('v7-meet-error',dates);return}
+  if(!panelIds.length||!meetingDate||!area||!participants.length){alertV7('v7-meet-error','Informe a data, a área, os participantes e pelo menos um painel.');return}
+  if(url&&!/^https?:\/\/\S+$/i.test(url)){alertV7('v7-meet-error','O link da ata deve começar com http:// ou https://.');return}
+  if(requests.length&&!panelIds.includes(target)){alertV7('v7-meet-error','Selecione um painel para associar as novas melhorias.');return}
+  if(m&&improvementsForMeeting(m.id).some(x=>!panelIds.includes(x.panelId))){alertV7('v7-meet-error','Esta reunião já possui melhorias vinculadas a painéis que seriam removidos. Mantenha-os ou desvincule as melhorias antes.');return}
+  const item={id:m?.id||uid('R'),panelIds,stage,meetingDate,area,participants,outcome,url,notes,updatedAt:new Date().toISOString()};
+  if(m)Object.assign(m,item);else state.meetings.push(item);
+  for(const request of requests){state.improvements.push({id:uid('M'),panelId:target,meetingId:item.id,originStage:IMP_STAGES.includes(stage)?stage:'E08',description:request,owner:'',registeredDate:meetingDate,dueDate:'',completedDate:'',status:'Aberta',updatedAt:new Date().toISOString()})}
+  state.demo=false;save();render();openMeetingDetails(item.id);toast(requests.length?`Reunião e ${requests.length} melhoria(s) registradas.`:'Reunião registrada.');
+ };
+ bindDateMask();
+}
+// Informações de reuniões e melhorias na ficha de cada painel.
+const previousDrawerV7=paintDrawer;
+paintDrawer=function(){previousDrawerV7();const p=getP(selected);if(!p)return;const improvements=improvementsFor(p.id),meetings=meetingsFor(p.id);
+ const group=document.createElement('section');group.className='v7-panel-collections';group.innerHTML=`<h3>Melhorias e ajustes (${improvements.length} registradas)</h3><div class="tiny-item">${improvements.filter(m=>m.status==='Aberta').length} abertas · ${improvements.filter(m=>m.status==='Em ajuste').length} em ajuste · ${improvements.filter(m=>m.status==='Implementada').length} implementadas · <b>${improvements.filter(impLate).length} atrasadas</b></div><div class="mini-actions"><button id="drawer-improvements">✎ Consultar / cadastrar melhorias</button></div><h3>Reuniões e validações (${meetings.length})</h3>${meetings.slice(-2).map(m=>`<div class="tiny-item">${esc(meetingName(m))} · ${esc(m.outcome)}</div>`).join('')||'<p style="font-size:11px;color:#7890a0">Nenhuma reunião registrada.</p>'}<div class="mini-actions"><button id="drawer-meetings">▦ Consultar / registrar reuniões</button></div>`;
+ const hist=Array.from(byId('drawer').querySelectorAll('h3')).find(n=>n.textContent.startsWith('Histórico'));
+ if(hist)hist.before(group);else byId('drawer').append(group);
+ byId('drawer-improvements').onclick=()=>openImprovementList(p.id);
+ byId('drawer-meetings').onclick=()=>openMeetingList(p.id);
+};
+// A partir das caixas de homologação / aprovação também é possível consultar reuniões.
+const prevStageListV7=openStageList;
+openStageList=function(stage){prevStageListV7(stage);if(!MEETING_STAGES.includes(stage))return;const actions=byId('dialog')?.querySelector('.dialog-actions');if(!actions)return;const meetingButton=document.createElement('button');meetingButton.textContent='▦ Reuniões desta etapa';meetingButton.onclick=()=>openMeetingList('',stage);actions.prepend(meetingButton)};
+// Exporte registros individualizados para uso posterior em planilhas de gestão.
+byId('export-improvements').onclick=()=>{
+ const cols=['ID_Melhoria','ID_Painel','Painel','Etapa_Origem','ID_Reuniao','Descricao','Responsavel','Data_Registro','Previsao_Implementacao','Data_Implementacao','Situacao','Condicao_Prazo'];
+ const rows=[cols,...state.improvements.map(m=>[m.id,m.panelId,getP(m.panelId)?.name||m.panelId,m.originStage,m.meetingId,m.description,m.owner,brDate(m.registeredDate),brDate(m.dueDate),brDate(m.completedDate),m.status,impLate(m)?'Atrasada':impDoneLate(m)?'Implementada com atraso':m.status==='Implementada'?'Implementada no prazo':'Dentro do prazo / sem previsão'])];
+ download('EducaDados_Melhorias_V7_'+today()+'.csv',csvOf(rows),'text/csv;charset=utf-8');toast('Melhorias exportadas.');
+};
+byId('export-meetings').onclick=()=>{
+ const cols=['ID_Reuniao','Data','Etapa','ID_Paineis','Paineis','Areas_MEC','Participantes','Resultado','Numero_Melhorias','Link_Registro','Encaminhamentos'];
+ const rows=[cols,...state.meetings.map(m=>[m.id,brDate(m.meetingDate),m.stage,(m.panelIds||[]).join('; '),(m.panelIds||[]).map(id=>getP(id)?.name||id).join('; '),m.area,(m.participants||[]).join('; '),m.outcome,improvementsForMeeting(m.id).length,m.url,m.notes])];
+ download('EducaDados_Reunioes_V7_'+today()+'.csv',csvOf(rows),'text/csv;charset=utf-8');toast('Reuniões exportadas.');
+};
+byId('export-json').onclick=()=>{state.version=10;download('EducaDados_Backup_Completo_V7_'+today()+'.json',JSON.stringify(state,null,2),'application/json');toast('Backup completo V7 gerado.');};
+// Os backups de V6 e V7 são aceitos: registros existentes não são perdidos por normalização.
+byId('file-input').onchange=async e=>{
+ const f=e.target.files?.[0];if(!f)return;
+ try{
+  const txt=await f.text();let data;
+  if(f.name.toLowerCase().endsWith('.json')){const o=JSON.parse(txt);if(!Array.isArray(o.panels))throw Error('Backup sem lista de painéis.');const panels=o.panels.map(normalize).filter(Boolean);data={...o,version:10,demo:false,panels,events:Array.isArray(o.events)?o.events:[],teams:o.teams||{},dependencies:Array.isArray(o.dependencies)?o.dependencies:[],improvements:Array.isArray(o.improvements)?o.improvements:[],meetings:Array.isArray(o.meetings)?o.meetings:[]};}
+  else{const rows=parseCSV(txt);if(rows.length<2)throw Error('CSV sem painéis.');const head=rows[0].map(v=>v.trim().toLocaleLowerCase('pt-BR'));
+   const panels=rows.slice(1).map((r,i)=>{const q=Object.fromEntries(head.map((k,j)=>[k,r[j]||'']));return normalize({id:q.codigo||q.id,name:q.painel||q.nome,stage:q.etapa||q.stage,status:q.situacao||q.status,owner:q.responsavelprincipal||q.responsavel||q.owner,entryDate:q.dataentrada,dueDate:q.previsaosaida,completedDate:q.dataconclusao,mockupUrl:q.url_mockup||'',powerbiUrl:q.url_painel_powerbi||'',assignees:q.profissionais?q.profissionais.split(';').map(x=>x.trim()).filter(Boolean):[],note:q.observacoes||'',priority:q.prioridade||'Normal',response:q.resultado||'Pendente'},i)}).filter(Boolean);
+   data={version:10,demo:false,panels,events:[],teams:{},dependencies:[],improvements:[],meetings:[]};
+  }
+  if(!data.panels.length)throw Error('Nenhum painel válido.');if(new Set(data.panels.map(x=>x.id)).size!==data.panels.length)throw Error('Códigos de painel duplicados.');
+  if(!window.confirm(`Importar ${data.panels.length} painéis e substituir os registros locais desta versão? Faça backup antes de continuar.`))return;
+  state=data;save();closeDrawer();render();toast(`Importados ${state.panels.length} painéis. Reuniões e melhorias: ${state.meetings.length} / ${state.improvements.length}.`);
+ }catch(err){window.alert('Falha na importação: '+err.message)}finally{e.target.value=''}
+};
+
+renderLanes();
+
+function refreshFromOperational(){const x=load();if(JSON.stringify(x)!==JSON.stringify(state)){state=syncSprints(x);selected=null;renderLanes();render();}}
+window.addEventListener('storage',e=>{if(e.key===KEY)refreshFromOperational()});
+window.addEventListener('message',e=>{if(e.source!==window.parent||!e.data||e.data.app!=='educadados')return;
+ if(e.data.type==='sync'&&e.data.payload){state=syncSprints(e.data.payload);try{localStorage.setItem(KEY,JSON.stringify(state))}catch(_){}selected=null;renderLanes();render();}
+ if(e.data.type==='snapshot-request'){window.parent.postMessage({app:'educadados',type:'snapshot',source:'visual',payload:state},'*');}
+});
+if(window.parent!==window)window.parent.postMessage({app:'educadados',type:'ready',source:'visual'},'*');
+
+window.addEventListener('focus',refreshFromOperational);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshFromOperational()});
+render();requestAnimationFrame(fitZoom);
+window.addEventListener('resize',()=>{if(!pan&&zoom<.82)fitZoom()});
+})();
+</script>
+<script>
+if(window.parent!==window){document.addEventListener('click',function(e){const a=e.target.closest('a[data-hub-nav]');if(a){e.preventDefault();window.parent.postMessage({app:'educadados',type:'navigate',page:a.dataset.hubNav},'*');}},true);
+ const btn=document.getElementById('go-visual');if(btn)btn.addEventListener('click',function(e){e.stopImmediatePropagation();window.parent.postMessage({app:'educadados',type:'navigate',page:'visual'},'*')},true);
+}
+</script><div style="position:fixed;right:12px;bottom:12px;z-index:99999;background:#173b59;color:#fff;border-radius:8px;padding:8px 12px;font:600 12px Segoe UI,Arial;box-shadow:0 2px 10px #0004">DEMONSTRAÇÃO · dados fictícios · alterações locais</div></body></html>
