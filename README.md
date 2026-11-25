@@ -1,15 +1,9 @@
-# EducaDados — demonstração pública (V9.12)
+# EducaDados — demonstração pública V9.12
 
-**ATENÇÃO:** esta cópia contém apenas registros fictícios e **não** utiliza a base operacional real. Alterações feitas no navegador são apenas locais e não aparecem para outras pessoas. Não importar backups com dados institucionais nesta demonstração.
+Esta é uma **cópia pública com dados simulados**, preservando a estrutura funcional original da V9.12, 28 códigos de painéis e a visualização das semanas S1–S9.
 
-Para visualizar, abra `index.html` no GitHub Pages.
+**Não é a base operacional oficial.** Estados, etapas, datas de sprint e entregas são exemplos ilustrativos. Os formulários guardam alterações somente no navegador local; não sincronizam com o GitHub.
 
-## Publicação no GitHub Pages
-1. No repositório público, use **Add file → Upload files** e envie todos os arquivos deste pacote, incluindo `index.html`, `operacional.html`, `gestao-visual.html`, `jszip.min.js`, `panorama.html`.
-2. Clique **Commit changes**.
-3. Abra **Settings → Pages**. Em **Build and deployment**, selecione **Deploy from a branch**, escolha **main** e **/(root)**, clique **Save**.
-4. Aguarde a publicação e abra o endereço exibido em Settings → Pages.
+GitHub Pages: publicar a branch `main` no diretório `/(root)`; o `index.html` é a entrada principal, e `ABRIR_GESTAO_INTEGRADA.html` abre a visão integrada.
 
-**Segurança:** GitHub Pages é público. Não publique backups JSON de produção, PDFs, planilhas, links privados ou senhas.
-
-Esta demonstração não implementa autenticação, sincronização multiusuário, servidor ou armazenamento remoto.
+Não publique arquivos JSON de backup reais nem a versão operacional original em repositório público.
