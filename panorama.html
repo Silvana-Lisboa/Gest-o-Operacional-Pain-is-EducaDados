@@ -1,3 +1,427 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EducaDados | Consulta segura dos painéis</title><style>
 :root{--navy:#17374b;--blue:#19739d;--line:#dce8ee;--bg:#f4f7fa;}*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;color:var(--navy);background:var(--bg);font-size:14px}header{background:#fff;padding:20px min(5vw,38px);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}h1{font-size:23px;margin:0 0 3px}h2{font-size:19px;margin:18px 0 12px}small{color:#637e8a}main{max-width:1550px;margin:auto;padding:22px min(5vw,38px)}nav a{padding:9px 12px;border:1px solid #c8dce6;border-radius:8px;color:#12628b;text-decoration:none;background:#fff;display:inline-block;margin-left:6px}.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric{background:white;border:1px solid var(--line);border-radius:12px;padding:16px}.metric strong{font-size:27px;display:block}.metric span{font-size:12px;color:#58788a}section{border:1px solid var(--line);border-radius:12px;background:#fff;margin:18px 0;overflow:hidden}.head{padding:14px 18px;border-bottom:1px solid var(--line)}.scroll{overflow:auto;max-height:65vh}table{border-collapse:collapse;width:100%;min-width:930px}th,td{padding:10px 12px;border-bottom:1px solid #e9f0f5;text-align:left;vertical-align:top}thead th{position:sticky;top:0;background:#ecf3f8;color:#315b71;font-size:12px;z-index:1}.notice{background:#edf5fa;border:1px solid #cce2ed;padding:12px;border-radius:9px;line-height:1.5}input{border:1px solid #a9c6d8;padding:10px;border-radius:8px;width:min(390px,100%);font:inherit}@media(max-width:650px){.metrics{grid-template-columns:repeat(2,1fr)}header{align-items:flex-start}}@media print{nav,input,.notice{display:none!important}.scroll{overflow:visible;max-height:none}section{break-inside:avoid}}
-</style></head><body><header><div><h1>Gestão dos Painéis da EducaDados</h1><small>Demonstração pública · V9.12 · dados simulados</small></div><nav><a href="index.html">Gestão operacional</a><a href="gestao-visual.html">Gestão visual BPMN</a></nav></header><main><div class="notice"><b>Demonstração:</b> carteira e indicadores ilustrativos; não representam situação oficial nem dados operacionais de acompanhamento. O registro real permanece na plataforma privada.</div><div class="metrics"><div class="metric"><strong>28</strong><span>Painéis da carteira demonstrativa</span></div><div class="metric"><strong>392</strong><span>Etapas E00–E13 (modelo)</span></div><div class="metric"><strong>9</strong><span>Semanas S1–S9</span></div><div class="metric"><strong>0</strong><span>Registros pessoais publicados</span></div></div><section><div class="head"><h2>Carteira de painéis — dados simulados</h2><input id="filter-panels" type="search" placeholder="Pesquisar painel" aria-label="Filtrar painéis"></div><div class="scroll"><table id="panels"><thead><tr><th>ID</th><th>Painel</th><th>Versão</th><th>Etapa simulada</th><th>Situação simulada</th></tr></thead><tbody><tr><td>P01</td><td>Educação Básica</td><td>V2</td><td>E02 — Elaboração da Narrativa</td><td>Não iniciado</td></tr><tr><td>P02</td><td>EPT – Educação Profissional e Tecnológica</td><td>V1</td><td>E03 — Elaboração do Mockup</td><td>Em execução</td></tr><tr><td>P03</td><td>Educação Superior</td><td>V1</td><td>E04 — Homologação do Mockup</td><td>Em execução</td></tr><tr><td>P04</td><td>Alfabetização</td><td>V1</td><td>E06 — Preparação dos Dados</td><td>Em execução</td></tr><tr><td>P05</td><td>Tempo Integral</td><td>V1</td><td>E07 — Construção no Power BI</td><td>Em execução</td></tr><tr><td>P06</td><td>Acesso ao Ensino Superior</td><td>V1</td><td>E08 — Teste e Validação</td><td>Em execução</td></tr><tr><td>P07</td><td>Trajetória da Educação Básica para o Ensino Superior</td><td>V1</td><td>E09 — Ajustar painel</td><td>Em execução</td></tr><tr><td>P08</td><td>CPOP – Cursinhos Populares</td><td>V1</td><td>E12 — Aprovação Final</td><td>Em execução</td></tr><tr><td>P09</td><td>PDM – Programa Pé-de-Meia</td><td>V1</td><td>E02 — Elaboração da Narrativa</td><td>Em execução</td></tr><tr><td>P10</td><td>Escolas Conectadas – ENEC</td><td>V1</td><td>E03 — Elaboração do Mockup</td><td>Não iniciado</td></tr><tr><td>P11</td><td>Valorização Docente</td><td>V2</td><td>E04 — Homologação do Mockup</td><td>Em execução</td></tr><tr><td>P12</td><td>EJA – Educação de Jovens e Adultos</td><td>V2</td><td>E06 — Preparação dos Dados</td><td>Em execução</td></tr><tr><td>P13</td><td>Inclusão na Educação Básica</td><td>V1</td><td>E07 — Construção no Power BI</td><td>Em execução</td></tr><tr><td>P14</td><td>Equidade na Educação</td><td>V2</td><td>E08 — Teste e Validação</td><td>Em execução</td></tr><tr><td>P15</td><td>Educação Infantil</td><td>V2</td><td>E09 — Ajustar painel</td><td>Em execução</td></tr><tr><td>P16</td><td>Rede Federal</td><td>V1</td><td>E12 — Aprovação Final</td><td>Em execução</td></tr><tr><td>P17</td><td>Pós-Graduação</td><td>V1</td><td>E02 — Elaboração da Narrativa</td><td>Em execução</td></tr><tr><td>P18</td><td>Financiamento da Educação Básica</td><td>V1</td><td>E03 — Elaboração do Mockup</td><td>Em execução</td></tr><tr><td>P19</td><td>Novo PAC SESU</td><td>V1</td><td>E04 — Homologação do Mockup</td><td>Não iniciado</td></tr><tr><td>P20</td><td>Orçamento da Educação Superior</td><td>V1</td><td>E06 — Preparação dos Dados</td><td>Em execução</td></tr><tr><td>P21</td><td>Ensino Fundamental e Médio</td><td>V1</td><td>E07 — Construção no Power BI</td><td>Em execução</td></tr><tr><td>P22</td><td>Gestão Democrática</td><td>V2</td><td>E08 — Teste e Validação</td><td>Em execução</td></tr><tr><td>P23</td><td>Programa Mais Professores</td><td>V1</td><td>E09 — Ajustar painel</td><td>Em execução</td></tr><tr><td>P24</td><td>PROUNI</td><td>V1</td><td>E12 — Aprovação Final</td><td>Em execução</td></tr><tr><td>P25</td><td>PDDE</td><td>V1</td><td>E02 — Elaboração da Narrativa</td><td>Em execução</td></tr><tr><td>P26</td><td>PNLD</td><td>V1</td><td>E03 — Elaboração do Mockup</td><td>Em execução</td></tr><tr><td>P27</td><td>PNAE</td><td>V1</td><td>E04 — Homologação do Mockup</td><td>Em execução</td></tr><tr><td>P28</td><td>PNATE</td><td>V1</td><td>E06 — Preparação dos Dados</td><td>Não iniciado</td></tr></tbody></table></div></section><section><div class="head"><h2>Entregas semanais demonstrativas</h2></div><div class="scroll"><table><thead><tr><th>Sprint</th><th>Referência ilustrativa</th><th>Painel</th><th>Produto</th></tr></thead><tbody><tr><td>S1</td><td>2026-10-09</td><td>Alfabetização</td><td>Protótipo</td></tr><tr><td>S2</td><td>2026-10-16</td><td>Trajetória da Educação Básica para o Ensino Superior</td><td>Mockup</td></tr><tr><td>S3</td><td>2026-10-23</td><td>Escolas Conectadas – ENEC</td><td>Protótipo</td></tr><tr><td>S4</td><td>2026-10-30</td><td>Inclusão na Educação Básica</td><td>Mockup</td></tr><tr><td>S5</td><td>2026-11-06</td><td>Rede Federal</td><td>Protótipo</td></tr><tr><td>S6</td><td>2026-11-13</td><td>Novo PAC SESU</td><td>Mockup</td></tr><tr><td>S7</td><td>2026-11-27</td><td>Gestão Democrática</td><td>Protótipo</td></tr><tr><td>S8</td><td>2026-12-04</td><td>PDDE</td><td>Mockup</td></tr><tr><td>S9</td><td>2026-12-11</td><td>PNATE</td><td>Protótipo</td></tr></tbody></table></div></section></main><script>document.getElementById('filter-panels').addEventListener('input',e=>{let v=e.target.value.toLocaleLowerCase('pt-BR');document.querySelectorAll('#panels tbody tr').forEach(r=>r.hidden=!r.textContent.toLocaleLowerCase('pt-BR').includes(v))})</script></body></html>
+</style></head><body><header><div><h1>Gestão dos Painéis da EducaDados</h1><small>Consulta segura — fotografia consolidada de 13/11/2026</small></div><nav><a href="index.html">Gestão operacional</a><a href="gestao-visual.html">BPMN</a><a href="#cronograma">Cronograma</a></nav></header><main>
+<div class="notice"><b>Versão de consulta:</b> apresenta os dados já consolidados mesmo sem JavaScript. Não altera cadastros nem indica publicação confirmada quando a evidência não está disponível. Atualizações feitas no navegador não modificam este retrato.</div>
+<div class="metrics"><div class="metric"><strong>28</strong><span>Painéis cadastrados</span></div><div class="metric"><strong>392</strong><span>Etapas E00–E13</span></div><div class="metric"><strong>5</strong><span>Na E00 — Backlog</span></div><div class="metric"><strong>5</strong><span>Na E13 — publicação a confirmar</span></div></div>
+<section><div class="head"><h2>Carteira de painéis</h2><input id="filter-panels" type="search" placeholder="Pesquisar painel ou etapa" aria-label="Filtrar painéis"></div><div class="scroll"><table id="panels"><thead><tr><th>ID</th><th>Painel</th><th>Versão</th><th>Tema</th><th>Etapa atual</th><th>Situação</th><th>Responsável</th></tr></thead><tbody><tr><td><b>P01</b></td><td><b>Educação Básica</b></td><td>V2</td><td>Educação Básica</td><td>E07 — Construção no Power BI</td><td>Em execução</td><td>Bárbara</td></tr>
+<tr><td><b>P02</b></td><td><b>EPT</b></td><td>V1</td><td>Educação Profissional e Tecnológica</td><td>E13 — Publicação</td><td>Publicação a confirmar</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td></tr>
+<tr><td><b>P03</b></td><td><b>Educação Superior</b></td><td>V1</td><td>Educação Superior</td><td>E13 — Publicação</td><td>Publicação a confirmar</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td></tr>
+<tr><td><b>P04</b></td><td><b>Alfabetização</b></td><td>V1</td><td>Educação Básica</td><td>E13 — Publicação</td><td>Publicação a confirmar</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td></tr>
+<tr><td><b>P05</b></td><td><b>Tempo Integral</b></td><td>V1</td><td>Educação Básica</td><td>E13 — Publicação</td><td>Publicação a confirmar</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td></tr>
+<tr><td><b>P06</b></td><td><b>Acesso ao Ensino Superior</b></td><td>V1</td><td>Educação Superior</td><td>E09 — Ajustar painel</td><td>Em execução</td><td>A definir — etapa atual</td></tr>
+<tr><td><b>P07</b></td><td><b>Trajetória da Educação Básica para o Ensino Superior</b></td><td>V1</td><td>Transversal</td><td>E09 — Ajustar painel</td><td>Em execução</td><td>A definir — etapa atual</td></tr>
+<tr><td><b>P08</b></td><td><b>CPOP – Cursinhos Populares</b></td><td>V1</td><td>Educação Básica</td><td>E13 — Publicação</td><td>Publicação a confirmar</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td></tr>
+<tr><td><b>P09</b></td><td><b>Pé-de-Meia (PDM)</b></td><td>V1</td><td>Educação Básica</td><td>E07 — Construção no Power BI</td><td>Em execução</td><td>A definir</td></tr>
+<tr><td><b>P10</b></td><td><b>ENEC - Estratégia Nacional Escolas Conectadas</b></td><td>V1</td><td>Educação Básica</td><td>E08 — Teste e Validação</td><td>Em execução</td><td>Gestor DMAPE + Área Finalística do MEC</td></tr>
+<tr><td><b>P11</b></td><td><b>Valorização Docente</b></td><td>V2</td><td>Educação Básica</td><td>E07 — Construção no Power BI</td><td>Em execução</td><td>Anna</td></tr>
+<tr><td><b>P12</b></td><td><b>EJA - Educação de Jovens e Adultos</b></td><td>V2</td><td>Educação Básica</td><td>E04 — Homologação do Mockup</td><td>Em execução</td><td>A definir — etapa atual</td></tr>
+<tr><td><b>P13</b></td><td><b>Inclusão na Educação Básica</b></td><td>V1</td><td>Educação Básica</td><td>E04 — Homologação do Mockup</td><td>Em execução</td><td>Brandão</td></tr>
+<tr><td><b>P14</b></td><td><b>Equidade na Educação</b></td><td>V2</td><td>Transversal</td><td>E04 — Homologação do Mockup</td><td>Em execução</td><td>A definir — etapa atual</td></tr>
+<tr><td><b>P15</b></td><td><b>Educação Infantil</b></td><td>V2</td><td>Educação Básica</td><td>E04 — Homologação do Mockup</td><td>Em execução</td><td>A definir — etapa atual</td></tr>
+<tr><td><b>P16</b></td><td><b>Rede Federal</b></td><td>V1</td><td>Educação Profissional e Tecnológica</td><td>E04 — Homologação do Mockup</td><td>Em execução</td><td>A definir — etapa atual</td></tr>
+<tr><td><b>P17</b></td><td><b>Pós-Graduação</b></td><td>V1</td><td>Pós-Graduação</td><td>E02 — Elaboração da Narrativa</td><td>Em execução</td><td>A definir — etapa atual</td></tr>
+<tr><td><b>P18</b></td><td><b>Financiamento da Educação Básica</b></td><td>V2</td><td>Financiamento e Gestão</td><td>E07 — Construção no Power BI</td><td>Em execução</td><td>João (bases) / Saulo (acompanhamento)</td></tr>
+<tr><td><b>P19</b></td><td><b>Novo PAC SESU</b></td><td>V1</td><td>Financiamento e Gestão</td><td>E04 — Homologação do Mockup</td><td>Em execução</td><td>A definir — etapa atual</td></tr>
+<tr><td><b>P20</b></td><td><b>Orçamento da Educação Superior</b></td><td>V1</td><td>Educação Superior</td><td>E08 — Teste e Validação</td><td>Em execução</td><td>Gestor DMAPE + Área Finalística do MEC</td></tr>
+<tr><td><b>P21</b></td><td><b>Ensino Fundamental e Médio (PNE)</b></td><td>V1</td><td>Educação Básica</td><td>ADEF — A definir</td><td>A definir</td><td>—</td></tr>
+<tr><td><b>P22</b></td><td><b>Gestão Democrática</b></td><td>V2</td><td>Financiamento e Gestão</td><td>E07 — Construção no Power BI</td><td>Em execução</td><td>A definir — etapa atual</td></tr>
+<tr><td><b>P23</b></td><td><b>Programa Mais Professores</b></td><td>V1</td><td>Educação Básica</td><td>E00 — Backlog</td><td>Backlog</td><td>A definir — etapa atual</td></tr>
+<tr><td><b>P24</b></td><td><b>PROUNI</b></td><td>V1</td><td>Educação Superior</td><td>E04 — Homologação do Mockup</td><td>Em execução</td><td>A definir — etapa atual</td></tr>
+<tr><td><b>P25</b></td><td><b>PDDE - Visão Geral</b></td><td>V1</td><td>Educação Básica</td><td>E00 — Backlog</td><td>Backlog</td><td>Gestão DMAPE / Gerente de Negócio</td></tr>
+<tr><td><b>P26</b></td><td><b>PNLD</b></td><td>V1</td><td>Educação Básica</td><td>E00 — Backlog</td><td>Backlog</td><td>Gestão DMAPE / Gerente de Negócio</td></tr>
+<tr><td><b>P27</b></td><td><b>PNAE</b></td><td>V1</td><td>Educação Básica</td><td>E00 — Backlog</td><td>Backlog</td><td>Gestão DMAPE / Gerente de Negócio</td></tr>
+<tr><td><b>P28</b></td><td><b>PNATE</b></td><td>V1</td><td>Educação Básica</td><td>E00 — Backlog</td><td>Backlog</td><td>Gestão DMAPE / Gerente de Negócio</td></tr></tbody></table></div></section>
+<section id="cronograma"><div class="head"><h2>Cronograma E00–E13</h2><input id="filter-crono" type="search" placeholder="Pesquisar painel, etapa ou responsável" aria-label="Filtrar cronograma"></div><div class="scroll"><table id="schedule"><thead><tr><th>Painel</th><th>Etapa</th><th>Situação</th><th>Responsável</th><th>Conclusão adotada</th><th>Origem da data</th></tr></thead><tbody><tr><td>P01 — Educação Básica</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P01 — Educação Básica</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P01 — Educação Básica</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Bárbara</td><td>2026-10-02</td><td>Prevista legada assumida</td></tr>
+<tr><td>P01 — Educação Básica</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-10-06</td><td>Prevista legada assumida</td></tr>
+<tr><td>P01 — Educação Básica</td><td>E04 — Homologação do Mockup</td><td>Concluída</td><td>Especialista de Negócio + Gestor DMAPE</td><td>2026-10-07</td><td>Prevista legada assumida</td></tr>
+<tr><td>P01 — Educação Básica</td><td>E05 — Implementação das melhorias do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-10-08</td><td>Prevista legada assumida</td></tr>
+<tr><td>P01 — Educação Básica</td><td>E06 — Preparação dos Dados</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-10-09</td><td>Prevista legada assumida</td></tr>
+<tr><td>P01 — Educação Básica</td><td>E07 — Construção no Power BI</td><td>Em andamento</td><td>Bárbara</td><td>—</td><td>—</td></tr>
+<tr><td>P01 — Educação Básica</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Bárbara</td><td>—</td><td>—</td></tr>
+<tr><td>P01 — Educação Básica</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P01 — Educação Básica</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P01 — Educação Básica</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P01 — Educação Básica</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P01 — Educação Básica</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P18 — Financiamento da Educação Básica</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P18 — Financiamento da Educação Básica</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P18 — Financiamento da Educação Básica</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P18 — Financiamento da Educação Básica</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P18 — Financiamento da Educação Básica</td><td>E04 — Homologação do Mockup</td><td>Concluída</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P18 — Financiamento da Educação Básica</td><td>E05 — Implementação das melhorias do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P18 — Financiamento da Educação Básica</td><td>E06 — Preparação dos Dados</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P18 — Financiamento da Educação Básica</td><td>E07 — Construção no Power BI</td><td>Em andamento</td><td>João (bases) / Saulo (acompanhamento)</td><td>—</td><td>—</td></tr>
+<tr><td>P18 — Financiamento da Educação Básica</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Brandão</td><td>—</td><td>—</td></tr>
+<tr><td>P18 — Financiamento da Educação Básica</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P18 — Financiamento da Educação Básica</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Diego</td><td>—</td><td>—</td></tr>
+<tr><td>P18 — Financiamento da Educação Básica</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P18 — Financiamento da Educação Básica</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P18 — Financiamento da Educação Básica</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P11 — Valorização Docente</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P11 — Valorização Docente</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Gerente de Negócio + Especialista de Negócio</td><td>2026-11-04</td><td>Prevista legada assumida</td></tr>
+<tr><td>P11 — Valorização Docente</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>2026-11-04</td><td>Prevista legada assumida</td></tr>
+<tr><td>P11 — Valorização Docente</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-11-10</td><td>Prevista legada assumida</td></tr>
+<tr><td>P11 — Valorização Docente</td><td>E04 — Homologação do Mockup</td><td>Concluída</td><td>Especialista de Negócio + Gestor DMAPE</td><td>2026-11-17</td><td>Prevista legada assumida</td></tr>
+<tr><td>P11 — Valorização Docente</td><td>E05 — Implementação das melhorias do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-11-03</td><td>Real registrada</td></tr>
+<tr><td>P11 — Valorização Docente</td><td>E06 — Preparação dos Dados</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-11-03</td><td>Real registrada</td></tr>
+<tr><td>P11 — Valorização Docente</td><td>E07 — Construção no Power BI</td><td>Em andamento</td><td>Anna</td><td>—</td><td>—</td></tr>
+<tr><td>P11 — Valorização Docente</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Anna</td><td>—</td><td>—</td></tr>
+<tr><td>P11 — Valorização Docente</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P11 — Valorização Docente</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P11 — Valorização Docente</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P11 — Valorização Docente</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P11 — Valorização Docente</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P13 — Inclusão na Educação Básica</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P13 — Inclusão na Educação Básica</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Letícia</td><td>2026-10-07</td><td>Prevista legada assumida</td></tr>
+<tr><td>P13 — Inclusão na Educação Básica</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Letícia</td><td>2026-10-07</td><td>Prevista legada assumida</td></tr>
+<tr><td>P13 — Inclusão na Educação Básica</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Marco</td><td>2026-10-14</td><td>Prevista legada assumida</td></tr>
+<tr><td>P13 — Inclusão na Educação Básica</td><td>E04 — Homologação do Mockup</td><td>Em andamento</td><td>Brandão</td><td>—</td><td>—</td></tr>
+<tr><td>P13 — Inclusão na Educação Básica</td><td>E05 — Implementação das melhorias do Mockup</td><td>Não iniciada</td><td>Brandão</td><td>—</td><td>—</td></tr>
+<tr><td>P13 — Inclusão na Educação Básica</td><td>E06 — Preparação dos Dados</td><td>Não iniciada</td><td>Brandão</td><td>—</td><td>—</td></tr>
+<tr><td>P13 — Inclusão na Educação Básica</td><td>E07 — Construção no Power BI</td><td>Não iniciada</td><td>Brandão</td><td>—</td><td>—</td></tr>
+<tr><td>P13 — Inclusão na Educação Básica</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Marco</td><td>—</td><td>—</td></tr>
+<tr><td>P13 — Inclusão na Educação Básica</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Juliana</td><td>—</td><td>—</td></tr>
+<tr><td>P13 — Inclusão na Educação Básica</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Marco</td><td>—</td><td>—</td></tr>
+<tr><td>P13 — Inclusão na Educação Básica</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Lucas Evêncio</td><td>—</td><td>—</td></tr>
+<tr><td>P13 — Inclusão na Educação Básica</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P13 — Inclusão na Educação Básica</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P14 — Equidade na Educação</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P14 — Equidade na Educação</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Brandão</td><td>2026-10-07</td><td>Prevista legada assumida</td></tr>
+<tr><td>P14 — Equidade na Educação</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>2026-10-07</td><td>Prevista legada assumida</td></tr>
+<tr><td>P14 — Equidade na Educação</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-10-14</td><td>Prevista legada assumida</td></tr>
+<tr><td>P14 — Equidade na Educação</td><td>E04 — Homologação do Mockup</td><td>Em andamento</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>—</td></tr>
+<tr><td>P14 — Equidade na Educação</td><td>E05 — Implementação das melhorias do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P14 — Equidade na Educação</td><td>E06 — Preparação dos Dados</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P14 — Equidade na Educação</td><td>E07 — Construção no Power BI</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P14 — Equidade na Educação</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P14 — Equidade na Educação</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P14 — Equidade na Educação</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P14 — Equidade na Educação</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P14 — Equidade na Educação</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P14 — Equidade na Educação</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P15 — Educação Infantil</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P15 — Educação Infantil</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Gerente de Negócio + Especialista de Negócio</td><td>2026-10-27</td><td>Prevista legada assumida</td></tr>
+<tr><td>P15 — Educação Infantil</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>2026-10-27</td><td>Prevista legada assumida</td></tr>
+<tr><td>P15 — Educação Infantil</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-11-03</td><td>Prevista legada assumida</td></tr>
+<tr><td>P15 — Educação Infantil</td><td>E04 — Homologação do Mockup</td><td>Em andamento</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>—</td></tr>
+<tr><td>P15 — Educação Infantil</td><td>E05 — Implementação das melhorias do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P15 — Educação Infantil</td><td>E06 — Preparação dos Dados</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P15 — Educação Infantil</td><td>E07 — Construção no Power BI</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P15 — Educação Infantil</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Bárbara</td><td>—</td><td>—</td></tr>
+<tr><td>P15 — Educação Infantil</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P15 — Educação Infantil</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P15 — Educação Infantil</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P15 — Educação Infantil</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P15 — Educação Infantil</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P20 — Orçamento da Educação Superior</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P20 — Orçamento da Educação Superior</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Robson Bento</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P20 — Orçamento da Educação Superior</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P20 — Orçamento da Educação Superior</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P20 — Orçamento da Educação Superior</td><td>E04 — Homologação do Mockup</td><td>Concluída</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P20 — Orçamento da Educação Superior</td><td>E05 — Implementação das melhorias do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P20 — Orçamento da Educação Superior</td><td>E06 — Preparação dos Dados</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P20 — Orçamento da Educação Superior</td><td>E07 — Construção no Power BI</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-11-30</td><td>Prevista legada assumida</td></tr>
+<tr><td>P20 — Orçamento da Educação Superior</td><td>E08 — Teste e Validação</td><td>Em andamento</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P20 — Orçamento da Educação Superior</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P20 — Orçamento da Educação Superior</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P20 — Orçamento da Educação Superior</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P20 — Orçamento da Educação Superior</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P20 — Orçamento da Educação Superior</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P22 — Gestão Democrática</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P22 — Gestão Democrática</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P22 — Gestão Democrática</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P22 — Gestão Democrática</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P22 — Gestão Democrática</td><td>E04 — Homologação do Mockup</td><td>Concluída</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P22 — Gestão Democrática</td><td>E05 — Implementação das melhorias do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P22 — Gestão Democrática</td><td>E06 — Preparação dos Dados</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P22 — Gestão Democrática</td><td>E07 — Construção no Power BI</td><td>Em andamento</td><td>Dimitri</td><td>—</td><td>—</td></tr>
+<tr><td>P22 — Gestão Democrática</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Dimitri</td><td>—</td><td>—</td></tr>
+<tr><td>P22 — Gestão Democrática</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P22 — Gestão Democrática</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P22 — Gestão Democrática</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P22 — Gestão Democrática</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P22 — Gestão Democrática</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P06 — Acesso ao Ensino Superior</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P06 — Acesso ao Ensino Superior</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Ruy</td><td>2026-11-10</td><td>Prevista legada assumida</td></tr>
+<tr><td>P06 — Acesso ao Ensino Superior</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>2026-11-10</td><td>Prevista legada assumida</td></tr>
+<tr><td>P06 — Acesso ao Ensino Superior</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-11-16</td><td>Prevista legada assumida</td></tr>
+<tr><td>P06 — Acesso ao Ensino Superior</td><td>E04 — Homologação do Mockup</td><td>Concluída</td><td>Especialista de Negócio + Gestor DMAPE</td><td>2026-11-24</td><td>Prevista legada assumida</td></tr>
+<tr><td>P06 — Acesso ao Ensino Superior</td><td>E05 — Implementação das melhorias do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-11-25</td><td>Prevista legada assumida</td></tr>
+<tr><td>P06 — Acesso ao Ensino Superior</td><td>E06 — Preparação dos Dados</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-11-26</td><td>Prevista legada assumida</td></tr>
+<tr><td>P06 — Acesso ao Ensino Superior</td><td>E07 — Construção no Power BI</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-12-03</td><td>Prevista legada assumida</td></tr>
+<tr><td>P06 — Acesso ao Ensino Superior</td><td>E08 — Teste e Validação</td><td>Concluída</td><td>Analistas de BI e equipe de dados</td><td>2026-11-19</td><td>Prevista legada assumida</td></tr>
+<tr><td>P06 — Acesso ao Ensino Superior</td><td>E09 — Ajustar painel</td><td>Em andamento</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P06 — Acesso ao Ensino Superior</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P06 — Acesso ao Ensino Superior</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P06 — Acesso ao Ensino Superior</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P06 — Acesso ao Ensino Superior</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P07 — Trajetória da Educação Básica para o Ensino Superior</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P07 — Trajetória da Educação Básica para o Ensino Superior</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P07 — Trajetória da Educação Básica para o Ensino Superior</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P07 — Trajetória da Educação Básica para o Ensino Superior</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P07 — Trajetória da Educação Básica para o Ensino Superior</td><td>E04 — Homologação do Mockup</td><td>Concluída</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P07 — Trajetória da Educação Básica para o Ensino Superior</td><td>E05 — Implementação das melhorias do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P07 — Trajetória da Educação Básica para o Ensino Superior</td><td>E06 — Preparação dos Dados</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P07 — Trajetória da Educação Básica para o Ensino Superior</td><td>E07 — Construção no Power BI</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P07 — Trajetória da Educação Básica para o Ensino Superior</td><td>E08 — Teste e Validação</td><td>Concluída</td><td>Analistas de BI e equipe de dados</td><td>2026-11-17</td><td>Prevista legada assumida</td></tr>
+<tr><td>P07 — Trajetória da Educação Básica para o Ensino Superior</td><td>E09 — Ajustar painel</td><td>Em andamento</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P07 — Trajetória da Educação Básica para o Ensino Superior</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P07 — Trajetória da Educação Básica para o Ensino Superior</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P07 — Trajetória da Educação Básica para o Ensino Superior</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P07 — Trajetória da Educação Básica para o Ensino Superior</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P10 — ENEC - Estratégia Nacional Escolas Conectadas</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P10 — ENEC - Estratégia Nacional Escolas Conectadas</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Gerente de Negócio + Especialista de Negócio</td><td>2026-09-11</td><td>Prevista legada assumida</td></tr>
+<tr><td>P10 — ENEC - Estratégia Nacional Escolas Conectadas</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>2026-09-11</td><td>Prevista legada assumida</td></tr>
+<tr><td>P10 — ENEC - Estratégia Nacional Escolas Conectadas</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Brandão</td><td>2026-10-07</td><td>Prevista legada assumida</td></tr>
+<tr><td>P10 — ENEC - Estratégia Nacional Escolas Conectadas</td><td>E04 — Homologação do Mockup</td><td>Concluída</td><td>Especialista de Negócio + Gestor DMAPE</td><td>2026-10-15</td><td>Prevista legada assumida</td></tr>
+<tr><td>P10 — ENEC - Estratégia Nacional Escolas Conectadas</td><td>E05 — Implementação das melhorias do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-10-16</td><td>Prevista legada assumida</td></tr>
+<tr><td>P10 — ENEC - Estratégia Nacional Escolas Conectadas</td><td>E06 — Preparação dos Dados</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-10-19</td><td>Prevista legada assumida</td></tr>
+<tr><td>P10 — ENEC - Estratégia Nacional Escolas Conectadas</td><td>E07 — Construção no Power BI</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-11-30</td><td>Prevista legada assumida</td></tr>
+<tr><td>P10 — ENEC - Estratégia Nacional Escolas Conectadas</td><td>E08 — Teste e Validação</td><td>Em andamento</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P10 — ENEC - Estratégia Nacional Escolas Conectadas</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P10 — ENEC - Estratégia Nacional Escolas Conectadas</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P10 — ENEC - Estratégia Nacional Escolas Conectadas</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P10 — ENEC - Estratégia Nacional Escolas Conectadas</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P10 — ENEC - Estratégia Nacional Escolas Conectadas</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P12 — EJA - Educação de Jovens e Adultos</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P12 — EJA - Educação de Jovens e Adultos</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P12 — EJA - Educação de Jovens e Adultos</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P12 — EJA - Educação de Jovens e Adultos</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P12 — EJA - Educação de Jovens e Adultos</td><td>E04 — Homologação do Mockup</td><td>Em andamento</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>—</td></tr>
+<tr><td>P12 — EJA - Educação de Jovens e Adultos</td><td>E05 — Implementação das melhorias do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P12 — EJA - Educação de Jovens e Adultos</td><td>E06 — Preparação dos Dados</td><td>Não iniciada</td><td>Brandão</td><td>—</td><td>—</td></tr>
+<tr><td>P12 — EJA - Educação de Jovens e Adultos</td><td>E07 — Construção no Power BI</td><td>Não iniciada</td><td>Dimitri</td><td>—</td><td>—</td></tr>
+<tr><td>P12 — EJA - Educação de Jovens e Adultos</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P12 — EJA - Educação de Jovens e Adultos</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P12 — EJA - Educação de Jovens e Adultos</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Brandão</td><td>—</td><td>—</td></tr>
+<tr><td>P12 — EJA - Educação de Jovens e Adultos</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P12 — EJA - Educação de Jovens e Adultos</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P12 — EJA - Educação de Jovens e Adultos</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P03 — Educação Superior</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P03 — Educação Superior</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P03 — Educação Superior</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P03 — Educação Superior</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P03 — Educação Superior</td><td>E04 — Homologação do Mockup</td><td>Concluída</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P03 — Educação Superior</td><td>E05 — Implementação das melhorias do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P03 — Educação Superior</td><td>E06 — Preparação dos Dados</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P03 — Educação Superior</td><td>E07 — Construção no Power BI</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P03 — Educação Superior</td><td>E08 — Teste e Validação</td><td>Concluída</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P03 — Educação Superior</td><td>E09 — Ajustar painel</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P03 — Educação Superior</td><td>E10 — Atualização e Completude de FQI</td><td>Concluída</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P03 — Educação Superior</td><td>E11 — Elaboração da Nota Técnica</td><td>Concluída</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P03 — Educação Superior</td><td>E12 — Aprovação Final</td><td>Concluída</td><td>Área Finalística do MEC</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P03 — Educação Superior</td><td>E13 — Publicação</td><td>A confirmar</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P04 — Alfabetização</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P04 — Alfabetização</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P04 — Alfabetização</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P04 — Alfabetização</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P04 — Alfabetização</td><td>E04 — Homologação do Mockup</td><td>Concluída</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P04 — Alfabetização</td><td>E05 — Implementação das melhorias do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P04 — Alfabetização</td><td>E06 — Preparação dos Dados</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P04 — Alfabetização</td><td>E07 — Construção no Power BI</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P04 — Alfabetização</td><td>E08 — Teste e Validação</td><td>Concluída</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P04 — Alfabetização</td><td>E09 — Ajustar painel</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P04 — Alfabetização</td><td>E10 — Atualização e Completude de FQI</td><td>Concluída</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P04 — Alfabetização</td><td>E11 — Elaboração da Nota Técnica</td><td>Concluída</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P04 — Alfabetização</td><td>E12 — Aprovação Final</td><td>Concluída</td><td>Área Finalística do MEC</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P04 — Alfabetização</td><td>E13 — Publicação</td><td>A confirmar</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P05 — Tempo Integral</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P05 — Tempo Integral</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P05 — Tempo Integral</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P05 — Tempo Integral</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P05 — Tempo Integral</td><td>E04 — Homologação do Mockup</td><td>Concluída</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P05 — Tempo Integral</td><td>E05 — Implementação das melhorias do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P05 — Tempo Integral</td><td>E06 — Preparação dos Dados</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P05 — Tempo Integral</td><td>E07 — Construção no Power BI</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P05 — Tempo Integral</td><td>E08 — Teste e Validação</td><td>Concluída</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P05 — Tempo Integral</td><td>E09 — Ajustar painel</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P05 — Tempo Integral</td><td>E10 — Atualização e Completude de FQI</td><td>Concluída</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P05 — Tempo Integral</td><td>E11 — Elaboração da Nota Técnica</td><td>Concluída</td><td>Dimitri</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P05 — Tempo Integral</td><td>E12 — Aprovação Final</td><td>Concluída</td><td>Área Finalística do MEC</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P05 — Tempo Integral</td><td>E13 — Publicação</td><td>A confirmar</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P08 — CPOP – Cursinhos Populares</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P08 — CPOP – Cursinhos Populares</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P08 — CPOP – Cursinhos Populares</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P08 — CPOP – Cursinhos Populares</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P08 — CPOP – Cursinhos Populares</td><td>E04 — Homologação do Mockup</td><td>Concluída</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P08 — CPOP – Cursinhos Populares</td><td>E05 — Implementação das melhorias do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P08 — CPOP – Cursinhos Populares</td><td>E06 — Preparação dos Dados</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P08 — CPOP – Cursinhos Populares</td><td>E07 — Construção no Power BI</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P08 — CPOP – Cursinhos Populares</td><td>E08 — Teste e Validação</td><td>Concluída</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P08 — CPOP – Cursinhos Populares</td><td>E09 — Ajustar painel</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P08 — CPOP – Cursinhos Populares</td><td>E10 — Atualização e Completude de FQI</td><td>Concluída</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P08 — CPOP – Cursinhos Populares</td><td>E11 — Elaboração da Nota Técnica</td><td>Concluída</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>2026-09-16</td><td>Prevista legada assumida</td></tr>
+<tr><td>P08 — CPOP – Cursinhos Populares</td><td>E12 — Aprovação Final</td><td>Concluída</td><td>Área Finalística do MEC</td><td>2026-09-17</td><td>Prevista legada assumida</td></tr>
+<tr><td>P08 — CPOP – Cursinhos Populares</td><td>E13 — Publicação</td><td>A confirmar</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P09 — Pé-de-Meia (PDM)</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P09 — Pé-de-Meia (PDM)</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P09 — Pé-de-Meia (PDM)</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P09 — Pé-de-Meia (PDM)</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P09 — Pé-de-Meia (PDM)</td><td>E04 — Homologação do Mockup</td><td>Concluída</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P09 — Pé-de-Meia (PDM)</td><td>E05 — Implementação das melhorias do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P09 — Pé-de-Meia (PDM)</td><td>E06 — Preparação dos Dados</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P09 — Pé-de-Meia (PDM)</td><td>E07 — Construção no Power BI</td><td>Em andamento</td><td>A definir</td><td>—</td><td>—</td></tr>
+<tr><td>P09 — Pé-de-Meia (PDM)</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P09 — Pé-de-Meia (PDM)</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P09 — Pé-de-Meia (PDM)</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P09 — Pé-de-Meia (PDM)</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P09 — Pé-de-Meia (PDM)</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P09 — Pé-de-Meia (PDM)</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P16 — Rede Federal</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P16 — Rede Federal</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Cristiano</td><td>2026-09-18</td><td>Prevista legada assumida</td></tr>
+<tr><td>P16 — Rede Federal</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>2026-09-18</td><td>Prevista legada assumida</td></tr>
+<tr><td>P16 — Rede Federal</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-09-24</td><td>Prevista legada assumida</td></tr>
+<tr><td>P16 — Rede Federal</td><td>E04 — Homologação do Mockup</td><td>Em andamento</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>—</td></tr>
+<tr><td>P16 — Rede Federal</td><td>E05 — Implementação das melhorias do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P16 — Rede Federal</td><td>E06 — Preparação dos Dados</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P16 — Rede Federal</td><td>E07 — Construção no Power BI</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P16 — Rede Federal</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P16 — Rede Federal</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P16 — Rede Federal</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P16 — Rede Federal</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P16 — Rede Federal</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P16 — Rede Federal</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P17 — Pós-Graduação</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P17 — Pós-Graduação</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Marco</td><td>2026-11-09</td><td>Prevista legada assumida</td></tr>
+<tr><td>P17 — Pós-Graduação</td><td>E02 — Elaboração da Narrativa</td><td>Em andamento</td><td>Especialista de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P17 — Pós-Graduação</td><td>E03 — Elaboração do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P17 — Pós-Graduação</td><td>E04 — Homologação do Mockup</td><td>Não iniciada</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>—</td></tr>
+<tr><td>P17 — Pós-Graduação</td><td>E05 — Implementação das melhorias do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P17 — Pós-Graduação</td><td>E06 — Preparação dos Dados</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P17 — Pós-Graduação</td><td>E07 — Construção no Power BI</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P17 — Pós-Graduação</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P17 — Pós-Graduação</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P17 — Pós-Graduação</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P17 — Pós-Graduação</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P17 — Pós-Graduação</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P17 — Pós-Graduação</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P02 — EPT</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P02 — EPT</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P02 — EPT</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P02 — EPT</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P02 — EPT</td><td>E04 — Homologação do Mockup</td><td>Concluída</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P02 — EPT</td><td>E05 — Implementação das melhorias do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P02 — EPT</td><td>E06 — Preparação dos Dados</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P02 — EPT</td><td>E07 — Construção no Power BI</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P02 — EPT</td><td>E08 — Teste e Validação</td><td>Concluída</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P02 — EPT</td><td>E09 — Ajustar painel</td><td>Concluída</td><td>Produto — Analista de BI</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P02 — EPT</td><td>E10 — Atualização e Completude de FQI</td><td>Concluída</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P02 — EPT</td><td>E11 — Elaboração da Nota Técnica</td><td>Concluída</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P02 — EPT</td><td>E12 — Aprovação Final</td><td>Concluída</td><td>Área Finalística do MEC</td><td>2026-10-30</td><td>Real registrada</td></tr>
+<tr><td>P02 — EPT</td><td>E13 — Publicação</td><td>A confirmar</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P19 — Novo PAC SESU</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P19 — Novo PAC SESU</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Luiz Felipe</td><td>2026-09-29</td><td>Prevista legada assumida</td></tr>
+<tr><td>P19 — Novo PAC SESU</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>2026-09-29</td><td>Prevista legada assumida</td></tr>
+<tr><td>P19 — Novo PAC SESU</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-10-05</td><td>Prevista legada assumida</td></tr>
+<tr><td>P19 — Novo PAC SESU</td><td>E04 — Homologação do Mockup</td><td>Em andamento</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>—</td></tr>
+<tr><td>P19 — Novo PAC SESU</td><td>E05 — Implementação das melhorias do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P19 — Novo PAC SESU</td><td>E06 — Preparação dos Dados</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P19 — Novo PAC SESU</td><td>E07 — Construção no Power BI</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P19 — Novo PAC SESU</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P19 — Novo PAC SESU</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P19 — Novo PAC SESU</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P19 — Novo PAC SESU</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P19 — Novo PAC SESU</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P19 — Novo PAC SESU</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P23 — Programa Mais Professores</td><td>E00 — Backlog</td><td>Não iniciada</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P23 — Programa Mais Professores</td><td>E01 — Levantamento de Requisitos</td><td>Não iniciada</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P23 — Programa Mais Professores</td><td>E02 — Elaboração da Narrativa</td><td>Não iniciada</td><td>Especialista de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P23 — Programa Mais Professores</td><td>E03 — Elaboração do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P23 — Programa Mais Professores</td><td>E04 — Homologação do Mockup</td><td>Não iniciada</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>—</td></tr>
+<tr><td>P23 — Programa Mais Professores</td><td>E05 — Implementação das melhorias do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P23 — Programa Mais Professores</td><td>E06 — Preparação dos Dados</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P23 — Programa Mais Professores</td><td>E07 — Construção no Power BI</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P23 — Programa Mais Professores</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P23 — Programa Mais Professores</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P23 — Programa Mais Professores</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P23 — Programa Mais Professores</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P23 — Programa Mais Professores</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P23 — Programa Mais Professores</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P21 — Ensino Fundamental e Médio (PNE)</td><td>E00 — Backlog</td><td>Não se aplica</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P21 — Ensino Fundamental e Médio (PNE)</td><td>E01 — Levantamento de Requisitos</td><td>Não se aplica</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P21 — Ensino Fundamental e Médio (PNE)</td><td>E02 — Elaboração da Narrativa</td><td>Não se aplica</td><td>Especialista de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P21 — Ensino Fundamental e Médio (PNE)</td><td>E03 — Elaboração do Mockup</td><td>Não se aplica</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P21 — Ensino Fundamental e Médio (PNE)</td><td>E04 — Homologação do Mockup</td><td>Não se aplica</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>—</td></tr>
+<tr><td>P21 — Ensino Fundamental e Médio (PNE)</td><td>E05 — Implementação das melhorias do Mockup</td><td>Não se aplica</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P21 — Ensino Fundamental e Médio (PNE)</td><td>E06 — Preparação dos Dados</td><td>Não se aplica</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P21 — Ensino Fundamental e Médio (PNE)</td><td>E07 — Construção no Power BI</td><td>Não se aplica</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P21 — Ensino Fundamental e Médio (PNE)</td><td>E08 — Teste e Validação</td><td>Não se aplica</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P21 — Ensino Fundamental e Médio (PNE)</td><td>E09 — Ajustar painel</td><td>Não se aplica</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P21 — Ensino Fundamental e Médio (PNE)</td><td>E10 — Atualização e Completude de FQI</td><td>Não se aplica</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P21 — Ensino Fundamental e Médio (PNE)</td><td>E11 — Elaboração da Nota Técnica</td><td>Não se aplica</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P21 — Ensino Fundamental e Médio (PNE)</td><td>E12 — Aprovação Final</td><td>Não se aplica</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P21 — Ensino Fundamental e Médio (PNE)</td><td>E13 — Publicação</td><td>Não se aplica</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P24 — PROUNI</td><td>E00 — Backlog</td><td>Concluída</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>Sem data disponível</td></tr>
+<tr><td>P24 — PROUNI</td><td>E01 — Levantamento de Requisitos</td><td>Concluída</td><td>Gerente de Negócio + Especialista de Negócio</td><td>2026-11-03</td><td>Real registrada</td></tr>
+<tr><td>P24 — PROUNI</td><td>E02 — Elaboração da Narrativa</td><td>Concluída</td><td>Especialista de Negócio</td><td>2026-11-03</td><td>Real registrada</td></tr>
+<tr><td>P24 — PROUNI</td><td>E03 — Elaboração do Mockup</td><td>Concluída</td><td>Produto — Analista de BI</td><td>2026-11-03</td><td>Real registrada</td></tr>
+<tr><td>P24 — PROUNI</td><td>E04 — Homologação do Mockup</td><td>Em andamento</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>—</td></tr>
+<tr><td>P24 — PROUNI</td><td>E05 — Implementação das melhorias do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P24 — PROUNI</td><td>E06 — Preparação dos Dados</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P24 — PROUNI</td><td>E07 — Construção no Power BI</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P24 — PROUNI</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P24 — PROUNI</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P24 — PROUNI</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P24 — PROUNI</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P24 — PROUNI</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P24 — PROUNI</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P25 — PDDE - Visão Geral</td><td>E00 — Backlog</td><td>Não iniciada</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P25 — PDDE - Visão Geral</td><td>E01 — Levantamento de Requisitos</td><td>Não iniciada</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P25 — PDDE - Visão Geral</td><td>E02 — Elaboração da Narrativa</td><td>Não iniciada</td><td>Especialista de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P25 — PDDE - Visão Geral</td><td>E03 — Elaboração do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P25 — PDDE - Visão Geral</td><td>E04 — Homologação do Mockup</td><td>Não iniciada</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>—</td></tr>
+<tr><td>P25 — PDDE - Visão Geral</td><td>E05 — Implementação das melhorias do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P25 — PDDE - Visão Geral</td><td>E06 — Preparação dos Dados</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P25 — PDDE - Visão Geral</td><td>E07 — Construção no Power BI</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P25 — PDDE - Visão Geral</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P25 — PDDE - Visão Geral</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P25 — PDDE - Visão Geral</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P25 — PDDE - Visão Geral</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P25 — PDDE - Visão Geral</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P25 — PDDE - Visão Geral</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P26 — PNLD</td><td>E00 — Backlog</td><td>Não iniciada</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P26 — PNLD</td><td>E01 — Levantamento de Requisitos</td><td>Não iniciada</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P26 — PNLD</td><td>E02 — Elaboração da Narrativa</td><td>Não iniciada</td><td>Especialista de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P26 — PNLD</td><td>E03 — Elaboração do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P26 — PNLD</td><td>E04 — Homologação do Mockup</td><td>Não iniciada</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>—</td></tr>
+<tr><td>P26 — PNLD</td><td>E05 — Implementação das melhorias do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P26 — PNLD</td><td>E06 — Preparação dos Dados</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P26 — PNLD</td><td>E07 — Construção no Power BI</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P26 — PNLD</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P26 — PNLD</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P26 — PNLD</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P26 — PNLD</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P26 — PNLD</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P26 — PNLD</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P27 — PNAE</td><td>E00 — Backlog</td><td>Não iniciada</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P27 — PNAE</td><td>E01 — Levantamento de Requisitos</td><td>Não iniciada</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P27 — PNAE</td><td>E02 — Elaboração da Narrativa</td><td>Não iniciada</td><td>Especialista de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P27 — PNAE</td><td>E03 — Elaboração do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P27 — PNAE</td><td>E04 — Homologação do Mockup</td><td>Não iniciada</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>—</td></tr>
+<tr><td>P27 — PNAE</td><td>E05 — Implementação das melhorias do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P27 — PNAE</td><td>E06 — Preparação dos Dados</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P27 — PNAE</td><td>E07 — Construção no Power BI</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P27 — PNAE</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P27 — PNAE</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P27 — PNAE</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P27 — PNAE</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P27 — PNAE</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P27 — PNAE</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr>
+<tr><td>P28 — PNATE</td><td>E00 — Backlog</td><td>Não iniciada</td><td>Gestão DMAPE / Gerente de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P28 — PNATE</td><td>E01 — Levantamento de Requisitos</td><td>Não iniciada</td><td>Gerente de Negócio + Especialista de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P28 — PNATE</td><td>E02 — Elaboração da Narrativa</td><td>Não iniciada</td><td>Especialista de Negócio</td><td>—</td><td>—</td></tr>
+<tr><td>P28 — PNATE</td><td>E03 — Elaboração do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P28 — PNATE</td><td>E04 — Homologação do Mockup</td><td>Não iniciada</td><td>Especialista de Negócio + Gestor DMAPE</td><td>—</td><td>—</td></tr>
+<tr><td>P28 — PNATE</td><td>E05 — Implementação das melhorias do Mockup</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P28 — PNATE</td><td>E06 — Preparação dos Dados</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P28 — PNATE</td><td>E07 — Construção no Power BI</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P28 — PNATE</td><td>E08 — Teste e Validação</td><td>Não iniciada</td><td>Gestor DMAPE + Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P28 — PNATE</td><td>E09 — Ajustar painel</td><td>Não iniciada</td><td>Produto — Analista de BI</td><td>—</td><td>—</td></tr>
+<tr><td>P28 — PNATE</td><td>E10 — Atualização e Completude de FQI</td><td>Não iniciada</td><td>Especialista de Negócio + Analista de Dados</td><td>—</td><td>—</td></tr>
+<tr><td>P28 — PNATE</td><td>E11 — Elaboração da Nota Técnica</td><td>Não iniciada</td><td>Ponto focal DMAPE/SEGAPE [a confirmar]</td><td>—</td><td>—</td></tr>
+<tr><td>P28 — PNATE</td><td>E12 — Aprovação Final</td><td>Não iniciada</td><td>Área Finalística do MEC</td><td>—</td><td>—</td></tr>
+<tr><td>P28 — PNATE</td><td>E13 — Publicação</td><td>Não iniciada</td><td>Desenvolvimento/Sustentação — Gestor de conteúdo da EducaDados</td><td>—</td><td>—</td></tr></tbody></table></div></section>
+<small>Fonte: backup operacional de 12/11/2026 e cronograma consolidado em 13/11/2026. Nenhuma data real de conclusão foi inventada.</small></main>
+<script>for(const [input,table] of [['filter-panels','panels'],['filter-crono','schedule']]){document.getElementById(input).addEventListener('input',function(){const q=this.value.toLocaleLowerCase('pt-BR');document.querySelectorAll('#'+table+' tbody tr').forEach(tr=>{tr.hidden=!tr.textContent.toLocaleLowerCase('pt-BR').includes(q)})})}</script></body></html>

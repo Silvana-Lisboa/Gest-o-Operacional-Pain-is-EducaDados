@@ -1,9 +1,18 @@
-# EducaDados — demonstração pública V9.12
+# EducaDados — V9.12: publicação fiel dos arquivos enviados em 25/11/2026
 
-Esta é uma **cópia pública com dados simulados**, preservando a estrutura funcional original da V9.12, 28 códigos de painéis e a visualização das semanas S1–S9.
+- `index.html`: porta de entrada (somente inicialização da base e integração entre as duas telas).
+- `operacional.html`: cópia **binariamente idêntica** do arquivo original `index(20261125-121125).html`.
+- `gestao-visual.html`: cópia **binariamente idêntica** de `gestao-visual(20261125-121124).html`.
+- `panorama.html`: cópia **binariamente idêntica** de `panorama(6).html`.
+- `jszip.min.js`: cópia binariamente idêntica da biblioteca original.
+- `dados-publicados.json`: cópia dos registros reais do backup de 25/11/2026. **Única supressão: uma anotação com senha de acesso.**
 
-**Não é a base operacional oficial.** Estados, etapas, datas de sprint e entregas são exemplos ilustrativos. Os formulários guardam alterações somente no navegador local; não sincronizam com o GitHub.
+## Publicação pública
 
-GitHub Pages: publicar a branch `main` no diretório `/(root)`; o `index.html` é a entrada principal, e `ABRIR_GESTAO_INTEGRADA.html` abre a visão integrada.
+**ALERTA:** o repositório é público. Nomes, datas, estágios, melhorias e links internos do JSON ficam acessíveis a qualquer pessoa na internet. Não envie o JSON de origem sem a supressão da credencial.
 
-Não publique arquivos JSON de backup reais nem a versão operacional original em repositório público.
+A base é carregada uma única vez por navegador na primeira visita à publicação. Atualizações de código não sincronizam automaticamente dados entre navegadores. Para trocar os dados publicados, é necessário definir uma migração/versionamento seguro do armazenamento; a marca da primeira carga deve ser ajustada na próxima publicação.
+
+## Controle de integridade
+
+Os arquivos de programação operacional, gestão visual e panorama foram copiados sem alteração; nenhum algoritmo de visualização, fila ou entrega semanal foi reescrito. Apenas a porta de entrada foi adaptada para carregar a base JSON antes da abertura dos módulos. Os arquivos de origem no computador da usuária não foram modificados.
